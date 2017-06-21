@@ -24,11 +24,12 @@ NULL
 
 svd.shaq = function(x, retu=FALSE, retv=FALSE)
 {
-  cp = cp.shaq(x)
   if (!retu && !retv)
     only.values = TRUE
   else
     only.values = FALSE
+  
+  cp = cp.shaq(x)
   
   ev = eigen(cp, only.values=only.values, symmetric=TRUE)
   
@@ -36,7 +37,8 @@ svd.shaq = function(x, retu=FALSE, retv=FALSE)
   
   if (retu)
   {
-    u.local = ev$vectors %*% diag(1/d)
+    # u.local = ev$vectors %*% diag(1/d)
+    u.local = sweep(ev$vectors, STATS=1/d, MARGIN=2, FUN="*")
     u.local = Data(x) %*% u.local
     u = shaq(u.local, nrow(x), ncol(x), checks=FALSE)
   }
@@ -58,13 +60,14 @@ svd.shaq = function(x, retu=FALSE, retv=FALSE)
 setMethod("svd", signature(x="shaq"),
   function(x, nu = min(n, p), nv = min(n, p), LINPACK = FALSE)
   {
-    n <- nrow(x)
-    p <- ncol(x)
+    n = nrow(x)
+    p = ncol(x)
     
     retu = nu > 0
-    retv= nv > 0
+    retv = nv > 0
     
     ret = svd.shaq(x, retu, retv)
+    
     if (nu && ncol(ret$u) > nu)
       ret$u = ret$u[, 1:nu]
     
