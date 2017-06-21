@@ -17,21 +17,19 @@ prcomp(x, ...)
 
 \item{...}{Ignored.}
 
-\item{retx}{logical value, indicates whether the rotated variables should be returned}
+\item{retx}{Should the rotated variables be returned?}
 
-\item{center}{logical value, determines whether or not columns are zero centered}
+\item{center}{Should columns are zero centered?}
 
-\item{scale.}{logical value, determines whether or not columns are rescaled to unit variance}
+\item{scale.}{Should columns are rescaled to unit variance?}
 
-\item{tol}{a value indicating the magnitude below which components should be
-omitted. (Components are omitted if their standard deviations are less than
-or equal to \code{tol} times the standard deviation of the first component.)
-With the default null setting, no components are omitted.  Other settings
-for tol could be \code{tol = 0} or \code{tol = sqrt(.Machine$double.eps)},
-which would omit essentially constant components}
+\item{tol}{Ignored.}
 }
 \value{
-TODO
+A list of elements \code{sdev}, \code{rotation}, \code{center}, \code{scale},
+and \code{x}, as with R's own \code{prcomp()}.  The elements are,
+respectively, a regular vector, a regular matrix, a regular vector, a regular
+vector, and a shaq.
 }
 \description{
 Performs the principal components analysis.

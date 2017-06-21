@@ -17,7 +17,9 @@
 \item{LINPACK}{Ignored.}
 }
 \value{
-TODO
+A list of elements \code{d}, \code{u}, and \code{v}, as with R's own
+\code{svd()}.  The elements are, respectively, a regular vector, a shaq, and
+a regular matrix.
 }
 \description{
 Singular value decomposition.

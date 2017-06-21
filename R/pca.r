@@ -11,23 +11,21 @@
 #' @param x 
 #' A shaq.
 #' @param center 
-#' logical value, determines whether or not columns are zero centered
+#' Should columns are zero centered?
 #' @param scale. 
-#' logical value, determines whether or not columns are rescaled to unit variance
+#' Should columns are rescaled to unit variance?
 #' @param retx 
-#' logical value, indicates whether the rotated variables should be returned
+#' Should the rotated variables be returned?
 #' @param tol 
-#' a value indicating the magnitude below which components should be
-#' omitted. (Components are omitted if their standard deviations are less than
-#' or equal to \code{tol} times the standard deviation of the first component.)
-#' With the default null setting, no components are omitted.  Other settings
-#' for tol could be \code{tol = 0} or \code{tol = sqrt(.Machine$double.eps)},
-#' which would omit essentially constant components
+#' Ignored.
 #' @param ...
 #' Ignored.
 #' 
 #' @return 
-#' TODO 
+#' A list of elements \code{sdev}, \code{rotation}, \code{center}, \code{scale},
+#' and \code{x}, as with R's own \code{prcomp()}.  The elements are,
+#' respectively, a regular vector, a regular matrix, a regular vector, a regular
+#' vector, and a shaq.
 #' 
 #' @name prcomp
 #' @rdname prcomp
