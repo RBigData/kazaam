@@ -9,10 +9,10 @@ setMethod("svd", signature(x="shaq"),
     retv= nv > 0
     
     ret = svd.shaq(x, retu, retv)
-    if (ret$u@ncols > nu)
+    if (nu && ret$u@ncols > nu)
       ret$u = ret$u[, 1:nu]
     
-    if (NCOL(ret$v) > nv)
+    if (nv && NCOL(ret$v) > nv)
       ret$v = ret$v[, 1:nv]
     
     ret
