@@ -1,3 +1,21 @@
+#' subsetting
+#' 
+#' Subsetting via \code{`[`} for shaq objects.
+#' 
+#' @param x
+#' A shaq.
+#' @param i,j
+#' Indices.  NOTE currently only implemented for \code{j} values.
+#' 
+#' @return
+#' A shaq.
+#' 
+#' @name bracket
+#' @rdname bracket
+NULL
+
+
+
 bracket.shaq = function(x, i, j)
 {
   if (missing(i))
@@ -19,18 +37,7 @@ bracket.shaq = function(x, i, j)
 }
 
 
-#' subsetting
-#' 
-#' Subsetting via \code{`[`} for shaq objects.
-#' 
-#' @param x
-#' A shaq.
-#' @param i,j
-#' Indices.  NOTE currently only implemented for \code{j} values.
-#' 
-#' @return
-#' A shaq.
-#' 
+
 #' @rdname bracket
 #' @export
 setMethod("[", signature(x="shaq"), bracket.shaq)

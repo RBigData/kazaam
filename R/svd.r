@@ -16,27 +16,9 @@
 #' \code{svd()}.  The elements are, respectively, a regular vector, a shaq, and
 #' a regular matrix.
 #' 
+#' @name svd
 #' @rdname svd
-#' @export
-setMethod("svd", signature(x="shaq"),
-  function(x, nu = min(n, p), nv = min(n, p), LINPACK = FALSE)
-  {
-    n <- nrow(x)
-    p <- ncol(x)
-    
-    retu = nu > 0
-    retv= nv > 0
-    
-    ret = svd.shaq(x, retu, retv)
-    if (nu && ncol(ret$u) > nu)
-      ret$u = ret$u[, 1:nu]
-    
-    if (nv && NCOL(ret$v) > nv)
-      ret$v = ret$v[, 1:nv]
-    
-    ret
-  }
-)
+NULL
 
  
 
@@ -68,3 +50,27 @@ svd.shaq = function(x, retu=FALSE, retv=FALSE)
   
   list(d=d, u=u, v=v)
 }
+
+
+
+#' @rdname svd
+#' @export
+setMethod("svd", signature(x="shaq"),
+  function(x, nu = min(n, p), nv = min(n, p), LINPACK = FALSE)
+  {
+    n <- nrow(x)
+    p <- ncol(x)
+    
+    retu = nu > 0
+    retv= nv > 0
+    
+    ret = svd.shaq(x, retu, retv)
+    if (nu && ncol(ret$u) > nu)
+      ret$u = ret$u[, 1:nu]
+    
+    if (nv && NCOL(ret$v) > nv)
+      ret$v = ret$v[, 1:nv]
+    
+    ret
+  }
+)

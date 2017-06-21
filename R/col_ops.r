@@ -1,19 +1,3 @@
-colsum.shaq = function(x, na.rm = FALSE, dims = 1L)
-{
-  cs = base::colSums(Data(x), na.rm=na.rm)
-  allreduce(cs)
-}
-
-
-
-colmean.shaq = function(x, na.rm = FALSE, dims = 1L)
-{
-  cs = base::colSums(Data(x), na.rm=na.rm)
-  allreduce(cs) / nrow(x)
-}
-
-
-
 #' Column Operations
 #' 
 #' Column operations (currently sums/means) for shaq objects.
@@ -31,6 +15,22 @@ colmean.shaq = function(x, na.rm = FALSE, dims = 1L)
 #' @name col_ops
 #' @rdname col_ops
 NULL
+
+
+
+colsum.shaq = function(x, na.rm = FALSE, dims = 1L)
+{
+  cs = base::colSums(Data(x), na.rm=na.rm)
+  allreduce(cs)
+}
+
+colmean.shaq = function(x, na.rm = FALSE, dims = 1L)
+{
+  cs = base::colSums(Data(x), na.rm=na.rm)
+  allreduce(cs) / nrow(x)
+}
+
+
 
 #' @rdname col_ops
 #' @export
