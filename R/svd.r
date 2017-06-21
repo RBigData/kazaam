@@ -63,6 +63,9 @@ setMethod("svd", signature(x="shaq"),
     n = nrow(x)
     p = ncol(x)
     
+    check.is.natnum(nu)
+    check.is.natnum(nv)
+    
     retu = nu > 0
     retv = nv > 0
     

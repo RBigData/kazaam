@@ -34,8 +34,7 @@ check.shaq = function(Data, nrows, ncols)
 #' @export
 shaq = function(Data, nrows, ncols, checks=TRUE)
 {
-  if (!is.matrix(Data))
-    comm.stop("argument 'Data' must be a matrix")
+  check.is.matrix(Data)
   check.is.natnum(nrows)
   check.is.natnum(ncols)
   check.is.flag(checks)

@@ -21,6 +21,8 @@ NULL
 #' @export
 qr_R = function(x)
 {
+  check.is.shaq(x)
+  
   cp = cp.shaq(x)
   R = chol(cp)
   
@@ -33,8 +35,12 @@ qr_R = function(x)
 #' @export
 qr_Q = function(x, R)
 {
+  check.is.shaq(x)
+  
   if (missing(R))
     R = qr_R(x)
+  else
+    check.is.matrix(R)
   
   Q.local = Data(x) %*% solve(R)
   

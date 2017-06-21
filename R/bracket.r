@@ -18,6 +18,9 @@ NULL
 
 bracket.shaq = function(x, i, j)
 {
+  if (missing(i) && missing(j))
+    return(x)
+  
   if (missing(i))
   {
     Data = Data(x)[, j, drop=FALSE]

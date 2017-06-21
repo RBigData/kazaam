@@ -14,6 +14,8 @@
 #' @export
 collapse = function(x)
 {
+  check.is.shaq(x)
+  
   if (comm.rank() == 0)
   {
     size = comm.size()

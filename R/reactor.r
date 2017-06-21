@@ -11,7 +11,10 @@
 # OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
 # PERFORMANCE OF THIS SOFTWARE
 
-# Changes: stop() calls replaced with comm.stop()
+# Changes: 
+#    * stop() calls replaced with comm.stop()
+#    * add check.is.shaq()
+#    * add check.is.matrix()
 
 is.badval <- function(x)
 {
@@ -113,6 +116,28 @@ check.is.flag <- function(x)
   {
     nm <- deparse(substitute(x))
     comm.stop(paste0("argument '", nm, "' must be TRUE or FALSE"), call.=FALSE)
+  }
+  
+  invisible(TRUE)
+}
+
+check.is.shaq <- function(x)
+{
+  if (!is.shaq(x))
+  {
+    nm <- deparse(substitute(x))
+    comm.stop(paste0("argument '", nm, "' must be a shaq"), call.=FALSE)
+  }
+  
+  invisible(TRUE)
+}
+
+check.is.matrix <- function(x)
+{
+  if (!is.matrix(x))
+  {
+    nm <- deparse(substitute(x))
+    comm.stop(paste0("argument '", nm, "' must be a matrix"), call.=FALSE)
   }
   
   invisible(TRUE)

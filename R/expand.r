@@ -13,6 +13,10 @@ expand = function(x)
 {
   if (comm.rank() == 0)
   {
+    if (!is.matrix(x))
+      stop("RANK 0: argument 'x' must be a matrix")
+    
+    
     dim = dim(x)
     bcast(dim)
     
