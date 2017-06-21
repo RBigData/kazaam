@@ -1,7 +1,7 @@
 Package: pbdSHAQ
 Type: Package
 Title: Programming with Big Data -- Super Huge 
-Version: 0.1-1
+Version: 0.1-0
 Description: Tall matrices.
 License: BSD 2-clause License + file LICENSE
 Depends:
