@@ -1,3 +1,17 @@
+check.shaq = function(Data, nrows, ncols)
+{
+  colcheck = comm.all(NCOL(Data) == ncols)
+  if (!isTRUE(colcheck))
+    comm.stop("local column dimensions disagree across ranks")
+  
+  rowcheck = allreduce(NROW(Data))
+  nrows = rowcheck
+  
+  return(nrows)
+}
+
+
+
 #' @export
 shaq = function(Data, nrows, ncols, checks=TRUE)
 {
@@ -8,14 +22,7 @@ shaq = function(Data, nrows, ncols, checks=TRUE)
   check.is.flag(checks)
   
   if (checks)
-  {
-    rowcheck = allreduce(NROW(Data))
-    nrows = rowcheck
-    
-    colcheck = comm.all(NCOL(Data) == ncols)
-    if (!isTRUE(colcheck))
-      comm.stop("local column dimensions disagree across ranks")
-  }
+    nrows = check.shaq(Data, nrows, ncols)
   
   new("shaq", Data=Data, nrows=nrows, ncols=ncols)
 }
