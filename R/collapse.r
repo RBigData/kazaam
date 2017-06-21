@@ -21,6 +21,11 @@ collapse = function(x)
       }
     }
     
+    # preserve attributes
+    attrs = attributes(x@Data)[-which(names(attributes(x@Data))=="dim")]
+    if (length(attrs))
+      attributes(ret) = c(attributes(ret), attrs)
+    
     ret
   }
   else
