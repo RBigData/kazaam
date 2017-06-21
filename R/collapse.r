@@ -1,3 +1,16 @@
+#' collapse
+#' 
+#' Collapse a shaq into a regular matrix.
+#' 
+#' @details
+#' Only rank 0 will own the matrix on return.
+#' 
+#' @param x
+#' A shaq.
+#' 
+#' @return
+#' A regular matrix (rank 0) or \code{NULL} (everyone else).
+#' 
 #' @export
 collapse = function(x)
 {
