@@ -12,7 +12,7 @@ if (comm.rank() == 0){
 dx = expand(x)
 
 R_test = qr_R(dx)
-dQ = qr_Q(dx)
+dQ = qr_Q(dx, R_test)
 
 Q_test = collapse(dQ)
 

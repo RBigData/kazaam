@@ -13,7 +13,7 @@ if (comm.rank() == 0){
 
 dx = expand(x)
 
-svd_test = SVD(dx, TRUE, TRUE)
+svd_test = svd(dx)
 
 d_test = svd_test$d
 u_test = collapse(svd_test$u)
