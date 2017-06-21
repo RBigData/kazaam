@@ -24,7 +24,7 @@ setter = function(x, value, checks)
 {
   if (checks)
   {
-    nrows = check.shaq(Data(x), nrows(x), ncols(x))
+    nrows = check.shaq(Data(x), nrow(x), ncol(x))
     x@nrows = nrows
   }
   
