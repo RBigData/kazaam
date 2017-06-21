@@ -5,9 +5,30 @@
 * **License:** [BSD 2-Clause](http://opensource.org/licenses/BSD-2-Clause)
 * **Author:** Drew Schmidt, Wei-Chen Chen, Mike Matheson, and George Ostrouchov.
 
-
 Basic matrix operations for very tall, narrow distributed matrices.  For a more general distributed matrix framework, see [pbdDMAT](https://cran.r-project.org/package=pbdDMAT)
 
+
+
+## Installation
+
+<!-- You can install the stable version from CRAN using the usual `install.packages()`:
+
+```r
+install.packages("pbdSHAQ")
+``` -->
+
+The development version is maintained on GitHub, and can easily be installed by any of the packages that offer installations from GitHub:
+
+```r
+### Pick your preference
+devtools::install_github("RBigData/pbdSHAQ")
+ghit::install_github("RBigData/pbdSHAQ")
+remotes::install_github("RBigData/pbdSHAQ")
+```
+
+
+
+## Background
 
 Our tall/skinny/distributed matrices are called `shaq`'s, after Shaquille O'Neal (who is very tall).  Throughout the package, we make a few key assumptions:
 * The number of rows `m` should be **very large**.  If you only have a few hundred thousand rows (and few columns), you're probably better off with base R matrices.
