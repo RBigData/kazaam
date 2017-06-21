@@ -1,5 +1,27 @@
 #' @export
-SVD = function(x, retu=FALSE, retv=FALSE)
+setMethod("svd", signature(x="shaq"),
+  function(x, nu = min(n, p), nv = min(n, p), LINPACK = FALSE)
+  {
+    n <- x@nrows
+    p <- x@ncols
+    
+    retu = nu > 0
+    retv= nv > 0
+    
+    ret = svd.shaq(x, retu, retv)
+    if (ret$u@ncols > nu)
+      ret$u = ret$u[, 1:nu]
+    
+    if (NCOL(ret$v) > nv)
+      ret$v = ret$v[, 1:nv]
+    
+    ret
+  }
+)
+
+ 
+
+svd.shaq = function(x, retu=FALSE, retv=FALSE)
 {
   cp = cp.shaq(x)
   if (!retu && !retv)
