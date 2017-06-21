@@ -9,10 +9,13 @@ expand = function(x)
     size = comm.size()
     id = get.jid(NROW(x), all=TRUE)
     
-    for (i in 1:(size - 1L))
+    if (size > 1)
     {
-      x.local = x[id[[i+1]], ]
-      send(x.local, rank.dest=i)
+      for (i in 1:(size - 1L))
+      {
+        x.local = x[id[[i+1]], ]
+        send(x.local, rank.dest=i)
+      }
     }
     
     x.local = x[id[[1]], ]
