@@ -3,8 +3,13 @@ print_shaq = function(x, ...)
   if (comm.rank() == 0)
   {
     cat(paste0("# A shaq: ", nrow(x), "x", ncol(x), " on ", comm.size(), " MPI ranks\n"))
-    print(head(Data(x)))
-    cat("# ...\n")
+    
+    toprow = min(10, NROW(Data(x)))
+    topcol = min(6, NCOL(Data(x)))
+    submat = Data(x)[1:toprow, 1:topcol]
+    print(submat)
+    
+    cat("# ...\n\n")
   }
 }
 
