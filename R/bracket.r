@@ -12,27 +12,25 @@ bracket.shaq = function(x, i, j)
     else # negative
       ncols = max(0, ncol(x) - length(unique(j)))
   }
-  else
+  else # FIXME
     comm.stop("not yet implemented for i non-missing")
   
   shaq(Data, nrow(x), ncols)
 }
 
 
-
+#' subsetting
+#' 
+#' Subsetting via \code{`[`} for shaq objects.
+#' 
+#' @param x
+#' A shaq.
+#' @param i,j
+#' Indices.  NOTE currently only implemented for \code{j} values.
+#' 
+#' @return
+#' A shaq.
+#' 
+#' @rdname bracket
 #' @export
 setMethod("[", signature(x="shaq"), bracket.shaq)
-
-
-
-# #' @export
-# setReplaceMethod("[", signature(x ="shaq", value="ANY"), bracket_assign.shaq)
-# 
-# bracket_assign.shaq = function(x, i, j, ..., value) 
-# {
-#   if (missing(i))
-#     i <- 1L:x@dim[1L]
-#   if (missing(j))
-#     j <- 1L:x@dim[2L]
-#   
-# }
