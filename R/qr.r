@@ -10,9 +10,11 @@ qr_R = function(x)
 
 
 #' @export
-qr_Q = function(x)
+qr_Q = function(x, R)
 {
-  R = qr_R(x)
+  if (missing(R))
+    R = qr_R(x)
+  
   Q.local = x@Data %*% solve(R)
   
   Q = new("shaq", Data=Q.local, nrows=x@nrows, ncols=x@ncols)
