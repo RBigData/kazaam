@@ -29,10 +29,7 @@
 #' 
 #' @name prcomp
 #' @rdname prcomp
-NULL
-
-
-
+#' @export
 prcomp.shaq = function(x, retx=TRUE, center=TRUE, scale.=FALSE, tol=NULL, ...)
 {
   x <- scale(x, center=center, scale=scale.)
@@ -60,13 +57,3 @@ prcomp.shaq = function(x, retx=TRUE, center=TRUE, scale.=FALSE, tol=NULL, ...)
   
   return(r)
 }
-
-
-
-#' @rdname prcomp
-#' @export
-setGeneric(name="prcomp", useAsDefault=stats::prcomp, package="pbdSHAQ")
-
-#' @rdname prcomp
-#' @export
-setMethod("prcomp", signature(x="shaq"), prcomp.shaq)
