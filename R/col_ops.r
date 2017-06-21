@@ -32,9 +32,10 @@ colmean.shaq = function(x, na.rm = FALSE, dims = 1L)
 #' @rdname col_ops
 NULL
 
-
+#' @rdname col_ops
 #' @export
 setMethod("colSums", signature(x="shaq"), colsum.shaq)
 
+#' @rdname col_ops
 #' @export
 setMethod("colMeans", signature(x="shaq"), colmean.shaq)
