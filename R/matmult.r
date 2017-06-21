@@ -21,7 +21,7 @@ matmult.shaq = function(x, y)
   if (ncol(x) != NROW(y))
     comm.stop("non-conformable arguments")
   
-  nrows = ncol(x)
+  nrows = nrow(x)
   ncols = NCOL(y)
   Data = Data(x) %*% y
   
