@@ -1,3 +1,6 @@
+#' @export
+setMethod("[", signature(x="shaq"), bracket.shaq)
+
 bracket.shaq = function(x, i, j)
 {
   ret = x
@@ -18,6 +21,3 @@ bracket.shaq = function(x, i, j)
   
   ret
 }
-
-#' @export
-setMethod("[", signature(x="shaq"), bracket.shaq)
