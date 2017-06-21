@@ -13,16 +13,6 @@ NULL
 
 
 
-#' @rdname print
-#' @export
-setMethod("print", signature(x="shaq"), function(x, ...) print_shaq(x))
-
-#' @rdname print
-#' @export
-setMethod("show", signature(object="shaq"), function(object) print_shaq(object))
-
-
-
 print_shaq = function(x)
 {
   if (comm.rank() == 0)
@@ -37,3 +27,13 @@ print_shaq = function(x)
     cat("# ...\n\n")
   }
 }
+
+
+
+#' @rdname print
+#' @export
+setMethod("print", signature(x="shaq"), function(x, ...) print_shaq(x))
+
+#' @rdname print
+#' @export
+setMethod("show", signature(object="shaq"), function(object) print_shaq(object))

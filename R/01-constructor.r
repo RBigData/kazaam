@@ -10,20 +10,9 @@
 #' Logical. Should some basic dimension checks be performed?  Note that these
 #' require communication, and with many MPI ranks, could be expensive.
 #' 
-#' @export
-shaq = function(Data, nrows, ncols, checks=TRUE)
-{
-  if (!is.matrix(Data))
-    comm.stop("argument 'Data' must be a matrix")
-  check.is.natnum(nrows)
-  check.is.natnum(ncols)
-  check.is.flag(checks)
-  
-  if (checks)
-    nrows = check.shaq(Data, nrows, ncols)
-  
-  new("shaq", Data=Data, nrows=nrows, ncols=ncols)
-}
+#' @name shaq
+#' @rdname shaq
+NULL
 
 
 
@@ -37,4 +26,22 @@ check.shaq = function(Data, nrows, ncols)
   nrows = rowcheck
   
   return(nrows)
+}
+
+
+
+#' @rdname shaq
+#' @export
+shaq = function(Data, nrows, ncols, checks=TRUE)
+{
+  if (!is.matrix(Data))
+    comm.stop("argument 'Data' must be a matrix")
+  check.is.natnum(nrows)
+  check.is.natnum(ncols)
+  check.is.flag(checks)
+  
+  if (checks)
+    nrows = check.shaq(Data, nrows, ncols)
+  
+  new("shaq", Data=Data, nrows=nrows, ncols=ncols)
 }

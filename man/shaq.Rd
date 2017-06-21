@@ -2,6 +2,7 @@
 % Please edit documentation in R/01-constructor.r
 \name{shaq}
 \alias{shaq}
+\alias{shaq}
 \title{shaq}
 \usage{
 shaq(Data, nrows, ncols, checks = TRUE)

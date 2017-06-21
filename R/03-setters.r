@@ -33,8 +33,9 @@ setter = function(x, value, checks)
 
 Data_set.shaq = function(x, value) setter(x, value, checks=TRUE)
 
-
 DATA_set.shaq = function(x, value) setter(x, value, checks=FALSE)
+
+
 
 #' @rdname setters
 #' @export

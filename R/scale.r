@@ -32,6 +32,8 @@ scale.shaq = function(x, center=TRUE, scale=TRUE)
   ret
 }
 
+
+
 #' @rdname scale
 #' @export
 setGeneric(name="scale", useAsDefault=base::scale, package="pbdSHAQ")
