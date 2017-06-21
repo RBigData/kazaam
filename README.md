@@ -5,7 +5,7 @@
 * **License:** [BSD 2-Clause](http://opensource.org/licenses/BSD-2-Clause)
 * **Author:** Drew Schmidt, Wei-Chen Chen, Mike Matheson, and George Ostrouchov.
 
-Basic matrix operations for very tall, narrow distributed matrices.  For a more general distributed matrix framework, see [pbdDMAT](https://cran.r-project.org/package=pbdDMAT)
+Basic matrix operations for very tall, narrow distributed matrices.  For a more general distributed matrix framework, see [pbdDMAT](https://cran.r-project.org/package=pbdDMAT).
 
 
 
@@ -31,9 +31,9 @@ remotes::install_github("RBigData/pbdSHAQ")
 ## Background
 
 Our tall/skinny/distributed matrices are called `shaq`'s, after Shaquille O'Neal (who is very tall).  Throughout the package, we make a few key assumptions:
-* The data local to each process has the same number of columns.  The number of rows can vary freely, or be identical across ranks.
+* The data local to each process has **the same number of columns**.  The number of rows can vary freely, or be identical across ranks.
 * Codes should be **run in batch**.  Communication is handled by [pbdMPI](https://cran.r-project.org/package=pbdMPI), which (as the name suggests) uses MPI.
-* Finally, adjacent ranks in the MPI communicator as reported by `comm.rank()` (e.g., ranks 2 and 3, 20 and 21, 1000 and 1001, ...) should store adjacent pieces of the matrix.
+* Finally, **adjacent ranks in the MPI communicator** as reported by `comm.rank()` (e.g., ranks 2 and 3, 20 and 21, 1000 and 1001, ...) should store **adjacent pieces of the matrix**.
 
 In order to get good performance, there are several other considerations:
 
