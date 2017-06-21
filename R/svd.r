@@ -1,36 +1,20 @@
-#' Singular Value Decomposition
+#' svd
 #' 
-#' SVD for distributed matrices with R-like syntax, with
-#' calculations performed by the PBLAS and ScaLAPACK libraries.
-#' 
-#' Extensions of R linear algebra functions.
+#' Singular value decomposition.
 #' 
 #' @param x
-#' numeric distributed matrices.
+#' A shaq.
 #' @param nu 
-#' number of left singular vectors to return when calculating
-#' singular values.
+#' number of left singular vectors to return.
 #' @param nv 
-#' number of right singular vectors to return when calculating
-#' singular values.
+#' number of right singular vectors to return.
 #' @param LINPACK
 #' Ignored.
 #' 
 #' @return 
-#' \code{La.svd()} performs singular value decomposition, and returns the
-#' transpose of right singular vectors if any are requested. Singular values
-#' are stored as a global R vector. Left and right singular vectors are unique
-#' up to sign. Sometimes core R (via LAPACK) and ScaLAPACK will disagree as to
-#' what the left/right singular vectors are, but the disagreement is always
-#' only up to sign.
+#' TODO
 #' 
-#' \code{svd()} performs singular value decomposition. Differs from
-#' \code{La.svd()} in that the right singular vectors, if requested, are
-#' returned non-transposed. Singular values are stored as a global R vector.
-#' Sometimes core R (via LAPACK) and ScaLAPACK will disagree as to what the
-#' left/right singular vectors are, but the disagreement is always only up to
-#' sign.
-#' 
+#' @rdname svd
 #' @export
 setMethod("svd", signature(x="shaq"),
   function(x, nu = min(n, p), nv = min(n, p), LINPACK = FALSE)

@@ -1,3 +1,23 @@
+#' Scale
+#' 
+#' Centers and/or scales the columns of a distributed matrix.
+#' 
+#' @param x 
+#' A shaq.
+#' @param center 
+#' logical value, determines whether or not columns are zero centered
+#' @param scale 
+#' logical value, determines whether or not columns are rescaled to unit variance
+#' 
+#' @return 
+#' Returns a distributed matrix.
+#' 
+#' @name scale
+#' @rdname scale
+NULL
+
+
+
 scale.shaq = function(x, center=TRUE, scale=TRUE)
 {
   if (center && !scale)

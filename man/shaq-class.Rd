@@ -16,4 +16,3 @@ Distributed tall matrix class.
 The global matrix dimension.}
 }}
 
-\keyword{Classes}

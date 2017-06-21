@@ -1,3 +1,21 @@
+#' Matrix Multiplication
+#' 
+#' Conceptually, this computes \code{t(x) %*% x} for a shaq \code{x}.
+#' 
+#' @param x
+#' A shaq.
+#' @param y
+#' Must be \code{NULL}.
+#' 
+#' @return 
+#' A regular matrix.
+#' 
+#' @name crossprod
+#' @rdname crossprod
+NULL
+
+
+
 cp.shaq = function(x, y = NULL)
 {
   if (!is.null(y))

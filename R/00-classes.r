@@ -8,7 +8,6 @@
 #' The global matrix dimension.
 #' 
 #' @name shaq-class
-#' @keywords Classes
 #' @docType class
 setClass(
   Class="shaq", 
