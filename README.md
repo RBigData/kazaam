@@ -6,4 +6,6 @@
 * **Author:** Drew Schmidt, Wei-Chen Chen, Mike Matheson, and George Ostrouchov.
 
 
-Basic matrix operations for very tall distributed matrices.
+Basic matrix operations for very tall, narrow distributed matrices.
+
+For a more general distributed matrix framework, see [pbdDMAT](https://cran.r-project.org/package=pbdDMAT)
