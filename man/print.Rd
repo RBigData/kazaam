@@ -3,6 +3,7 @@
 \docType{methods}
 \name{print}
 \alias{print}
+\alias{print,shaq-method}
 \alias{show,shaq-method}
 \title{print}
 \usage{

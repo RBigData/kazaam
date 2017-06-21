@@ -21,6 +21,9 @@ print_shaq = function(x, ...)
 #' 
 #' @name print
 #' @rdname print
+NULL
+
+#' @rdname print
 #' @export
 setMethod("print", signature(x="shaq"), print_shaq)
 
