@@ -4,7 +4,7 @@
 #' 
 #' This package requires an MPI library (OpenMPI, MPICH2, or LAM/MPI).
 #' 
-#' @importFrom pbdMPI allreduce bcast send recv comm.size comm.rank get.jid
+#' @import pbdMPI
 #' @import methods
 #' 
 #' @name pbdSHAQ-package
