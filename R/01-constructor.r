@@ -5,7 +5,7 @@ shaq = function(Data, nrows, ncols, checks=TRUE)
     comm.stop("argument 'Data' must be a matrix")
   check.is.natnum(nrows)
   check.is.natnum(ncols)
-  check.is.flag(check)
+  check.is.flag(checks)
   
   if (checks)
   {
