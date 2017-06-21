@@ -3,7 +3,7 @@ bracket.shaq = function(x, i, j)
   ret = x
   if (missing(i))
   {
-    ret@Data = x@Data[, j, drop=FALSE]
+    DATA(ret) = Data(x)[, j, drop=FALSE]
     if (length(j) == 0 || (length(j) == 1 && j == 0))
       ret@ncols = 0
     else if (is.logical(j))
@@ -23,3 +23,17 @@ bracket.shaq = function(x, i, j)
 
 #' @export
 setMethod("[", signature(x="shaq"), bracket.shaq)
+
+
+
+# #' @export
+# setReplaceMethod("[", signature(x ="shaq", value="ANY"), bracket_assign.shaq)
+# 
+# bracket_assign.shaq = function(x, i, j, ..., value) 
+# {
+#   if (missing(i))
+#     i <- 1L:x@dim[1L]
+#   if (missing(j))
+#     j <- 1L:x@dim[2L]
+#   
+# }

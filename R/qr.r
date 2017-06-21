@@ -15,7 +15,7 @@ qr_Q = function(x, R)
   if (missing(R))
     R = qr_R(x)
   
-  Q.local = x@Data %*% solve(R)
+  Q.local = Data(x) %*% solve(R)
   
-  shaq(Q.local, x@nrows, x@ncols, checks=FALSE)
+  shaq(Q.local, nrow(x), ncol(x), checks=FALSE)
 }

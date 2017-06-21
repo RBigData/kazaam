@@ -1,6 +1,6 @@
 colsum.shaq = function(x, na.rm = FALSE, dims = 1L)
 {
-  cs = base::colSums(x@Data, na.rm=na.rm)
+  cs = base::colSums(Data(x), na.rm=na.rm)
   allreduce(cs)
 }
 
@@ -8,8 +8,8 @@ colsum.shaq = function(x, na.rm = FALSE, dims = 1L)
 
 colmean.shaq = function(x, na.rm = FALSE, dims = 1L)
 {
-  cs = base::colSums(x@Data, na.rm=na.rm)
-  allreduce(cs) / x@nrows
+  cs = base::colSums(Data(x), na.rm=na.rm)
+  allreduce(cs) / nrow(x)
 }
 
 

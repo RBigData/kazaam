@@ -4,10 +4,10 @@ collapse = function(x)
   if (comm.rank() == 0)
   {
     size = comm.size()
-    ret = matrix(0, x@nrows, x@ncols)
+    ret = matrix(0, nrow(x), ncol(x))
     
-    top = NROW(x@Data)
-    ret[1:top, ] = x@Data
+    top = NROW(Data(x))
+    ret[1:top, ] = Data(x)
     
     if (size > 1)
     {
@@ -22,7 +22,7 @@ collapse = function(x)
     }
     
     # preserve attributes
-    attrs = attributes(x@Data)[-which(names(attributes(x@Data))=="dim")]
+    attrs = attributes(Data(x))[-which(names(attributes(Data(x)))=="dim")]
     if (length(attrs))
       attributes(ret) = c(attributes(ret), attrs)
     
@@ -30,7 +30,7 @@ collapse = function(x)
   }
   else
   {
-    send(x@Data, rank.dest=0)
+    send(Data(x), rank.dest=0)
     
     invisible(NULL)
   }

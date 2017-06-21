@@ -2,7 +2,7 @@ print_shaq = function(x, ...)
 {
   if (comm.rank() == 0)
   {
-    cat(paste0("# A shaq: ", x@nrows, "x", x@ncols, " on ", comm.size(), " MPI ranks\n"))
+    cat(paste0("# A shaq: ", nrow(x), "x", ncol(x), " on ", comm.size(), " MPI ranks\n"))
     print(head(Data(x)))
     cat("# ...\n")
   }

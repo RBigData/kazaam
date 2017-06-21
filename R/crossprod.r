@@ -3,14 +3,12 @@ cp.shaq = function(x, y = NULL)
   if (!is.null(y))
     comm.stop("only implemented for y=NULL")
   
-  cp.local = crossprod(x@Data)
+  cp.local = crossprod(Data(x))
   allreduce(cp.local)
 }
 
 
 
-# #' @export
-# setGeneric(name="crossprod", useAsDefault=base::crossprod, package="pbdSHAQ")
-
+#' @rdname crossprod
 #' @export
 setMethod("crossprod", signature(x="shaq"), cp.shaq)

@@ -3,10 +3,10 @@ scale.shaq = function(x, center=TRUE, scale=TRUE)
   if (center && !scale)
   {
     cm = colMeans(x)
-    Data = base::scale(x@Data, center=cm, scale=FALSE)
+    Data = base::scale(Data(x), center=cm, scale=FALSE)
     attr(Data, "scaled:center") = cm
     
-    ret = shaq(Data, x@nrows, x@ncols, checks=FALSE)
+    ret = shaq(Data, nrow(x), ncol(x), checks=FALSE)
   }
   
   ret
