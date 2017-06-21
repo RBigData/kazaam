@@ -1,3 +1,13 @@
+#' expand
+#' 
+#' Expand a regular matrix owned on MPI rank 0 into a shaq.
+#' 
+#' @param x
+#' A regular matrix.
+#' 
+#' @return
+#' A shaq.
+#' 
 #' @export
 expand = function(x)
 {
