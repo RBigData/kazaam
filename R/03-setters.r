@@ -11,8 +11,8 @@
 #' 
 #' @param x
 #' A shaq.
-#' @param Data
-#' The new data
+#' @param value
+#' The new data.
 #' 
 #' @name setters
 #' @rdname setters
@@ -20,7 +20,7 @@ NULL
 
 
 
-Data_set.shaq = function(x, Data, checks=TRUE)
+setter = function(x, value, checks)
 {
   if (checks)
   {
@@ -28,10 +28,13 @@ Data_set.shaq = function(x, Data, checks=TRUE)
     x@nrows = nrows
   }
   
-  x@Data = Data
+  x@Data = value
 }
 
-DATA_set.shaq = function(x, Data) Data_set.shaq(x, Data, checks=FALSE)
+Data_set.shaq = function(x, value) setter(x, value, checks=TRUE)
+
+
+DATA_set.shaq = function(x, value) setter(x, value, checks=FALSE)
 
 #' @rdname setters
 #' @export

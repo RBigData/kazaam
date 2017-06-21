@@ -9,18 +9,18 @@
 \alias{DATA<-,shaq-method}
 \title{setters}
 \usage{
-Data(x, Data, checks = TRUE) <- value
+Data(x) <- value
 
-\S4method{Data}{shaq}(x, Data, checks = TRUE) <- value
+\S4method{Data}{shaq}(x) <- value
 
-DATA(x, Data) <- value
+DATA(x) <- value
 
-\S4method{DATA}{shaq}(x, Data) <- value
+\S4method{DATA}{shaq}(x) <- value
 }
 \arguments{
 \item{x}{A shaq.}
 
-\item{Data}{The new data}
+\item{value}{The new data.}
 }
 \description{
 Setter functions for shaq objects.
