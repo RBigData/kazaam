@@ -6,6 +6,7 @@
 #' 
 #' @import pbdMPI
 #' @import methods
+#' @importFrom stats prcomp
 #' 
 #' @name pbdSHAQ-package
 #' @docType package

@@ -29,7 +29,7 @@ prcomp.shaq = function(x, retx=TRUE, center=TRUE, scale.=FALSE, tol=NULL, ...)
 
 
 #' @export
-setGeneric(name = "prcomp", useAsDefault = stats::prcomp, package="pbdSHAQ")
+setGeneric(name="prcomp", useAsDefault=stats::prcomp, package="pbdSHAQ")
 
 #' @export
 setMethod("prcomp", signature(x="shaq"), prcomp.shaq)
