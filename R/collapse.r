@@ -4,15 +4,21 @@ collapse = function(x)
   if (comm.rank() == 0)
   {
     size = comm.size()
-    id = get.jid(x@nrows, all=TRUE)
     ret = matrix(0, x@nrows, x@ncols)
     
-    ret[id[[1]], ] = x@Data
+    top = NROW(x@Data)
+    ret[1:top, ] = x@Data
     
-    for (i in 1:(size - 1L))
+    if (size > 1)
     {
-      x.local = recv(rank.source=i)
-      ret[id[[i+1]], ] = x.local
+      for (i in 1:(size - 1L))
+      {
+        x.local = recv(rank.source=i)
+        size = NROW(x.local)
+        
+          ret[top + (1:size), ] = x.local
+          top = top + size
+      }
     }
     
     ret
