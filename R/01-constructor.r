@@ -4,7 +4,7 @@
 #' 
 #' @param Data
 #' The local submatrix.
-#' @param nrows, ncols
+#' @param nrows,ncols
 #' The GLOBAL number of rows and columns.
 #' @param checks
 #' Logical. Should some basic dimension checks be performed?  Note that these
