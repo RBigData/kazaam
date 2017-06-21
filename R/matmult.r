@@ -3,11 +3,11 @@ matmult.shaq = function(x, y)
   if (x@ncols != NROW(y))
     comm.stop("non-conformable arguments")
   
-  ret = x
-  ret@ncols = NCOL(y)
-  ret@Data = x@Data %*% y
+  nrows = x@nrows
+  ncols = NCOL(y)
+  Data = x@Data %*% y
   
-  ret
+  shaq(Data, nrows, ncols, checks=FALSE)
 }
 
 

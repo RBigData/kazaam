@@ -26,5 +26,5 @@ expand = function(x)
     x.local = recv(rank.source=0)
   }
   
-  new("shaq", Data=x.local, nrows=dim[1L], ncols=dim[2L])
+  shaq(x.local, dim[1L], dim[2L], checks=FALSE)
 }

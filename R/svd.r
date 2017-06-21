@@ -37,7 +37,7 @@ svd.shaq = function(x, retu=FALSE, retv=FALSE)
   {
     u.local = ev$vectors %*% diag(1/d)
     u.local = x@Data %*% u.local
-    u = new("shaq", Data=u.local, nrows=x@nrows, ncols=x@ncols)
+    u = shaq(u.local, x@nrows, x@ncols, checks=FALSE)
   }
   else
     u = NULL

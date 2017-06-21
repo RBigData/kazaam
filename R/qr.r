@@ -17,6 +17,5 @@ qr_Q = function(x, R)
   
   Q.local = x@Data %*% solve(R)
   
-  Q = new("shaq", Data=Q.local, nrows=x@nrows, ncols=x@ncols)
-  Q
+  shaq(Q.local, x@nrows, x@ncols, checks=FALSE)
 }
