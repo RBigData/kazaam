@@ -1,5 +1,4 @@
-library(pbdSHAQ)
-library(pbdMPI)
+suppressPackageStartupMessages(library(pbdSHAQ))
 
 if (comm.rank() == 0){
   x = matrix(rnorm(30), 10)

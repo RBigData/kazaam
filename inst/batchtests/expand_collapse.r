@@ -1,5 +1,4 @@
-library(pbdSHAQ)
-library(pbdMPI)
+suppressPackageStartupMessages(library(pbdSHAQ))
 
 if (comm.rank() == 0){
   x = matrix(1:30, 10)
@@ -12,5 +11,7 @@ dx = expand(x)
 y = collapse(dx)
 
 comm.print(all.equal(x, y))
+
+
 
 finalize()
