@@ -21,6 +21,7 @@ bracket.shaq = function(x, i, j)
   if (missing(i) && missing(j))
     return(x)
   
+  
   if (missing(i))
   {
     Data = Data(x)[, j, drop=FALSE]
@@ -39,8 +40,23 @@ bracket.shaq = function(x, i, j)
   shaq(Data, nrow(x), ncols)
 }
 
-
-
 #' @rdname bracket
 #' @export
 setMethod("[", signature(x="shaq"), bracket.shaq)
+
+
+
+bracket_replace.shaq = function(x, i, j, ..., value)
+{
+  if (missing(i) && missing(j))
+    DATA(x) = value
+  else if (missing(i))
+    Data(x)[, j] = value
+  else # FIXME
+    comm.stop("not yet implemented for i non-missing")
+  
+  x
+}
+
+#' @export
+setReplaceMethod("[", signature(x ="shaq", value="ANY"), bracket_replace.shaq)
