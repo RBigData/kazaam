@@ -7,7 +7,7 @@
 #' @details
 #' Because the rules imposed on shaq objects are so minimal, it is next to
 #' impossible to do some fairly basic things, like adding two shaqs together.
-#' If you have two shaqs which are distributed \textit{identically} that you
+#' If you have two shaqs which are distributed \emph{identically} that you
 #' wish to add, you can do so manually with something like
 #' \code{DATA(c) <- Data(a) + Data(b)}
 #' 
