@@ -5,8 +5,12 @@
 \alias{getters}
 \alias{nrow,shaq-method}
 \alias{NROW,shaq-method}
+\alias{nrow.local}
+\alias{nrow.local,shaq-method}
 \alias{ncol,shaq-method}
 \alias{NCOL,shaq-method}
+\alias{ncol.local}
+\alias{ncol.local,shaq-method}
 \alias{length,shaq-method}
 \alias{Data}
 \alias{Data,shaq-method}
@@ -16,9 +20,17 @@
 
 \S4method{NROW}{shaq}(x)
 
+nrow.local(x)
+
+\S4method{nrow.local}{shaq}(x)
+
 \S4method{ncol}{shaq}(x)
 
 \S4method{NCOL}{shaq}(x)
+
+ncol.local(x)
+
+\S4method{ncol.local}{shaq}(x)
 
 \S4method{length}{shaq}(x)
 

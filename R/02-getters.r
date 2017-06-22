@@ -21,6 +21,16 @@ setMethod("nrow", signature(x="shaq"), nrows.shaq)
 #' @export
 setMethod("NROW", signature(x="shaq"), nrows.shaq)
 
+nrows.local.shaq = function(x) NROW(Data(x))
+
+#' @rdname getters
+#' @export
+setGeneric(name="nrow.local", useAsDefault=nrows.local.shaq, package="pbdSHAQ")
+
+#' @rdname getters
+#' @export
+setMethod("nrow.local", signature(x="shaq"), nrows.local.shaq)
+
 
 
 ncols.shaq = function(x) x@ncols
@@ -32,6 +42,16 @@ setMethod("ncol", signature(x="shaq"), ncols.shaq)
 #' @rdname getters
 #' @export
 setMethod("NCOL", signature(x="shaq"), ncols.shaq)
+
+ncols.local.shaq = function(x) NCOL(Data(x))
+
+#' @rdname getters
+#' @export
+setGeneric(name="ncol.local", useAsDefault=ncols.local.shaq, package="pbdSHAQ")
+
+#' @rdname getters
+#' @export
+setMethod("ncol.local", signature(x="shaq"), ncols.local.shaq)
 
 
 
