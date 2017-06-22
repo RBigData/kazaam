@@ -21,7 +21,7 @@ collapse = function(x)
     size = comm.size()
     ret = matrix(0, nrow(x), ncol(x))
     
-    top = NROW(Data(x))
+    top = nrow.local(x)
     ret[1:top, ] = Data(x)
     
     if (size > 1)
