@@ -1,4 +1,4 @@
-suppressPackageStartupMessages(library(pbdSHAQ))
+suppressPackageStartupMessages(library(kazaam))
 
 if (comm.rank() == 0){
   set.seed(1234)

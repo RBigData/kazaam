@@ -41,7 +41,7 @@ DATA_set.shaq = function(x, value) setter(x, value, checks=FALSE)
 
 #' @rdname setters
 #' @export
-setGeneric(name="Data<-", useAsDefault=Data_set.shaq, package="pbdSHAQ")
+setGeneric(name="Data<-", useAsDefault=Data_set.shaq, package="kazaam")
 
 #' @rdname setters
 #' @export
@@ -49,7 +49,7 @@ setMethod("Data<-", signature(x="shaq"), Data_set.shaq)
 
 #' @rdname setters
 #' @export
-setGeneric(name="DATA<-", useAsDefault=DATA_set.shaq, package="pbdSHAQ")
+setGeneric(name="DATA<-", useAsDefault=DATA_set.shaq, package="kazaam")
 
 #' @rdname setters
 #' @export

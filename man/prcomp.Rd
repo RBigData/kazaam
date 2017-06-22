@@ -32,7 +32,7 @@ Performs the principal components analysis.
 }
 \details{
 \code{prcomp()} performs the principal components analysis on the data
-matrix by taking the SVD. Sometimes core R and pbdSHAQ will disagree
+matrix by taking the SVD. Sometimes core R and kazaam will disagree
 slightly in what the rotated variables are because of how the SVD is
 caluclated.
 }

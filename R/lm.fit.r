@@ -6,6 +6,8 @@
 #' A shaq (the input data).
 #' @param y
 #' A shaq (the response).
+#' @param tol
+#' Numerical tolerance for deciding rank.
 #' 
 #' @return
 #' A regular vector.

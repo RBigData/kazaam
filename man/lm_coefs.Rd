@@ -10,6 +10,8 @@ lm_coefs(x, y, tol = 1e-07)
 \item{x}{A shaq (the input data).}
 
 \item{y}{A shaq (the response).}
+
+\item{tol}{Numerical tolerance for deciding rank.}
 }
 \value{
 A regular vector.

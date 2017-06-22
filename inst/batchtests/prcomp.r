@@ -1,4 +1,4 @@
-suppressPackageStartupMessages(library(pbdSHAQ))
+suppressPackageStartupMessages(library(kazaam))
 
 if (comm.rank() == 0){
   x = matrix(rnorm(30), 10)

@@ -1,4 +1,4 @@
-suppressPackageStartupMessages(library(pbdSHAQ))
+suppressPackageStartupMessages(library(kazaam))
 
 y = matrix(c(-1, 1, 0, 1), 2)
 

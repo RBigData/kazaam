@@ -25,7 +25,7 @@ nrows.local.shaq = function(x) NROW(Data(x))
 
 #' @rdname getters
 #' @export
-setGeneric(name="nrow.local", useAsDefault=nrows.local.shaq, package="pbdSHAQ")
+setGeneric(name="nrow.local", useAsDefault=nrows.local.shaq, package="kazaam")
 
 #' @rdname getters
 #' @export
@@ -47,7 +47,7 @@ ncols.local.shaq = function(x) NCOL(Data(x))
 
 #' @rdname getters
 #' @export
-setGeneric(name="ncol.local", useAsDefault=ncols.local.shaq, package="pbdSHAQ")
+setGeneric(name="ncol.local", useAsDefault=ncols.local.shaq, package="kazaam")
 
 #' @rdname getters
 #' @export
@@ -66,7 +66,7 @@ Data.shaq = function(x) x@Data
 
 #' @rdname getters
 #' @export
-setGeneric(name="Data", useAsDefault=Data.shaq, package="pbdSHAQ")
+setGeneric(name="Data", useAsDefault=Data.shaq, package="kazaam")
 
 #' @rdname getters
 #' @export

@@ -1,7 +1,7 @@
-# pbdSHAQ
+# kazaam
 
 * **Version:** 0.1-0
-* **URL**: https://github.com/RBigData/pbdSHAQ
+* **URL**: https://github.com/RBigData/kazaam
 * **License:** [BSD 2-Clause](http://opensource.org/licenses/BSD-2-Clause)
 * **Author:** Drew Schmidt, Wei-Chen Chen, Mike Matheson, and George Ostrouchov.
 
@@ -14,16 +14,16 @@ Basic matrix operations for very tall, narrow distributed matrices.  For a more 
 <!-- You can install the stable version from CRAN using the usual `install.packages()`:
 
 ```r
-install.packages("pbdSHAQ")
+install.packages("kazaam")
 ``` -->
 
 The development version is maintained on GitHub, and can easily be installed by any of the packages that offer installations from GitHub:
 
 ```r
 ### Pick your preference
-devtools::install_github("RBigData/pbdSHAQ")
-ghit::install_github("RBigData/pbdSHAQ")
-remotes::install_github("RBigData/pbdSHAQ")
+devtools::install_github("RBigData/kazaam")
+ghit::install_github("RBigData/kazaam")
+remotes::install_github("RBigData/kazaam")
 ```
 
 

@@ -51,7 +51,7 @@ scale.shaq = function(x, center=TRUE, scale=TRUE)
 
 #' @rdname scale
 #' @export
-setGeneric(name="scale", useAsDefault=base::scale, package="pbdSHAQ")
+setGeneric(name="scale", useAsDefault=base::scale, package="kazaam")
 
 #' @rdname scale
 #' @export
