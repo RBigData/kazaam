@@ -3,5 +3,5 @@
 for f in `ls *.r`;do
   echo "${f}:"
   mpirun -np 2 Rscript $f
-  echo -e ""
+  echo ""
 done
