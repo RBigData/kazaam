@@ -9,8 +9,7 @@ Depends:
     pbdMPI (>= 0.3-0)
 Imports:
     methods,
-    stats,
-    utils
+    stats
 ByteCompile: yes
 Authors@R: c(
     person("Drew", "Schmidt", role = c("aut", "cre"), email="wrathematics@gmail.com"), 
