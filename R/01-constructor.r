@@ -32,7 +32,7 @@ check.shaq = function(Data, nrows, ncols)
 
 #' @rdname shaq
 #' @export
-shaq = function(Data, nrows, ncols, checks=TRUE)
+shaq = function(Data=matrix(nrow=0, ncol=0), nrows=0, ncols=0, checks=TRUE)
 {
   check.is.matrix(Data)
   check.is.natnum(nrows)

@@ -5,7 +5,8 @@
 \alias{shaq}
 \title{shaq}
 \usage{
-shaq(Data, nrows, ncols, checks = TRUE)
+shaq(Data = matrix(nrow = 0, ncol = 0), nrows = 0, ncols = 0,
+  checks = TRUE)
 }
 \arguments{
 \item{Data}{The local submatrix.}
