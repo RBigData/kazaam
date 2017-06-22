@@ -20,4 +20,8 @@ Constructor for shaq objects.
 }
 \details{
 If \code{nrows} and/or \code{ncols} is missing, then it will be imputed.
+This means one must be especially careful to manually provide \code{ncols}
+if some of ranks have "placeholder data" (a 0x0 matrix), which is typical
+when reading from a subset of processors and then broadcasting out to the
+remainder.
 }
