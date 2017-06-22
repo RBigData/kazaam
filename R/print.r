@@ -30,7 +30,7 @@ print_shaq = function(x)
       submat = Data(x)[1:toprow, 1:topcol]
       print(submat)
       
-      if (toprow < nrow.local(x) || topcol < ncol.local(x))
+      if (toprow < nrow(x) || topcol < ncol(x))
         cat("# ...\n\n")
     }
   }
