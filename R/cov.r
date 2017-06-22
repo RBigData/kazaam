@@ -45,8 +45,10 @@ cor.shaq = function (x, y=NULL, use="everything", method="pearson")
 
 
 
+#' @rdname cov
 #' @export
 setMethod("cov", signature(x="shaq"), cov.shaq)
 
+#' @rdname cov
 #' @export
 setMethod("cor", signature(x="shaq"), cor.shaq)
