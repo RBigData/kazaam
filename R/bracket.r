@@ -6,6 +6,10 @@
 #' A shaq.
 #' @param i,j
 #' Indices.  NOTE currently only implemented for \code{j} values.
+#' @param value
+#' Replacement value(s) for the \code{[<-} method.
+#' @param ...
+#' Ignored.
 #' 
 #' @return
 #' A shaq.
@@ -58,5 +62,6 @@ bracket_replace.shaq = function(x, i, j, ..., value)
   x
 }
 
+#' @rdname bracket
 #' @export
 setReplaceMethod("[", signature(x ="shaq", value="ANY"), bracket_replace.shaq)

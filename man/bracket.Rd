@@ -4,14 +4,21 @@
 \name{bracket}
 \alias{bracket}
 \alias{[,shaq-method}
+\alias{[<-,shaq-method}
 \title{subsetting}
 \usage{
 \S4method{[}{shaq}(x, i, j)
+
+\S4method{[}{shaq}(x, i, j, ...) <- value
 }
 \arguments{
 \item{x}{A shaq.}
 
 \item{i, j}{Indices.  NOTE currently only implemented for \code{j} values.}
+
+\item{...}{Ignored.}
+
+\item{value}{Replacement value(s) for the \code{[<-} method.}
 }
 \value{
 A shaq.
