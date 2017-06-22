@@ -1,6 +1,6 @@
 Package: pbdSHAQ
 Type: Package
-Title: Programming with Big Data -- Super Huge Analytics done Quickly
+Title: Programming with Big Data -- Super Huge 'Analytics', Quickly
 Version: 0.1-0
 Description: Many data science problems reduce to operations on very tall,
     skinny matrices.  However, sometimes these matrices can be so tall that they
