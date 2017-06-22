@@ -28,7 +28,7 @@ expand = function(x)
       for (i in 1:(size - 1L))
       {
         x.local = x[id[[i+1]], ]
-        send(x.local, rank.dest=i)
+        isend(x.local, rank.dest=i)
       }
     }
     
@@ -37,7 +37,7 @@ expand = function(x)
   else
   {
     dim = bcast()
-    x.local = recv(rank.source=0)
+    x.local = irecv(rank.source=0)
   }
   
   shaq(x.local, dim[1L], dim[2L], checks=FALSE)
