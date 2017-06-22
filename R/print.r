@@ -21,15 +21,17 @@ print_shaq = function(x)
     rank = if (size > 1) "ranks" else "rank"
     cat(paste0("# A shaq: ", nrow(x), "x", ncol(x), " on ", size, " MPI ", rank, "\n"))
     
-    toprow = min(10, NROW(Data(x)))
-    topcol = min(6, NCOL(Data(x)))
+    toprow = min(10, nrow.local(x))
+    topcol = min(6, ncol.local(x))
     if (toprow == 0 || topcol == 0)
       cat("# [no elements to display]\n")
     else
     {
       submat = Data(x)[1:toprow, 1:topcol]
       print(submat)
-      cat("# ...\n\n")
+      
+      if (toprow < nrow.local(x) || topcol < ncol.local(x))
+        cat("# ...\n\n")
     }
   }
 }
