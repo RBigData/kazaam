@@ -24,8 +24,6 @@ lm_test = lm_coefs(dx, dy)
 ### TODO
 # lm_degen_test = lm_coefs(dx_degen, dy)
 
-comm.print(lm_test)
-
 comm.print(all.equal(lm, lm_test))
 # comm.print(all.equal(lm_degen, lm_degen_test))
 
