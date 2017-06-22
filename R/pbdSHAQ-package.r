@@ -9,9 +9,8 @@
 #' provide many useful numerical methods for operating on these distributed
 #' objects.
 #' 
-#' This package requires an MPI library (OpenMPI, MPICH2, or LAM/MPI).
-#' 
-#' @import pbdMPI
+#' @importFrom pbdMPI isend irecv send recv allreduce bcast comm.size comm.rank
+#'    comm.stop comm.all comm.max get.jid
 #' @import methods
 #' @importFrom stats prcomp
 #' 
