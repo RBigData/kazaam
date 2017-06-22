@@ -5,8 +5,7 @@
 \alias{shaq}
 \title{shaq}
 \usage{
-shaq(Data = matrix(nrow = 0, ncol = 0), nrows = 0, ncols = 0,
-  checks = TRUE)
+shaq(Data = matrix(nrow = 0, ncol = 0), nrows, ncols, checks = TRUE)
 }
 \arguments{
 \item{Data}{The local submatrix.}
@@ -18,4 +17,7 @@ require communication, and with many MPI ranks, could be expensive.}
 }
 \description{
 Constructor for shaq objects.
+}
+\details{
+If \code{nrows} and/or \code{ncols} is missing, then it will be imputed.
 }

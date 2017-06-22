@@ -2,6 +2,9 @@
 #' 
 #' Constructor for shaq objects.
 #' 
+#' @details
+#' If \code{nrows} and/or \code{ncols} is missing, then it will be imputed.
+#' 
 #' @param Data
 #' The local submatrix.
 #' @param nrows,ncols
@@ -16,14 +19,24 @@ NULL
 
 
 
-check.shaq = function(Data, nrows, ncols)
+intuit.shaq.nrows = function(Data)
+{
+  rowcheck = allreduce(NROW(Data))
+  rowcheck
+}
+
+check.shaq.ncols = function(Data, ncols)
 {
   colcheck = comm.all(NCOL(Data) == ncols)
   if (!isTRUE(colcheck))
     comm.stop("local column dimensions disagree across ranks")
+}
+
+check.shaq = function(Data, nrows, ncols)
+{
+  check.shaq.ncols(Data, ncols)
   
-  rowcheck = allreduce(NROW(Data))
-  nrows = rowcheck
+  nrows = intuit.shaq.nrows(Data)
   
   return(nrows)
 }
@@ -32,14 +45,24 @@ check.shaq = function(Data, nrows, ncols)
 
 #' @rdname shaq
 #' @export
-shaq = function(Data=matrix(nrow=0, ncol=0), nrows=0, ncols=0, checks=TRUE)
+shaq = function(Data=matrix(nrow=0, ncol=0), nrows, ncols, checks=TRUE)
 {
   check.is.matrix(Data)
-  check.is.natnum(nrows)
-  check.is.natnum(ncols)
+  if (!missing(nrows))
+    check.is.natnum(nrows)
+  if (!missing(ncols))
+    check.is.natnum(ncols)
   check.is.flag(checks)
   
-  if (checks)
+  if (missing(nrows) || missing(ncols))
+  {
+    if (missing(nrows))
+      nrows = intuit.shaq.nrows(Data)
+    
+    if (missing(ncols))
+      ncols = NCOL(Data)
+  }
+  else if (checks)
     nrows = check.shaq(Data, nrows, ncols)
   
   new("shaq", Data=Data, nrows=nrows, ncols=ncols)
