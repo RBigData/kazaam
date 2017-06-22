@@ -14,7 +14,12 @@ expand = function(x)
   if (comm.rank() == 0)
   {
     if (!is.matrix(x))
-      stop("RANK 0: argument 'x' must be a matrix")
+    {
+      if (is.atomic(x))
+        dim(x) = c(length(x), 1L)
+      else
+        stop("RANK 0: argument 'x' must be a matrix")
+    }
     
     
     dim = dim(x)
@@ -27,12 +32,12 @@ expand = function(x)
     {
       for (i in 1:(size - 1L))
       {
-        x.local = x[id[[i+1]], ]
+        x.local = x[id[[i+1]], , drop=FALSE]
         isend(x.local, rank.dest=i)
       }
     }
     
-    x.local = x[id[[1]], ]
+    x.local = x[id[[1]], , drop=FALSE]
   }
   else
   {
