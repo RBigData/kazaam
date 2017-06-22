@@ -30,7 +30,7 @@ remotes::install_github("RBigData/kazaam")
 
 ## Background
 
-Our tall/skinny/distributed matrices are called `shaq`'s, after Shaquille O'Neal (who is very tall).  Throughout the package, we make a few key assumptions:
+Our tall/skinny/distributed matrices are called `shaq`'s which stands for Super Huge Analytics done Quickly.  This of course has nothing at all to do with esteemed actor Shaquille O'Neal, who is very tall.  Throughout the package, we make a few key assumptions:
 * The data local to each process has **the same number of columns**.  The number of rows can vary freely, or be identical across ranks.
 * Codes should be **run in batch**.  Communication is handled by [pbdMPI](https://cran.r-project.org/package=pbdMPI), which (as the name suggests) uses MPI.
 * Finally, **adjacent ranks in the MPI communicator** as reported by `comm.rank()` (e.g., ranks 2 and 3, 20 and 21, 1000 and 1001, ...) should store **adjacent pieces of the matrix**.
