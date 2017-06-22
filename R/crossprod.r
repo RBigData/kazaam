@@ -21,7 +21,7 @@ cp.shaq = function(x, y = NULL)
   if (!is.null(y))
     comm.stop("only implemented for y=NULL")
   
-  cp.local = crossprod(Data(x))
+  cp.local = base::crossprod(Data(x))
   allreduce(cp.local)
 }
 
