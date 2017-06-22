@@ -10,7 +10,7 @@
 #' logical value, determines whether or not columns are rescaled to unit variance
 #' 
 #' @return 
-#' Returns a distributed matrix.
+#' A shaq.
 #' 
 #' @name scale
 #' @rdname scale
@@ -20,16 +20,31 @@ NULL
 
 scale.shaq = function(x, center=TRUE, scale=TRUE)
 {
-  if (center && !scale)
+  if (!center && !scale) # u dum
+    return(x)
+  
+  
+  cm = colMeans(x)
+  
+  if (center)
   {
-    cm = colMeans(x)
     Data = base::scale(Data(x), center=cm, scale=FALSE)
     attr(Data, "scaled:center") = cm
-    
-    ret = shaq(Data, nrow(x), ncol(x), checks=FALSE)
   }
   
-  ret
+  if (scale) # this is disgusting, but it's the only way to do this without a million copies
+  {
+    if (!center)
+      Data = Data(x)
+    
+    csd = sqrt(allreduce(base::colSums(Data*Data)) / (nrow(x)-1))
+    
+    Data = base::scale(if (center) Data else Data(x), center=FALSE, scale=csd)
+    attr(Data, "scaled:scale") = csd
+  }
+  
+  
+  shaq(Data, nrow(x), ncol(x), checks=FALSE)
 }
 
 

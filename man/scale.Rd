@@ -19,7 +19,7 @@ scale(x, center = TRUE, scale = TRUE)
 \item{scale}{logical value, determines whether or not columns are rescaled to unit variance}
 }
 \value{
-Returns a distributed matrix.
+A shaq.
 }
 \description{
 Centers and/or scales the columns of a distributed matrix.
