@@ -29,6 +29,8 @@ setter = function(x, value, checks)
   }
   
   x@Data = value
+  
+  x
 }
 
 Data_set.shaq = function(x, value) setter(x, value, checks=TRUE)
