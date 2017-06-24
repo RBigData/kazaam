@@ -6,6 +6,8 @@
 #' 
 #' @param nrows,ncols
 #' 
+#' @param local
+#' 
 #' @param ...
 #' Additional arguments passed to the generator.
 #' 
@@ -25,7 +27,14 @@ ranshaq = function(generator, nrows, ncols, local=FALSE, ...)
     nrows = nrows * comm.size()
   }
   else
-    nrows.local = nrows / comm.size()
+  {
+    size = comm.size()
+    nrows.local = as.integer(nrows %/% size)
+    base = as.integer(nrows %/% size)
+    rem = as.integer(nrows - nrows.local*size)
+    if (comm.rank()+1 <= rem)
+      nrows.local = nrows.local + 1L
+  }
   
   Data = generator(nrows.local*ncols, ...)
   dim(Data) <- c(nrows.local, ncols)
