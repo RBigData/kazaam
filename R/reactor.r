@@ -53,7 +53,7 @@ is.flag <- function(x)
 
 is.posint <- function(x)
 {
-  is.numeric(x) && !is.annoying(x) && is.inty(x) && !is.negative(x) && !is.zero(x)
+  is.integer(x) && !is.annoying(x) && is.inty(x) && !is.negative(x) && !is.zero(x)
 }
 
 
@@ -101,7 +101,7 @@ check.is.natnum <- function(x)
 
 check.is.posint <- function(x)
 {
-  if (is.posint(x))
+  if (!is.posint(x))
   {
     nm <- deparse(substitute(x))
     comm.stop(paste0("argument '", nm, "' must be a positive integer"), call.=FALSE)
