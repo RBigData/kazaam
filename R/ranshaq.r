@@ -28,8 +28,6 @@ ranshaq = function(generator, nrows, ncols, local=FALSE, ...)
     nrows.local = nrows / comm.size()
   
   Data = generator(nrows.local*ncols, ...)
-  comm.print(c(nrows, ncols, nrows.local), all.rank = TRUE)
-  # 10/4 = 2.5 for dimension does not make sense
   dim(Data) <- c(nrows.local, ncols)
   
   shaq(Data, nrows, ncols, checks=FALSE)
