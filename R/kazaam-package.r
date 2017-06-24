@@ -14,6 +14,8 @@
 #' @import methods
 #' @importFrom stats prcomp
 #' 
+#' @useDynLib kazaam R_trinv
+#' 
 #' @name kazaam-package
 #' @docType package
 #' @author Drew Schmidt \email{wrathematics@gmail.com}, Wei-Chen Chen, Mike Matheson, and George Ostrouchov.

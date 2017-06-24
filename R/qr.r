@@ -17,6 +17,13 @@ NULL
 
 
 
+.trinv = function(x)
+{
+  .Call(R_trinv, x, 'U')
+}
+
+
+
 #' @rdname qr
 #' @export
 qr_R = function(x)
@@ -42,7 +49,7 @@ qr_Q = function(x, R)
   else
     check.is.matrix(R)
   
-  Q.local = Data(x) %*% solve(R)
+  Q.local = Data(x) %*% .trinv(R)
   
   shaq(Q.local, nrow(x), ncol(x), checks=FALSE)
 }
