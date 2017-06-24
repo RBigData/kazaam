@@ -53,7 +53,7 @@ is.flag <- function(x)
 
 is.posint <- function(x)
 {
-  is.integer(x) && !is.annoying(x) && is.inty(x) && !is.negative(x) && !is.zero(x)
+  is.numeric(x) && !is.annoying(x) && is.inty(x) && !is.negative(x) && !is.zero(x)
 }
 
 
