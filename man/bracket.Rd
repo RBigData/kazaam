@@ -36,3 +36,9 @@ TODO
 TODO
 }
 
+\examples{
+\dontrun{
+TODO
+}
+
+}

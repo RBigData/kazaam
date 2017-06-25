@@ -8,6 +8,11 @@
 #' @return
 #' A shaq.
 #' 
+#' @examples
+#' \dontrun{
+#' TODO
+#' }
+#' 
 #' @export
 expand = function(x)
 {

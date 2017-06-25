@@ -19,3 +19,17 @@ A number (length 1 regular vector).
 \description{
 Implementation of R's \code{norm()} function for shaq objects.
 }
+\details{
+TODO
+}
+\section{Communication}{
+
+TODO
+}
+
+\examples{
+\dontrun{
+TODO
+}
+
+}

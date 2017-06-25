@@ -21,3 +21,9 @@ Column binding for shaqs.
 All shaqs should have the same number of rows.  Additionally, all shaqs
 should be distributed in identical fashion.
 }
+\examples{
+\dontrun{
+TODO
+}
+
+}

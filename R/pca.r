@@ -8,6 +8,9 @@
 #' slightly in what the rotated variables are because of how the SVD is
 #' caluclated.
 #' 
+#' @section Communication:
+#' TODO
+#' 
 #' @param x 
 #' A shaq.
 #' @param center 
@@ -26,6 +29,11 @@
 #' and \code{x}, as with R's own \code{prcomp()}.  The elements are,
 #' respectively, a regular vector, a regular matrix, a regular vector, a regular
 #' vector, and a shaq.
+#' 
+#' @examples
+#' \dontrun{
+#' TODO
+#' }
 #' 
 #' @name prcomp
 #' @rdname prcomp

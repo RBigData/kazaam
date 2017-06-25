@@ -24,3 +24,17 @@ A shaq.
 \description{
 Centers and/or scales the columns of a distributed matrix.
 }
+\details{
+TODO
+}
+\section{Communication}{
+
+TODO
+}
+
+\examples{
+\dontrun{
+TODO
+}
+
+}

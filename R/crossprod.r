@@ -10,6 +10,11 @@
 #' @return 
 #' A regular matrix.
 #' 
+#' @examples
+#' \dontrun{
+#' TODO
+#' }
+#' 
 #' @name crossprod
 #' @rdname crossprod
 NULL

@@ -47,3 +47,14 @@ If you have two shaqs which are distributed \emph{identically} that you
 wish to add, you can do so manually with something like
 \code{DATA(c) <- Data(a) + Data(b)}
 }
+\section{Communication}{
+
+Each operation is completely local.
+}
+
+\examples{
+\dontrun{
+TODO
+}
+
+}

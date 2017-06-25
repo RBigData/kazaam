@@ -14,6 +14,11 @@
 #' @return
 #' A shaq.
 #' 
+#' @examples
+#' \dontrun{
+#' TODO
+#' }
+#' 
 #' @export
 cbind.shaq = function(..., deparse.level=1)
 {

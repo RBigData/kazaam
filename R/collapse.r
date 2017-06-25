@@ -11,6 +11,11 @@
 #' @return
 #' A regular matrix (rank 0) or \code{NULL} (everyone else).
 #' 
+#' @examples
+#' \dontrun{
+#' TODO
+#' }
+#' 
 #' @export
 collapse = function(x)
 {

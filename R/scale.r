@@ -2,6 +2,12 @@
 #' 
 #' Centers and/or scales the columns of a distributed matrix.
 #' 
+#' @details
+#' TODO
+#' 
+#' @section Communication:
+#' TODO
+#' 
 #' @param x 
 #' A shaq.
 #' @param center 
@@ -11,6 +17,11 @@
 #' 
 #' @return 
 #' A shaq.
+#' 
+#' @examples
+#' \dontrun{
+#' TODO
+#' }
 #' 
 #' @name scale
 #' @rdname scale

@@ -11,11 +11,19 @@
 #' wish to add, you can do so manually with something like
 #' \code{DATA(c) <- Data(a) + Data(b)}
 #' 
+#' @section Communication:
+#' Each operation is completely local.
+#' 
 #' @param e1,e2
 #' A shaq or a numeric vector.
 #' 
 #' @return 
 #' A shaq.
+#' 
+#' @examples
+#' \dontrun{
+#' TODO
+#' }
 #' 
 #' @name arithmetic
 #' @rdname arithmetic

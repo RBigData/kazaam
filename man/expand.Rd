@@ -15,3 +15,9 @@ A shaq.
 \description{
 Expand a regular matrix owned on MPI rank 0 into a shaq.
 }
+\examples{
+\dontrun{
+TODO
+}
+
+}

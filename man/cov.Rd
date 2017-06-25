@@ -27,3 +27,9 @@ A regular matrix.
 \description{
 Covariance and (pearson) correlation.
 }
+\examples{
+\dontrun{
+TODO
+}
+
+}

@@ -9,6 +9,11 @@
 #' when reading from a subset of processors and then broadcasting out to the
 #' remainder.
 #' 
+#' @section Communication:
+#' If \code{checks=TRUE}, a check on the global number of rows is performed.
+#' This amounts to an allgather operation on a logical value (the local
+#' dimension check).
+#' 
 #' @param Data
 #' The local submatrix.
 #' @param nrows,ncols
@@ -16,6 +21,9 @@
 #' @param checks
 #' Logical. Should some basic dimension checks be performed?  Note that these
 #' require communication, and with many MPI ranks, could be expensive.
+#' 
+#' @seealso
+#' \code{\link{shaq-class}}
 #' 
 #' @name shaq
 #' @rdname shaq

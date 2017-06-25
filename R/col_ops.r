@@ -12,6 +12,11 @@
 #' @return
 #' A regular vector.
 #' 
+#' @examples
+#' \dontrun{
+#' TODO
+#' }
+#' 
 #' @name col_ops
 #' @rdname col_ops
 NULL

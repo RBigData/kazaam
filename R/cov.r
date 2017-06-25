@@ -15,6 +15,11 @@
 #' @return 
 #' A regular matrix.
 #' 
+#' @examples
+#' \dontrun{
+#' TODO
+#' }
+#' 
 #' @name cov
 #' @rdname cov
 NULL

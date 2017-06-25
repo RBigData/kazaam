@@ -34,6 +34,12 @@ balanced, so that each MPI rank owns roughly the same amount of data.
 TODO
 }
 
+\examples{
+\dontrun{
+TODO
+}
+
+}
 \seealso{
 \code{\link{glms}}
 }

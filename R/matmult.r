@@ -2,6 +2,9 @@
 #' 
 #' Multiplies two distributed matrices, if they are conformable.
 #' 
+#' @details
+#' TODO
+#' 
 #' @param x
 #' A shaq.
 #' @param y
@@ -9,6 +12,11 @@
 #' 
 #' @return 
 #' A shaq.
+#' 
+#' @examples
+#' \dontrun{
+#' TODO
+#' }
 #' 
 #' @name matmult
 #' @rdname matmult

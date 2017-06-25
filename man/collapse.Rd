@@ -18,3 +18,9 @@ Collapse a shaq into a regular matrix.
 \details{
 Only rank 0 will own the matrix on return.
 }
+\examples{
+\dontrun{
+TODO
+}
+
+}

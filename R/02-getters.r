@@ -2,9 +2,19 @@
 #' 
 #' Getters for shaq objects.
 #' 
+#' @details
+#' Functions to return the number of rows (\code{nrow()} and \code{NROW()}),
+#' the number of columns (\code{ncol()} and \code{NCOL()}), the length - or
+#' product of the number of rows and cols - (\code{length()}), and the local
+#' submatrix (\code{Data()}).
+#' 
+#' @section Communication:
+#' Each operation is completely local.
+#' 
 #' @param x
 #' A shaq.
 #' 
+#' @seealso \code{\link{setters}}
 #' @name getters
 #' @rdname getters
 NULL

@@ -36,3 +36,14 @@ matrix by taking the SVD. Sometimes core R and kazaam will disagree
 slightly in what the rotated variables are because of how the SVD is
 caluclated.
 }
+\section{Communication}{
+
+TODO
+}
+
+\examples{
+\dontrun{
+TODO
+}
+
+}

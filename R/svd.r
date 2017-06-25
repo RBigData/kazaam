@@ -28,6 +28,11 @@
 #' \code{svd()}.  The elements are, respectively, a regular vector, a shaq, and
 #' a regular matrix.
 #' 
+#' @examples
+#' \dontrun{
+#' TODO
+#' }
+#' 
 #' @name svd
 #' @rdname svd
 NULL

@@ -15,6 +15,7 @@
 #    * stop() calls replaced with comm.stop()
 #    * add check.is.shaq()
 #    * add check.is.matrix()
+#    * add check.is.function()
 
 is.badval <- function(x)
 {
@@ -140,6 +141,17 @@ check.is.matrix <- function(x)
     comm.stop(paste0("argument '", nm, "' must be a matrix"), call.=FALSE)
   }
   
+  invisible(TRUE)
+}
+
+check.is.function <- function(x)
+{
+  if (!is.function(x))  
+	{
+    nm <- deparse(substitute(x))
+    comm.stop(paste0("argument '", nm, "' must be a function"), call.=FALSE)
+  }
+	
   invisible(TRUE)
 }
 

@@ -2,6 +2,12 @@
 #' 
 #' Implementation of R's \code{norm()} function for shaq objects.
 #' 
+#' @details
+#' TODO
+#' 
+#' @section Communication:
+#' TODO
+#' 
 #' @param x
 #' A shaq
 #' @param type
@@ -9,6 +15,11 @@
 #' 
 #' @return
 #' A number (length 1 regular vector).
+#' 
+#' @examples
+#' \dontrun{
+#' TODO
+#' }
 #' 
 #' @name norm
 #' @rdname norm

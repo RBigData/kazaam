@@ -2,10 +2,18 @@
 #' 
 #' Print method for a shaq.
 #' 
+#' @section Communication:
+#' TODO
+#' 
 #' @param x,object
 #' A shaq.
 #' @param ...
 #' Ignored
+#' 
+#' @examples
+#' \dontrun{
+#' TODO
+#' }
 #' 
 #' @name print
 #' @rdname print

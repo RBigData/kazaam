@@ -19,3 +19,12 @@ A shaq.
 \description{
 Multiplies two distributed matrices, if they are conformable.
 }
+\details{
+TODO
+}
+\examples{
+\dontrun{
+TODO
+}
+
+}

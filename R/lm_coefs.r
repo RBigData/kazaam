@@ -25,9 +25,12 @@
 #' @return
 #' A regular vector.
 #' 
-#' @seealso
-#' \code{\link{glms}}
+#' @examples
+#' \dontrun{
+#' TODO
+#' }
 #' 
+#' @seealso \code{\link{glms}}
 #' @name lm_coefs
 #' @export
 lm_coefs = function(x, y, tol=1e-7)

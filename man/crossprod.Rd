@@ -19,3 +19,9 @@ A regular matrix.
 \description{
 Conceptually, this computes \code{t(x) \%*\% x} for a shaq \code{x}.
 }
+\examples{
+\dontrun{
+TODO
+}
+
+}

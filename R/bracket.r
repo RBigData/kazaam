@@ -22,6 +22,11 @@
 #' @return
 #' A shaq.
 #' 
+#' @examples
+#' \dontrun{
+#' TODO
+#' }
+#' 
 #' @name bracket
 #' @rdname bracket
 NULL

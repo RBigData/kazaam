@@ -22,6 +22,11 @@
 #' @return 
 #' Q (a shaq) or R (a regular matrix).
 #' 
+#' @examples
+#' \dontrun{
+#' TODO
+#' }
+#' 
 #' @name qr
 #' @rdname qr
 NULL

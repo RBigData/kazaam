@@ -24,3 +24,9 @@ A regular vector.
 \description{
 Column operations (currently sums/means) for shaq objects.
 }
+\examples{
+\dontrun{
+TODO
+}
+
+}

@@ -15,3 +15,9 @@ A logical value, indicating whether or not the input is a shaq.
 \description{
 Test if an object is a shaq.
 }
+\examples{
+\dontrun{
+TODO
+}
+
+}

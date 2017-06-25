@@ -2,10 +2,15 @@
 % Please edit documentation in R/01-constructor.r
 \name{shaq}
 \alias{shaq}
-\alias{shaq}
+\alias{shaq.matrix}
+\alias{shaq.numeric}
 \title{shaq}
 \usage{
-shaq(Data = matrix(nrow = 0, ncol = 0), nrows, ncols, checks = TRUE)
+shaq(x, ...)
+
+\method{shaq}{matrix}(Data, nrows, ncols, checks = TRUE)
+
+\method{shaq}{numeric}(Data, nrows, ncols, checks = TRUE)
 }
 \arguments{
 \item{Data}{The local submatrix.}
@@ -24,4 +29,14 @@ This means one must be especially careful to manually provide \code{ncols}
 if some of ranks have "placeholder data" (a 0x0 matrix), which is typical
 when reading from a subset of processors and then broadcasting out to the
 remainder.
+}
+\section{Communication}{
+
+If \code{checks=TRUE}, a check on the global number of rows is performed.
+This amounts to an allgather operation on a logical value (the local
+dimension check).
+}
+
+\seealso{
+\code{\link{shaq-class}}
 }

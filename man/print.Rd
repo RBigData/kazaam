@@ -19,3 +19,14 @@
 \description{
 Print method for a shaq.
 }
+\section{Communication}{
+
+TODO
+}
+
+\examples{
+\dontrun{
+TODO
+}
+
+}
