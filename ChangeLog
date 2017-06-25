@@ -11,3 +11,5 @@ Release 0.1-0:
   * Added a print method.
   * Added lm (coefficient getter) method.
   * Added random shaq constructors.
+  * Added gradient descent-based lm, logistic, and poisson regression fitters.
+  
