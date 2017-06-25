@@ -28,9 +28,9 @@
 #' @name shaq
 #' @rdname shaq
 #' @export
-shaq <- function (x, ...)
+shaq <- function (Data, nrows, ncols, checks=TRUE)
 {
-  UseMethod("shaq", x)
+  UseMethod("shaq", Data)
 }
 
 

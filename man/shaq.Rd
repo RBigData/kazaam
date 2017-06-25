@@ -6,7 +6,7 @@
 \alias{shaq.numeric}
 \title{shaq}
 \usage{
-shaq(x, ...)
+shaq(Data, nrows, ncols, checks = TRUE)
 
 \method{shaq}{matrix}(Data, nrows, ncols, checks = TRUE)
 
