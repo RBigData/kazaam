@@ -40,9 +40,23 @@
 #' @export
 ranshaq = function(generator, nrows, ncols, local=FALSE, ...)
 {
-  check.is.posint(nrows)
-  check.is.posint(ncols)
+  if (!missing(nrows))
+    check.is.posint(nrows)
+  if (!missing(ncols))
+    check.is.posint(ncols)
   check.is.flag(local)
+  
+  
+  if (missing(nrows) && missing(ncols))
+  {
+    s = shaq(matrix(nrow=0, ncol=0), 0, 0, checks=FALSE)
+    return(s)
+  }
+  else if (missing(ncols))
+    ncols = 1L
+  else if (missing(nrows))
+    nrows = 1L
+  
   
   if (local)
   {
