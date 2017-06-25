@@ -5,7 +5,7 @@
 #' @param x
 #' A shaq.
 #' @param y
-#' A reguarl matrix.
+#' A regular matrix.
 #' 
 #' @return 
 #' A shaq.

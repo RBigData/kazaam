@@ -11,7 +11,7 @@
 \arguments{
 \item{x}{A shaq.}
 
-\item{y}{A reguarl matrix.}
+\item{y}{A regular matrix.}
 }
 \value{
 A shaq.
