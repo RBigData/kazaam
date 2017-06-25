@@ -7,9 +7,13 @@
 ranshaq(generator, nrows, ncols, local = FALSE, ...)
 }
 \arguments{
-\item{generator}{}
+\item{generator}{A function, such as \code{runif()} or \code{rnorm()} (passed without parens).
+See examples for a demonstration of usage.}
 
-\item{nrows, ncols}{}
+\item{nrows, ncols}{The number of rows}
+
+\item{local}{Is the problem size \code{nrows*ncols} specifying the local or global problem
+size?}
 
 \item{...}{Additional arguments passed to the generator.}
 }
@@ -17,5 +21,29 @@ ranshaq(generator, nrows, ncols, local = FALSE, ...)
 A shaq.
 }
 \description{
-ranshaq
+Generate a random shaq object.
+}
+\details{
+If
+}
+\section{Communication}{
+
+The operation is entirely local.
+}
+
+\examples{
+\dontrun{
+library(kazaam)
+
+# a 10x3 shaq with random uniform data
+x = ranshaq(runif, 10, 3)
+x
+
+# a (comm.size() * 10)x3 shaq with random normal data
+y = ranshaq(rnorm, 10, 3, local=TRUE)
+y
+
+finalize()
+}
+
 }
