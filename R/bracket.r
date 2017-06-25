@@ -3,17 +3,19 @@
 #' Subsetting via \code{`[`} for shaq objects.
 #' 
 #' @details
-#' 
+#' TODO
 #' 
 #' @section Communication:
-#' 
+#' TODO
 #' 
 #' @param x
 #' A shaq.
 #' @param i,j
 #' Indices.  NOTE currently only implemented for \code{j} values.
 #' @param value
-#' Replacement value(s) for the \code{[<-} method.
+#' Replacement value(s) for the \code{[<-} method.  This can either be an
+#' appropriately sized numeric value or a shaq.  See the details section for
+#' more information.
 #' @param ...
 #' Ignored.
 #' 

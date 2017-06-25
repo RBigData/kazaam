@@ -18,7 +18,9 @@
 
 \item{...}{Ignored.}
 
-\item{value}{Replacement value(s) for the \code{[<-} method.}
+\item{value}{Replacement value(s) for the \code{[<-} method.  This can either be an
+appropriately sized numeric value or a shaq.  See the details section for
+more information.}
 }
 \value{
 A shaq.
@@ -26,3 +28,11 @@ A shaq.
 \description{
 Subsetting via \code{`[`} for shaq objects.
 }
+\details{
+TODO
+}
+\section{Communication}{
+
+TODO
+}
+
