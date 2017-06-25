@@ -2,6 +2,12 @@
 #' 
 #' Subsetting via \code{`[`} for shaq objects.
 #' 
+#' @details
+#' 
+#' 
+#' @section Communication:
+#' 
+#' 
 #' @param x
 #' A shaq.
 #' @param i,j
@@ -52,10 +58,15 @@ setMethod("[", signature(x="shaq"), bracket.shaq)
 
 bracket_replace.shaq = function(x, i, j, ..., value)
 {
+  if (is.shaq(value))
+    val = Data(value)
+  else
+    val = value
+  
   if (missing(i) && missing(j))
-    DATA(x) = value
+    DATA(x) = val
   else if (missing(i))
-    Data(x)[, j] = value
+    Data(x)[, j] = val
   else # FIXME
     comm.stop("not yet implemented for i non-missing")
   
