@@ -49,7 +49,7 @@ In order to get good performance, there are several other considerations:
 
 Because of these assumptions, we get a few distinct advantages over other, similar frameworks:
 * Communication is very minimal.  Generally it amounts to a single `allreduce()` of an `n*n` matrix.  With even a few hundred MPI ranks, this is basically instantaneous.  And since most of the work is local, operations should complete very quickly.
-* The total number of rows can be as large as you like, even if that's more than `2^31-1`.
+* The total number of rows can be as large as you like, even if that's more than can fit in a signed 32-bit integer, or `2^31-1`.
 
 
 
