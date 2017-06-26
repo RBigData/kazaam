@@ -2,11 +2,8 @@
 #' 
 #' Subsetting via \code{`[`} for shaq objects.
 #' 
-#' @details
-#' TODO
-#' 
 #' @section Communication:
-#' TODO
+#' Each operation is completely local.
 #' 
 #' @param x
 #' A shaq.
@@ -24,7 +21,12 @@
 #' 
 #' @examples
 #' \dontrun{
-#' TODO
+#' library(kazaam)
+#' x = ranshaq(runif, 10, 3)
+#' y = x[, -1]
+#' y
+#' 
+#' finalize()
 #' }
 #' 
 #' @name bracket

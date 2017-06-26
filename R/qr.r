@@ -24,7 +24,16 @@
 #' 
 #' @examples
 #' \dontrun{
-#' TODO
+#' library(kazaam)
+#' x = ranshaq(runif, 10, 3)
+#' 
+#' R = qr_R(x)
+#' comm.print(R)
+#' 
+#' Q = qr_Q(x, R)
+#' Q
+#' 
+#' finalize()
 #' }
 #' 
 #' @name qr

@@ -26,6 +26,8 @@
 #' x + y
 #' x / 2
 #' y + 1
+#' 
+#' finalize()
 #' }
 #' 
 #' @name arithmetic

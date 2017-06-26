@@ -24,17 +24,21 @@ A shaq.
 \description{
 Centers and/or scales the columns of a distributed matrix.
 }
-\details{
-TODO
-}
 \section{Communication}{
 
-TODO
+The communication consists of two allreduce calls, each quadratic on the
+number of columns.
 }
 
 \examples{
 \dontrun{
-TODO
+library(kazaam)
+x = ranshaq(rnorm, 10, 3, mean=30, sd=10)
+
+x
+scale(x)
+
+finalize()
 }
 
 }

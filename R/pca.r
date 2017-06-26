@@ -9,7 +9,9 @@
 #' caluclated.
 #' 
 #' @section Communication:
-#' TODO
+#' The communication is an \code{allreduce()} call, quadratic on the number of
+#' columns.  Most of the run time should be dominated by relatively expensive
+#'  local operations.
 #' 
 #' @param x 
 #' A shaq.
@@ -32,7 +34,13 @@
 #' 
 #' @examples
 #' \dontrun{
-#' TODO
+#' library(kazaam)
+#' x = ranshaq(runif, 10, 3)
+#' pca = prcomp(x)
+#' 
+#' comm.print(pca)
+#' 
+#' finalize()
 #' }
 #' 
 #' @name prcomp

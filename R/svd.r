@@ -30,7 +30,15 @@
 #' 
 #' @examples
 #' \dontrun{
-#' TODO
+#' library(kazaam)
+#' x = ranshaq(runif, 10, 3)
+#' 
+#' svd = svd(x)
+#' comm.print(svd$d) # a globally owned vector
+#' svd$u # a shaq
+#' comm.print(svd$v) # a globally owned matrix
+#' 
+#' finalize()
 #' }
 #' 
 #' @name svd

@@ -24,9 +24,20 @@ A regular vector.
 \description{
 Column operations (currently sums/means) for shaq objects.
 }
+\section{Communication}{
+
+The operation consists of a local column sum operation, followed by an
+\code{allreduce()} call, quadratic on the number of columns.
+}
+
 \examples{
 \dontrun{
-TODO
+library(kazaam)
+x = ranshaq(runif, 10, 3)
+cs = colSums(x)
+comm.print(cs)
+
+finalize()
 }
 
 }

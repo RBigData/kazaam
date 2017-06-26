@@ -2,6 +2,10 @@
 #' 
 #' Conceptually, this computes \code{t(x) \%*\% x} for a shaq \code{x}.
 #' 
+#' @section Communication:
+#' The operation consists of a local crossproduct, followed by an
+#' \code{allreduce()} call, quadratic on the number of columns.
+#' 
 #' @param x
 #' A shaq.
 #' @param y
@@ -12,7 +16,13 @@
 #' 
 #' @examples
 #' \dontrun{
-#' TODO
+#' library(kazaam)
+#' x = ranshaq(runif, 10, 3)
+#' 
+#' cp = crossprod(x)
+#' comm.print(cp)
+#' 
+#' finalize()
 #' }
 #' 
 #' @name crossprod

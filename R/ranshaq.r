@@ -2,9 +2,6 @@
 #' 
 #' Generate a random shaq object.
 #' 
-#' @details
-#' If 
-#' 
 #' @section Communication:
 #' The operation is entirely local.
 #' 

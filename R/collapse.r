@@ -5,6 +5,9 @@
 #' @details
 #' Only rank 0 will own the matrix on return.
 #' 
+#' @section Communication:
+#' Short answer: quite a bit.  Each local submatrix has to be sent to rank 0.
+#' 
 #' @param x
 #' A shaq.
 #' 
@@ -13,7 +16,13 @@
 #' 
 #' @examples
 #' \dontrun{
-#' TODO
+#' library(kazaam)
+#' dx = ranshaq(runif, 10, 3)
+#' 
+#' x = collapse(dx)
+#' comm.print(x)
+#' 
+#' finalize()
 #' }
 #' 
 #' @export

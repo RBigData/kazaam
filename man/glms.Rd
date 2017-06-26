@@ -21,7 +21,7 @@ for more information.}
 \item{maxiter}{The maximum number of iterations.}
 }
 \value{
-TODO
+The return is the output of an \code{optim()} call.
 }
 \description{
 Linear regression (Gaussian GLM), logistic regression, and poisson
@@ -45,12 +45,16 @@ cost/objective function value) at each iteration of the optimization.
 
 \examples{
 \dontrun{
-TODO
+library(kazaam)
+comm.set.seed(1234, diff=TRUE)
 
+x = ranshaq(rnorm, 10, 3)
+y = ranshaq(function(i) sample(0:1, size=i, replace=TRUE), 10)
 
+fit = logistic.fit(x, y)
+comm.print(fit)
 
-
-
+finalize()
 }
 
 }

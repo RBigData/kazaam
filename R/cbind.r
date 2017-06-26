@@ -6,6 +6,9 @@
 #' All shaqs should have the same number of rows.  Additionally, all shaqs
 #' should be distributed in identical fashion.
 #' 
+#' @section Communication:
+#' The operation is completely local.
+#' 
 #' @param ...
 #' A collection of shaqs.
 #' @param deparse.level
@@ -16,7 +19,13 @@
 #' 
 #' @examples
 #' \dontrun{
-#' TODO
+#' library(kazaam)
+#' x = ranshaq(runif, 10, 3)
+#' y = ranshaq(runif, 10, 1)
+#' 
+#' cbind(x, y)
+#' 
+#' finalize()
 #' }
 #' 
 #' @export

@@ -70,6 +70,8 @@ y = ranshaq(runif, 10, 3)
 x + y
 x / 2
 y + 1
+
+finalize()
 }
 
 }

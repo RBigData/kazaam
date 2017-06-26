@@ -25,16 +25,20 @@
 #' The maximum number of iterations.
 #' 
 #' @return
-#' TODO
+#' The return is the output of an \code{optim()} call.
 #' 
 #' @examples
 #' \dontrun{
-#' TODO
+#' library(kazaam)
+#' comm.set.seed(1234, diff=TRUE)
 #' 
+#' x = ranshaq(rnorm, 10, 3)
+#' y = ranshaq(function(i) sample(0:1, size=i, replace=TRUE), 10)
 #' 
+#' fit = logistic.fit(x, y)
+#' comm.print(fit)
 #' 
-#' 
-#' 
+#' finalize()
 #' }
 #' 
 #' @references

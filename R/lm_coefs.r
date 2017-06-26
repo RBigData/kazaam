@@ -13,7 +13,7 @@
 #' balanced, so that each MPI rank owns roughly the same amount of data.
 #' 
 #' @section Communication:
-#' TODO
+#' The operation has the same communication as 
 #' 
 #' @param x,y
 #' The input data \code{x} and response \code{y}.  Each must be a shaq, and
@@ -27,7 +27,16 @@
 #' 
 #' @examples
 #' \dontrun{
-#' TODO
+#' library(kazaam)
+#' comm.set.seed(1234, diff=TRUE)
+#' 
+#' x = ranshaq(rnorm, 10, 3)
+#' y = ranshaq(runif, 10)
+#' 
+#' fit = lm_coefs(x, y)
+#' comm.print(fit)
+#' 
+#' finalize()
 #' }
 #' 
 #' @seealso \code{\link{glms}}

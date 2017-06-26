@@ -2,6 +2,10 @@
 #' 
 #' Expand a regular matrix owned on MPI rank 0 into a shaq.
 #' 
+#' @section Communication:
+#' Short answer: quite a bit.  Each local submatrix has to be received from rank
+#' 0.
+#' 
 #' @param x
 #' A regular matrix.
 #' 
@@ -10,7 +14,17 @@
 #' 
 #' @examples
 #' \dontrun{
-#' TODO
+#' library(kazaam)
+#' if (comm.rank() == 0){
+#'   x = matrix(runif(30), 10, 3)
+#' } else {
+#'   x = NULL
+#' }
+#' 
+#' dx = expand(x)
+#' dx
+#' 
+#' finalize()
 #' }
 #' 
 #' @export

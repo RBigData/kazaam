@@ -3,19 +3,29 @@
 #' Multiplies two distributed matrices, if they are conformable.
 #' 
 #' @details
-#' TODO
+#' The two shaqs must be distributed \emph{identically}.
+#' 
+#' @section Communication:
+#' The operation is completely local.
 #' 
 #' @param x
 #' A shaq.
 #' @param y
-#' A regular matrix.
+#' A regular matrix, globally ownd on all ranks.  Since the number of columns
+#' of a shaq should be small, this matrix should be small as well.
 #' 
 #' @return 
 #' A shaq.
 #' 
 #' @examples
 #' \dontrun{
-#' TODO
+#' library(kazaam)
+#' x = ranshaq(runif, 10, 3)
+#' y = matrix(1:9, 3, 3)
+#' 
+#' x %*% y
+#' 
+#' finalize()
 #' }
 #' 
 #' @name matmult

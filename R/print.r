@@ -3,7 +3,7 @@
 #' Print method for a shaq.
 #' 
 #' @section Communication:
-#' TODO
+#' The operation is completely local.
 #' 
 #' @param x,object
 #' A shaq.
@@ -12,7 +12,12 @@
 #' 
 #' @examples
 #' \dontrun{
-#' TODO
+#' library(kazaam)
+#' x = shaq(1, 10, 3)
+#' 
+#' x # same as print(x) or comm.print(x)
+#' 
+#' finalize()
 #' }
 #' 
 #' @name print
