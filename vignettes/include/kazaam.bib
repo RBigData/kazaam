@@ -5,6 +5,14 @@
   url = {http://r-pbd.org/}
 }
 
+@Manual{kazaam,
+  title = {{kazaam: Tools for Tall Distributed Matrices}},
+  author = {Drew Schmidt, Wei-Chen Chen, Mike Matheson and George Ostrouchov},
+  note = {R package version 0.1-0},
+  year = {2017},
+  url = {https://github.com/RBigData/kazaam}
+}
+
 @Manual{pbdCS,
   title = {{pbdCS: 'pbdR' Client/Server Utilities}},
   author = {Drew Schmidt and Wei-Chen Chen},
@@ -35,6 +43,38 @@
   note = {{R} Package, URL https://cran.r-project.org/package=pbdMPI},
 }
 
+@BOOK{MPI1994,
+  title = {Using {MPI}: Portable Parallel Programming with the Message-Passing
+           Interface},
+  author = {Gropp, W. and Lusk, E. and Skjellum, A.},
+  year = {1994},
+  publisher = {Cambridge, MA, USA: MIT Press Scientific And Engineering
+               Computation Series}
+}
+
+@article{blas,
+  title={Basic linear algebra subprograms for Fortran usage},
+  author={Lawson, Chuck L and Hanson, Richard J. and Kincaid, David R and Krogh, 
+Fred T.},
+  journal={ACM Transactions on Mathematical Software (TOMS)},
+  volume={5},
+  number={3},
+  pages={308--323},
+  year={1979},
+  publisher={ACM}
+}
+
+@book{lug,
+ author = {Anderson, E. and Bai, Z. and Bischof, C. and Blackford, L. S. and 
+Demmel, J. and Dongarra, Jack J. and Du Croz, J. and Hammarling, S. and 
+Greenbaum, A. and McKenney, A. and Sorensen, D.},
+ title = {LAPACK Users' guide (third ed.)},
+ year = {1999},
+ isbn = {0-89871-447-8},
+ publisher = {Society for Industrial and Applied Mathematics},
+ address = {Philadelphia, PA, USA},
+} 
+
 @BOOK{slug,
   AUTHOR = {Blackford, L. S. and Choi, J. and Cleary, A. and
             D'Azevedo, E. and Demmel, J. and Dhillon, I. and
@@ -49,7 +89,29 @@
   ISBN = {0-89871-397-8 (paperback)} 
 }
 
-@MISC{Chen2012pbdMPIpackage,
+@article{openblas,
+  title={{OpenBLAS}},
+  author={Xianyi, Zhang and Qian, Wang and Chothia, Zaheer},
+  journal={URL: http://xianyi. github. io/OpenBLAS},
+  year={2012}
+}
+
+@MISC{mkl,
+  author = {{Intel Corporation}},
+  title = {{Intel Math Kernel Library (Intel MKL)}},
+  year = {2010},
+  url = {http://software.intel.com/en-us/intel-mkl}
+}
+
+@MISC{rmkl,
+  author = {Andrie de Vries},
+  title = {{How the MKL speeds up Revolution R Open}},
+  year = {2014},
+  howpublished = 
+{http://blog.revolutionanalytics.com/2014/10/revolution-r-open-mkl.html}
+}
+
+@MISC{pbdMPI,
   author = {Chen, W.-C. and Ostrouchov, G. and Schmidt, D. and Patel, P. and
             Yu, H.},
   title = {pbdMPI: Programming with Big Data -- Interface to MPI},
@@ -57,7 +119,8 @@
   note = {R Package},
   url = {http://cran.r-project.org/package=pbdMPI}
 }
-@MISC{Chen2012pbdMPIvignette,
+
+@MISC{pbdMPIVignette,
   author = {Chen, W.-C. and Ostrouchov, G. and Schmidt, D. and Patel, P. and
             Yu, H.},
   title = {A Quick Guide for the pbdMPI package},
@@ -66,21 +129,21 @@
   url = {http://cran.r-project.org/package=pbdMPI}
 }
 
-@MISC{Schmidt2012pbdBASEpackage,
+@MISC{pbdBASE,
   author = {Schmidt, D. and Chen, W.-C. and Ostrouchov, G. and Patel, P.},
   title = {pbdBASE: Programming with Big Data --
            Core pbd Classes and Methods},
-  year = {2012},
-  note = {R Package},
+  year = {2017},
+  note = {R Package version 0.5-0},
   url = {http://cran.r-project.org/package=pbdBASE}
 }
 
-@MISC{Schmidt2012pbdDMATpackage,
+@MISC{pbdDMAT,
   author = {Schmidt, D. and Chen, W.-C. and Ostrouchov, G. and Patel, P.},
   title = {pbdDMAT: Programming with Big Data --
            Distributed Matrix Algebra Computation},
-  year = {2012},
-  note = {R Package},
+  year = {2017},
+  note = {R Package version 0.5-0},
   url = {http://cran.r-project.org/package=pbdDMAT}
 }
 
