@@ -2,3 +2,6 @@
 *.swp
 
 inst/doc
+
+R/TODO/
+src/TODO/
