@@ -26,6 +26,9 @@ ghit::install_github("RBigData/kazaam")
 remotes::install_github("RBigData/kazaam")
 ```
 
+To simplify installation on cloud systems, we also have a
+[Docker container](https://github.com/RBigData/pbdr-kazaam) available.
+
 
 
 ## Background
