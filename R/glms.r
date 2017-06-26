@@ -9,9 +9,9 @@
 #' 
 #' Both of \code{x} and \code{y} must be distributed in an identical fashion.
 #' This means that the number of rows owned by each MPI rank should match, and
-#' the data rows \code{x} and labels \code{y} should be aligned.  Additionally,
-#' each MPI rank should own at least one row.  Ideally they should be load
-#' balanced, so that each MPI rank owns roughly the same amount of data.
+#' the data rows \code{x} and response rows \code{y} should be aligned.
+#' Additionally, each MPI rank should own at least one row.  Ideally they should
+#' be load balanced, so that each MPI rank owns roughly the same amount of data.
 #' 
 #' @section Communication:
 #' The communication consists of an allreduce of 1 double (the local
