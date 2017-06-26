@@ -11,11 +11,11 @@ Basic matrix operations for very tall, narrow distributed matrices.  For a more 
 
 ## Installation
 
-<!-- You can install the stable version from CRAN using the usual `install.packages()`:
+You can install the stable version from CRAN using the usual `install.packages()`:
 
 ```r
 install.packages("kazaam")
-``` -->
+```
 
 The development version is maintained on GitHub, and can easily be installed by any of the packages that offer installations from GitHub:
 
