@@ -1,3 +1,5 @@
+^\.travis\.yml$
+
 vignettes/cover/orig/
 vignettes/cover/build_cover.sh
 vignettes/cover/kazaam.tex
