@@ -3,27 +3,39 @@
 \docType{methods}
 \name{arithmetic}
 \alias{arithmetic}
+\alias{+,shaq,shaq-method}
 \alias{+,shaq,numeric-method}
 \alias{+,numeric,shaq-method}
+\alias{-,shaq,shaq-method}
 \alias{-,shaq,numeric-method}
 \alias{-,numeric,shaq-method}
+\alias{*,shaq,shaq-method}
 \alias{*,shaq,numeric-method}
 \alias{*,numeric,shaq-method}
+\alias{/,shaq,shaq-method}
 \alias{/,shaq,numeric-method}
 \alias{/,numeric,shaq-method}
 \title{Arithmetic Operators}
 \usage{
+\S4method{+}{shaq,shaq}(e1, e2)
+
 \S4method{+}{shaq,numeric}(e1, e2)
 
 \S4method{+}{numeric,shaq}(e1, e2)
+
+\S4method{-}{shaq,shaq}(e1, e2)
 
 \S4method{-}{shaq,numeric}(e1, e2)
 
 \S4method{-}{numeric,shaq}(e1, e2)
 
+\S4method{*}{shaq,shaq}(e1, e2)
+
 \S4method{*}{shaq,numeric}(e1, e2)
 
 \S4method{*}{numeric,shaq}(e1, e2)
+
+\S4method{/}{shaq,shaq}(e1, e2)
 
 \S4method{/}{shaq,numeric}(e1, e2)
 
@@ -41,11 +53,8 @@ vector-shaq or shaq-vector, but not shaq-shaq.  See details section for more
 information.
 }
 \details{
-Because the rules imposed on shaq objects are so minimal, it is next to
-impossible to do some fairly basic things, like adding two shaqs together.
-If you have two shaqs which are distributed \emph{identically} that you
-wish to add, you can do so manually with something like
-\code{DATA(c) <- Data(a) + Data(b)}
+For binary operations involving two shaqs, they must be distributed
+\emph{identically}.
 }
 \section{Communication}{
 
@@ -54,7 +63,13 @@ Each operation is completely local.
 
 \examples{
 \dontrun{
-TODO
+library(kazaam)
+x = ranshaq(runif, 10, 3)
+y = ranshaq(runif, 10, 3)
+
+x + y
+x / 2
+y + 1
 }
 
 }

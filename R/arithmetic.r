@@ -5,11 +5,8 @@
 #' information.
 #' 
 #' @details
-#' Because the rules imposed on shaq objects are so minimal, it is next to
-#' impossible to do some fairly basic things, like adding two shaqs together.
-#' If you have two shaqs which are distributed \emph{identically} that you
-#' wish to add, you can do so manually with something like
-#' \code{DATA(c) <- Data(a) + Data(b)}
+#' For binary operations involving two shaqs, they must be distributed
+#' \emph{identically}.
 #' 
 #' @section Communication:
 #' Each operation is completely local.
@@ -22,7 +19,13 @@
 #' 
 #' @examples
 #' \dontrun{
-#' TODO
+#' library(kazaam)
+#' x = ranshaq(runif, 10, 3)
+#' y = ranshaq(runif, 10, 3)
+#' 
+#' x + y
+#' x / 2
+#' y + 1
 #' }
 #' 
 #' @name arithmetic
@@ -37,7 +40,28 @@ bounds.check = function(shaq, vec)
     comm.stop("invalid shaq-vector operation: vector must be length 1")
 }
 
+shaqshaq.check = function(s1, s2)
+{
+  if (nrow(s1) != nrow(s1)  ||  ncol(s1) != ncol(s2))
+    stop("non-conformable arrays")
+  
+  if (nrow(Data(s1)) != nrow(Data(s2))  ||  ncol(Data(s1)) != ncol(Data(s2)))
+    stop("shaqs not distributed identically")
+}
 
+
+
+#' @rdname arithmetic
+#' @export
+setMethod("+", signature(e1="shaq", e2="shaq"), 
+  function(e1, e2)
+  {
+    shaqshaq.check(e1, e2)
+    
+    DATA(e1) = Data(e1) + Data(e2)
+    e1
+  }
+)
 
 #' @rdname arithmetic
 #' @export
@@ -61,6 +85,18 @@ setMethod("+", signature(e1="numeric", e2="shaq"),
 )
 
 
+
+#' @rdname arithmetic
+#' @export
+setMethod("-", signature(e1="shaq", e2="shaq"), 
+  function(e1, e2)
+  {
+    shaqshaq.check(e1, e2)
+    
+    DATA(e1) = Data(e1) - Data(e2)
+    e1
+  }
+)
 
 #' @rdname arithmetic
 #' @export
@@ -90,6 +126,18 @@ setMethod("-", signature(e1="numeric", e2="shaq"),
 
 #' @rdname arithmetic
 #' @export
+setMethod("*", signature(e1="shaq", e2="shaq"), 
+  function(e1, e2)
+  {
+    shaqshaq.check(e1, e2)
+    
+    DATA(e1) = Data(e1) * Data(e2)
+    e1
+  }
+)
+
+#' @rdname arithmetic
+#' @export
 setMethod("*", signature(e1="shaq", e2="numeric"), 
   function(e1, e2)
   {
@@ -110,6 +158,19 @@ setMethod("*", signature(e1="numeric", e2="shaq"),
 )
 
 
+
+
+#' @rdname arithmetic
+#' @export
+setMethod("/", signature(e1="shaq", e2="shaq"), 
+  function(e1, e2)
+  {
+    shaqshaq.check(e1, e2)
+    
+    DATA(e1) = Data(e1) / Data(e2)
+    e1
+  }
+)
 
 #' @rdname arithmetic
 #' @export
