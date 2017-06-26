@@ -40,7 +40,7 @@ print_shaq = function(x)
       cat("# [no elements to display]\n")
     else
     {
-      submat = Data(x)[1:toprow, 1:topcol]
+      submat = Data(x)[1:toprow, 1:topcol, drop=FALSE]
       print(submat)
       
       if (toprow < nrow(x) || topcol < ncol(x))
