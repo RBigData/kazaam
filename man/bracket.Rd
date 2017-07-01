@@ -18,11 +18,29 @@
 
 \item{...}{Ignored.}
 
-\item{value}{Replacement value(s) for the \code{[<-} method.}
+\item{value}{Replacement value(s) for the \code{[<-} method.  This can either be an
+appropriately sized numeric value or a shaq.  See the details section for
+more information.}
 }
 \value{
 A shaq.
 }
 \description{
 Subsetting via \code{`[`} for shaq objects.
+}
+\section{Communication}{
+
+Each operation is completely local.
+}
+
+\examples{
+\dontrun{
+library(kazaam)
+x = ranshaq(runif, 10, 3)
+y = x[, -1]
+y
+
+finalize()
+}
+
 }

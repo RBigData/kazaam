@@ -1,4 +1,14 @@
 *~
 *.swp
 
+*.aux
+*.bbl
+*.blg
+*.out
+*.toc
+*.backup
+
 inst/doc
+
+R/TODO/
+src/TODO/

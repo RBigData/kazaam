@@ -5,11 +5,25 @@
 #' @details
 #' Only rank 0 will own the matrix on return.
 #' 
+#' @section Communication:
+#' Short answer: quite a bit.  Each local submatrix has to be sent to rank 0.
+#' 
 #' @param x
 #' A shaq.
 #' 
 #' @return
 #' A regular matrix (rank 0) or \code{NULL} (everyone else).
+#' 
+#' @examples
+#' \dontrun{
+#' library(kazaam)
+#' dx = ranshaq(runif, 10, 3)
+#' 
+#' x = collapse(dx)
+#' comm.print(x)
+#' 
+#' finalize()
+#' }
 #' 
 #' @export
 collapse = function(x)

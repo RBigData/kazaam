@@ -19,3 +19,19 @@
 \description{
 Print method for a shaq.
 }
+\section{Communication}{
+
+The operation is completely local.
+}
+
+\examples{
+\dontrun{
+library(kazaam)
+x = shaq(1, 10, 3)
+
+x # same as print(x) or comm.print(x)
+
+finalize()
+}
+
+}

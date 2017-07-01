@@ -36,3 +36,22 @@ matrix by taking the SVD. Sometimes core R and kazaam will disagree
 slightly in what the rotated variables are because of how the SVD is
 caluclated.
 }
+\section{Communication}{
+
+The communication is an \code{allreduce()} call, quadratic on the number of
+columns.  Most of the run time should be dominated by relatively expensive
+ local operations.
+}
+
+\examples{
+\dontrun{
+library(kazaam)
+x = ranshaq(runif, 10, 3)
+pca = prcomp(x)
+
+comm.print(pca)
+
+finalize()
+}
+
+}

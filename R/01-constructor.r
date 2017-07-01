@@ -9,6 +9,11 @@
 #' when reading from a subset of processors and then broadcasting out to the
 #' remainder.
 #' 
+#' @section Communication:
+#' If \code{checks=TRUE}, a check on the global number of rows is performed.
+#' This amounts to an allgather operation on a logical value (the local
+#' dimension check).
+#' 
 #' @param Data
 #' The local submatrix.
 #' @param nrows,ncols
@@ -17,9 +22,16 @@
 #' Logical. Should some basic dimension checks be performed?  Note that these
 #' require communication, and with many MPI ranks, could be expensive.
 #' 
+#' @seealso
+#' \code{\link{shaq-class}}
+#' 
 #' @name shaq
 #' @rdname shaq
-NULL
+#' @export
+shaq <- function (Data, nrows, ncols, checks=TRUE)
+{
+  UseMethod("shaq", Data)
+}
 
 
 
@@ -49,9 +61,8 @@ check.shaq = function(Data, nrows, ncols)
 
 #' @rdname shaq
 #' @export
-shaq = function(Data=matrix(nrow=0, ncol=0), nrows, ncols, checks=TRUE)
+shaq.matrix = function(Data, nrows, ncols, checks=TRUE)
 {
-  check.is.matrix(Data)
   if (!missing(nrows))
     check.is.natnum(nrows)
   if (!missing(ncols))
@@ -68,6 +79,45 @@ shaq = function(Data=matrix(nrow=0, ncol=0), nrows, ncols, checks=TRUE)
   }
   else if (checks)
     nrows = check.shaq(Data, nrows, ncols)
+  
+  new("shaq", Data=Data, nrows=nrows, ncols=ncols)
+}
+
+
+
+
+#' @rdname shaq
+#' @export
+shaq.numeric = function(Data, nrows, ncols, checks=TRUE)
+{
+  if (!missing(nrows))
+    check.is.natnum(nrows)
+  if (!missing(ncols))
+    check.is.natnum(ncols)
+  check.is.flag(checks)
+  
+  if (missing(nrows) || missing(ncols))
+  {
+    if (missing(nrows) && missing(ncols))
+    {
+      nrows = length(Data)
+      ncols = 1L
+    }
+    else if (missing(nrows))
+      nrows = 1L
+    else if (missing(ncols))
+      ncols = 1L
+  }
+  
+  
+  size = comm.size()
+  base = nrows %/% size
+  rem = nrows - base*size
+  nrows.local = base
+  if (comm.rank()+1L < rem)
+    nrows.local = nrows.local + 1
+  
+  Data = matrix(Data, as.integer(nrows.local), ncols)
   
   new("shaq", Data=Data, nrows=nrows, ncols=ncols)
 }

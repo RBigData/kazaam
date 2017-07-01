@@ -2,6 +2,18 @@
 #' 
 #' Singular value decomposition.
 #' 
+#' @details
+#' The factorization works by first forming the crossproduct \eqn{X^T X}
+#' and then taking its eigenvalue decomposition.  In this case, the square root
+#' of the eigenvalues are the singular values.  If the left/right singular
+#' vectors \eqn{U} or \eqn{V} are desired, then in either case, \eqn{V} is
+#' computed (the eigenvectors).  From these, \eqn{U} can be reconstructed, since
+#' if \eqn{X = U\Sigma V^T}, then \eqn{U = XV\Sigma^{-1}}.
+#' 
+#' @section Communication:
+#' The operation is completely local except for forming the crossproduct, which
+#' is an \code{allreduce()} call, quadratic on the number of columns.
+#' 
 #' @param x
 #' A shaq.
 #' @param nu 
@@ -15,6 +27,19 @@
 #' A list of elements \code{d}, \code{u}, and \code{v}, as with R's own
 #' \code{svd()}.  The elements are, respectively, a regular vector, a shaq, and
 #' a regular matrix.
+#' 
+#' @examples
+#' \dontrun{
+#' library(kazaam)
+#' x = ranshaq(runif, 10, 3)
+#' 
+#' svd = svd(x)
+#' comm.print(svd$d) # a globally owned vector
+#' svd$u # a shaq
+#' comm.print(svd$v) # a globally owned matrix
+#' 
+#' finalize()
+#' }
 #' 
 #' @name svd
 #' @rdname svd

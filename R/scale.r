@@ -2,6 +2,10 @@
 #' 
 #' Centers and/or scales the columns of a distributed matrix.
 #' 
+#' @section Communication:
+#' The communication consists of two allreduce calls, each quadratic on the
+#' number of columns.
+#' 
 #' @param x 
 #' A shaq.
 #' @param center 
@@ -11,6 +15,17 @@
 #' 
 #' @return 
 #' A shaq.
+#' 
+#' @examples
+#' \dontrun{
+#' library(kazaam)
+#' x = ranshaq(rnorm, 10, 3, mean=30, sd=10)
+#' 
+#' x
+#' scale(x)
+#' 
+#' finalize()
+#' }
 #' 
 #' @name scale
 #' @rdname scale

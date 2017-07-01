@@ -2,6 +2,10 @@
 #' 
 #' Covariance and (pearson) correlation.
 #' 
+#' @section Communication:
+#' The operation is completely local except for forming the crossproduct, which
+#' is an \code{allreduce()} call, quadratic on the number of columns.
+#' 
 #' @param x
 #' A shaq.
 #' @param y
@@ -14,6 +18,17 @@
 #' 
 #' @return 
 #' A regular matrix.
+#' 
+#' @examples
+#' \dontrun{
+#' library(kazaam)
+#' x = ranshaq(runif, 10, 3)
+#' 
+#' cov(x)
+#' cor(x)
+#' 
+#' finalize()
+#' }
 #' 
 #' @name cov
 #' @rdname cov

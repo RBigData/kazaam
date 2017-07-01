@@ -15,3 +15,25 @@ A shaq.
 \description{
 Expand a regular matrix owned on MPI rank 0 into a shaq.
 }
+\section{Communication}{
+
+Short answer: quite a bit.  Each local submatrix has to be received from rank
+0.
+}
+
+\examples{
+\dontrun{
+library(kazaam)
+if (comm.rank() == 0){
+  x = matrix(runif(30), 10, 3)
+} else {
+  x = NULL
+}
+
+dx = expand(x)
+dx
+
+finalize()
+}
+
+}

@@ -5,6 +5,7 @@ if (comm.rank() == 0){
   
   p1 = x + 1
   p2 = 1 + x
+  p3 = x + x
   
   m1 = x - 1
   m2 = 1 - x
@@ -23,8 +24,10 @@ dx = expand(x)
 
 p1_t = collapse(dx + 1)
 p2_t = collapse(1 + dx)
+p3_t = collapse(dx + dx)
 comm.print(all.equal(p1, p1_t))
 comm.print(all.equal(p2, p2_t))
+comm.print(all.equal(p3, p3_t))
 
 m1_t = collapse(dx - 1)
 m2_t = collapse(1 - dx)

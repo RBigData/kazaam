@@ -1,0 +1,10 @@
+^\.travis\.yml$
+
+vignettes/cover/build_cover.sh
+vignettes/cover/kazaam.tex
+vignettes/cover/logo/
+
+R/TODO/
+src/TODO/
+
+TODO

@@ -1,2 +1,15 @@
 Release 0.1-0:
-  * 
+  * Added expand() and collapse().
+  * Added multiplication methods.
+  * Added svd method.
+  * Added QR method.
+  * Added scale() method.
+  * Added PCA method.
+  * Added matrix norm method.
+  * Added some basic arithmetic methods.
+  * Added cov() and cor() methods.
+  * Added a print method.
+  * Added lm (coefficient getter) method.
+  * Added random shaq constructors.
+  * Added gradient descent-based lm, logistic, and poisson regression fitters.
+  

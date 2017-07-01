@@ -19,3 +19,21 @@ A regular matrix.
 \description{
 Conceptually, this computes \code{t(x) \%*\% x} for a shaq \code{x}.
 }
+\section{Communication}{
+
+The operation consists of a local crossproduct, followed by an
+\code{allreduce()} call, quadratic on the number of columns.
+}
+
+\examples{
+\dontrun{
+library(kazaam)
+x = ranshaq(runif, 10, 3)
+
+cp = crossprod(x)
+comm.print(cp)
+
+finalize()
+}
+
+}

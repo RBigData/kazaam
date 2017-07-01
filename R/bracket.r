@@ -2,17 +2,32 @@
 #' 
 #' Subsetting via \code{`[`} for shaq objects.
 #' 
+#' @section Communication:
+#' Each operation is completely local.
+#' 
 #' @param x
 #' A shaq.
 #' @param i,j
 #' Indices.  NOTE currently only implemented for \code{j} values.
 #' @param value
-#' Replacement value(s) for the \code{[<-} method.
+#' Replacement value(s) for the \code{[<-} method.  This can either be an
+#' appropriately sized numeric value or a shaq.  See the details section for
+#' more information.
 #' @param ...
 #' Ignored.
 #' 
 #' @return
 #' A shaq.
+#' 
+#' @examples
+#' \dontrun{
+#' library(kazaam)
+#' x = ranshaq(runif, 10, 3)
+#' y = x[, -1]
+#' y
+#' 
+#' finalize()
+#' }
 #' 
 #' @name bracket
 #' @rdname bracket
@@ -52,10 +67,15 @@ setMethod("[", signature(x="shaq"), bracket.shaq)
 
 bracket_replace.shaq = function(x, i, j, ..., value)
 {
+  if (is.shaq(value))
+    val = Data(value)
+  else
+    val = value
+  
   if (missing(i) && missing(j))
-    DATA(x) = value
+    DATA(x) = val
   else if (missing(i))
-    Data(x)[, j] = value
+    Data(x)[, j] = val
   else # FIXME
     comm.stop("not yet implemented for i non-missing")
   

@@ -2,10 +2,23 @@
 #' 
 #' Print method for a shaq.
 #' 
+#' @section Communication:
+#' The operation is completely local.
+#' 
 #' @param x,object
 #' A shaq.
 #' @param ...
 #' Ignored
+#' 
+#' @examples
+#' \dontrun{
+#' library(kazaam)
+#' x = shaq(1, 10, 3)
+#' 
+#' x # same as print(x) or comm.print(x)
+#' 
+#' finalize()
+#' }
 #' 
 #' @name print
 #' @rdname print
@@ -27,7 +40,7 @@ print_shaq = function(x)
       cat("# [no elements to display]\n")
     else
     {
-      submat = Data(x)[1:toprow, 1:topcol]
+      submat = Data(x)[1:toprow, 1:topcol, drop=FALSE]
       print(submat)
       
       if (toprow < nrow(x) || topcol < ncol(x))
