@@ -34,14 +34,26 @@ NULL
 cp.shaq = function(x, y = NULL)
 {
   if (!is.null(y))
-    comm.stop("only implemented for y=NULL")
-  
-  cp.local = base::crossprod(Data(x))
-  allreduce(cp.local)
+  {
+    if (is.shaq(y))
+    {
+      cp.local = crossprod(Data(x), Data(y))
+      allreduce(cp.local)
+    }
+    else
+      comm.stop("argument 'y' must be a shaq or NULL")
+  }
+  else
+  {
+    cp.local = base::crossprod(Data(x))
+    allreduce(cp.local)
+  }
 }
 
 
 
 #' @rdname crossprod
 #' @export
-setMethod("crossprod", signature(x="shaq"), cp.shaq)
+setMethod("crossprod", signature(x="shaq", y="ANY"), cp.shaq)
+
+# TODO matrix-shaq method
