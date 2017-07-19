@@ -1,5 +1,6 @@
 Release 0.2-0:
   * Added rsvd() method.
+  * Added rcond() method.
 
 Release 0.1-0:
   * Added expand() and collapse().
@@ -15,4 +16,3 @@ Release 0.1-0:
   * Added lm (coefficient getter) method.
   * Added random shaq constructors.
   * Added gradient descent-based lm, logistic, and poisson regression fitters.
-  
