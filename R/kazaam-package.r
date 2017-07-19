@@ -14,7 +14,7 @@
 #' @importFrom pbdMPI isend irecv send recv allreduce bcast comm.size comm.rank
 #'    comm.stop comm.all comm.max get.jid
 #' @import methods
-#' @importFrom stats prcomp optim
+#' @importFrom stats prcomp optim runif
 #' 
 #' @useDynLib kazaam R_trinv
 #' 
