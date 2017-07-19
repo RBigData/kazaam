@@ -1,5 +1,5 @@
 suppressPackageStartupMessages(library(kazaam))
-comm.set.seed(1234)
+comm.set.seed(12345)
 
 if (comm.rank() == 0){
   tol = 1e-2
