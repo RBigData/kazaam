@@ -42,7 +42,7 @@ NULL
 
 rcond.shaq = function(x, norm=c("O", "I", "1"), triangular=FALSE, ...)
 {
-  norm = comm.match.arg(toupper(norm), c("O", "I", "1"))
+  norm = pbdMPI::comm.match.arg(toupper(norm), c("O", "I", "1"))
   R = qr_R(x)
   base::rcond(R, norm=norm, triangular=TRUE, ...)
 }
