@@ -15,6 +15,8 @@
 \alias{/,shaq,shaq-method}
 \alias{/,shaq,numeric-method}
 \alias{/,numeric,shaq-method}
+\alias{^,shaq,shaq-method}
+\alias{^,shaq,numeric-method}
 \title{Arithmetic Operators}
 \usage{
 \S4method{+}{shaq,shaq}(e1, e2)
@@ -40,6 +42,10 @@
 \S4method{/}{shaq,numeric}(e1, e2)
 
 \S4method{/}{numeric,shaq}(e1, e2)
+
+\S4method{^}{shaq,shaq}(e1, e2)
+
+\S4method{^}{shaq,numeric}(e1, e2)
 }
 \arguments{
 \item{e1, e2}{A shaq or a numeric vector.}

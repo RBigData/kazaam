@@ -197,3 +197,29 @@ setMethod("/", signature(e1="numeric", e2="shaq"),
     e2
   }
 )
+
+
+
+#' @rdname arithmetic
+#' @export
+setMethod("^", signature(e1="shaq", e2="shaq"), 
+  function(e1, e2)
+  {
+    shaqshaq.check(e1, e2)
+    
+    DATA(e1) = Data(e1) ^ Data(e2)
+    e1
+  }
+)
+
+#' @rdname arithmetic
+#' @export
+setMethod("^", signature(e1="shaq", e2="numeric"), 
+  function(e1, e2)
+  {
+    bounds.check(e1, e2)
+    
+    DATA(e1) = Data(e1) ^ e2
+    e1
+  }
+)
