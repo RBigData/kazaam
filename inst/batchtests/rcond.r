@@ -3,13 +3,20 @@ comm.set.seed(1234)
 
 tester = function(x, dx)
 {
-  comm.print(all.equal(rcond(x), rcond(dx)))
+  test = rcond(dx)
+  comm.print(all.equal(rcond(x), test))
+  
   norm = "O"
-  comm.print(all.equal(rcond(x, norm), rcond(dx, norm)))
+  test = rcond(dx, norm)
+  comm.print(all.equal(rcond(x, norm), test))
+  
   norm = "I"
-  comm.print(all.equal(rcond(x, norm), rcond(dx, norm)))
+  test = rcond(dx, norm)
+  comm.print(all.equal(rcond(x, norm), test))
+  
   norm = "1"
-  comm.print(all.equal(rcond(x, norm), rcond(dx, norm)))
+  test = rcond(dx, norm)
+  comm.print(all.equal(rcond(x, norm), test))
 }
 
 dx = ranshaq(runif, 10, 3)
