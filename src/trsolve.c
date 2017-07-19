@@ -1,6 +1,7 @@
 #include <R.h>
 #include <Rinternals.h>
 
+
 #define STR(x) ((char*)CHAR(STRING_ELT(x,0)))
 
 void dtrtri_(const char *const restrict uplo, const char *const restrict diag, 

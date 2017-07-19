@@ -45,8 +45,15 @@ cp.shaq = function(x, y = NULL)
   }
   else
   {
-    cp.local = base::crossprod(Data(x))
-    allreduce(cp.local)
+    # cp.local = base::crossprod(Data(x))
+    # allreduce(cp.local)
+    data = Data(x)
+    if (!is.double(data))
+      storage.mode(data) = "double"
+    
+    cpvec.local = .Call(R_crossprod_uppertri, data)
+    cpvec = allreduce(cpvec.local)
+    .Call(R_crossprod_reconstruct, cpvec, as.integer(ncol(x)))
   }
 }
 

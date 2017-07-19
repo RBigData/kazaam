@@ -16,7 +16,7 @@
 #' @import methods
 #' @importFrom stats prcomp optim runif
 #' 
-#' @useDynLib kazaam R_trinv
+#' @useDynLib kazaam R_trinv R_crossprod_uppertri R_crossprod_reconstruct
 #' 
 #' @name kazaam-package
 #' @docType package
