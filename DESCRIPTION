@@ -1,7 +1,7 @@
 Package: kazaam
 Type: Package
 Title: Tools for Tall Distributed Matrices
-Version: 0.1-0
+Version: 0.2-0
 Description: Many data science problems reduce to operations on very tall,
     skinny matrices.  However, sometimes these matrices can be so tall that they
     are difficult to work with, or do not even fit into main memory.  One
