@@ -2,6 +2,7 @@ Release 0.2-0:
   * Added rsvd() method.
   * Added rcond() method.
   * Added "^" method.
+  * Added sum() method.
 
 Release 0.1-0:
   * Added expand() and collapse().
