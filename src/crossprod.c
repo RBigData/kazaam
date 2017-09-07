@@ -65,7 +65,9 @@ SEXP R_mpicrossprod(SEXP x)
   }
   
   // combine packed crossproduct across MPI ranks
-  MPI_Allreduce(MPI_IN_PLACE, compact, compact_len, MPI_DOUBLE, MPI_SUM, MPI_COMM_WORLD);
+  int check = MPI_Allreduce(MPI_IN_PLACE, compact, compact_len, MPI_DOUBLE, MPI_SUM, MPI_COMM_WORLD);
+  if (check != MPI_SUCCESS)
+    error("MPI_Allreduce returned error code %d\n", check);
   
   // reconstruct the crossproduct as a full matrix
   pos = 0;

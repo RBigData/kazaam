@@ -10,7 +10,9 @@
 
 inst/doc
 
+src/Makevars
+
+TODO
 R/TODO/
 src/TODO/
 
-src/Makevars
