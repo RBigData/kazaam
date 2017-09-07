@@ -1,0 +1,15 @@
+### Rscript
+R_SCMD = ${R_HOME}/bin${R_ARCH_BIN}/Rscript -e
+
+### Get MPI information from "pbdMPI". Note that Windows uses different FLAGS.
+MPI_ROOT = $(shell ${R_SCMD} \
+  "source('../R/get_conf.r');get.conf('MPI_ROOT','"${R_ARCH}"')")
+MPI_INCLUDE = $(shell ${R_SCMD} \
+  "source('../R/get_conf.r');get.conf('MPI_INCLUDE','"${R_ARCH}"')")
+MPI_LIB = $(shell ${R_SCMD} \
+  "source('../R/get_conf.r');get.conf('MPI_LIB','"${R_ARCH}"')")
+
+
+PKG_CPPFLAGS = -I"$(MPI_INCLUDE)"
+PKG_CFLAGS = $(SHLIB_OPENMP_CFLAGS) 
+PKG_LIBS = $(LAPACK_LIBS) $(BLAS_LIBS) $(FLIBS) $(MPI_LIB) $(SHLIB_OPENMP_CFLAGS)

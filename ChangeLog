@@ -3,7 +3,7 @@ Release 0.2-0:
   * Added rcond() method.
   * Added "^" method.
   * Added sum() method.
-  * Improved crossprod() (and all methods that touch it) somewhat.
+  * Improved memory usage and communication pattern of crossprod().
 
 Release 0.1-0:
   * Added expand() and collapse().

@@ -2,6 +2,7 @@
 
 #include <R.h>
 #include <Rinternals.h>
+#include <mpi.h>
 
 
 // upper triangle of t(x) %*% x
@@ -37,57 +38,47 @@ static inline void symmetrize(const int n, double *restrict x)
 
 
 
-// crossproduct matrix, stored as a vector (diag+upper tri)
-SEXP R_crossprod_uppertri(SEXP x)
+SEXP R_mpicrossprod(SEXP x)
 {
   SEXP ret;
+  size_t pos = 0;
   const int m = nrows(x);
   const int n = ncols(x);
-  const size_t len = (n*n) - (n*(n-1))/2;
-  
-  PROTECT(ret = allocVector(REALSXP, len));
-  double *const restrict retpt = REAL(ret);
-  
-  double *tmp = malloc(n*n * sizeof(*tmp));
-  if (tmp == NULL)
-    error("OOM");
-  
-  crossprod(m, n, 1.0, REAL(x), tmp);
-  
-  size_t ret_pos = 0;
-  for (int j=0; j<n; j++)
-  {
-    for (int i=j; i<n; i++)
-      retpt[ret_pos++] = tmp[i + n*j];
-  }
-  
-  
-  free(tmp);
-  UNPROTECT(1);
-  return ret;
-}
-
-
-
-// given vector containing diag+upper tri, reconstruct full matrix
-SEXP R_crossprod_reconstruct(SEXP x, SEXP n_)
-{
-  SEXP ret;
-  const int n = INTEGER(n_)[0];
+  const size_t compact_len = (n*n) - (n*(n-1))/2;
   
   PROTECT(ret = allocMatrix(REALSXP, n, n));
-  double *const restrict retpt = REAL(ret);
-  double *const restrict xpt = REAL(x);
+  double *ret_pt = REAL(ret);
   
-  size_t x_pos = 0;
+  double *compact = malloc(compact_len * sizeof(*compact));
+  if (compact == NULL)
+    error("OOM");
+  
+  
+  // store the crossproduct compactly (diag + upper tri as an array)
+  crossprod(m, n, 1.0, REAL(x), ret_pt);
+  
+  pos = 0;
   for (int j=0; j<n; j++)
   {
     for (int i=j; i<n; i++)
-      retpt[i + n*j] = xpt[x_pos++];
+      compact[pos++] = ret_pt[i + n*j];
   }
   
-  symmetrize(n, retpt);
+  // combine packed crossproduct across MPI ranks
+  MPI_Allreduce(MPI_IN_PLACE, compact, compact_len, MPI_DOUBLE, MPI_SUM, MPI_COMM_WORLD);
   
+  // reconstruct the crossproduct as a full matrix
+  pos = 0;
+  for (int j=0; j<n; j++)
+  {
+    for (int i=j; i<n; i++)
+      ret_pt[i + n*j] = compact[pos++];
+  }
+  
+  symmetrize(n, ret_pt);
+  
+  
+  free(compact);
   UNPROTECT(1);
   return ret;
 }
