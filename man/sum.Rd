@@ -30,7 +30,6 @@ TODO
 
 Communication consists of a an allreduce on a single value.
 }
-
 \examples{
 \dontrun{
 library(kazaam)
@@ -43,3 +42,4 @@ finalize()
 }
 
 }
+

@@ -2,9 +2,9 @@
 % Please edit documentation in R/col_ops.r
 \docType{methods}
 \name{col_ops}
-\alias{col_ops}
-\alias{colSums,shaq-method}
 \alias{colMeans,shaq-method}
+\alias{colSums,shaq-method}
+\alias{col_ops}
 \title{Column Operations}
 \usage{
 \S4method{colSums}{shaq}(x, na.rm = FALSE, dims = 1L)
@@ -29,7 +29,6 @@ Column operations (currently sums/means) for shaq objects.
 The operation consists of a local column sum operation, followed by an
 \code{allreduce()} call, quadratic on the number of columns.
 }
-
 \examples{
 \dontrun{
 library(kazaam)
@@ -41,3 +40,4 @@ finalize()
 }
 
 }
+

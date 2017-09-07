@@ -4,7 +4,7 @@
 \alias{cbind.shaq}
 \title{cbind}
 \usage{
-\method{cbind}{shaq}(..., deparse.level = 1)
+cbind.shaq(..., deparse.level = 1)
 }
 \arguments{
 \item{...}{A collection of shaqs.}
@@ -25,7 +25,6 @@ should be distributed in identical fashion.
 
 The operation is completely local.
 }
-
 \examples{
 \dontrun{
 library(kazaam)
@@ -38,3 +37,4 @@ finalize()
 }
 
 }
+

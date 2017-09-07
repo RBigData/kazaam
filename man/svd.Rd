@@ -38,7 +38,6 @@ if \eqn{X = U\Sigma V^T}, then \eqn{U = XV\Sigma^{-1}}.
 The operation is completely local except for forming the crossproduct, which
 is an \code{allreduce()} call, quadratic on the number of columns.
 }
-
 \examples{
 \dontrun{
 library(kazaam)
@@ -53,3 +52,4 @@ finalize()
 }
 
 }
+

@@ -27,7 +27,6 @@ Generate a random shaq object.
 
 The operation is entirely local.
 }
-
 \examples{
 \dontrun{
 library(kazaam)
@@ -44,3 +43,4 @@ finalize()
 }
 
 }
+

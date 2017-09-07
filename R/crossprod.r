@@ -51,9 +51,7 @@ cp.shaq = function(x, y = NULL)
     if (!is.double(data))
       storage.mode(data) = "double"
     
-    cpvec.local = .Call(R_crossprod_uppertri, data)
-    cpvec = allreduce(cpvec.local)
-    .Call(R_crossprod_reconstruct, cpvec, as.integer(ncol(x)))
+    .Call(R_mpicrossprod, data)
   }
 }
 
