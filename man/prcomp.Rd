@@ -42,6 +42,7 @@ The communication is an \code{allreduce()} call, quadratic on the number of
 columns.  Most of the run time should be dominated by relatively expensive
  local operations.
 }
+
 \examples{
 \dontrun{
 library(kazaam)
@@ -54,4 +55,3 @@ finalize()
 }
 
 }
-

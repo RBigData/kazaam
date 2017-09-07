@@ -36,7 +36,7 @@ If \code{checks=TRUE}, a check on the global number of rows is performed.
 This amounts to an allgather operation on a logical value (the local
 dimension check).
 }
+
 \seealso{
 \code{\link{shaq-class}}
 }
-

@@ -20,6 +20,7 @@ Expand a regular matrix owned on MPI rank 0 into a shaq.
 Short answer: quite a bit.  Each local submatrix has to be received from rank
 0.
 }
+
 \examples{
 \dontrun{
 library(kazaam)
@@ -36,4 +37,3 @@ finalize()
 }
 
 }
-

@@ -2,21 +2,21 @@
 % Please edit documentation in R/arithmetic.r
 \docType{methods}
 \name{arithmetic}
-\alias{*,numeric,shaq-method}
-\alias{*,shaq,numeric-method}
-\alias{*,shaq,shaq-method}
-\alias{+,numeric,shaq-method}
-\alias{+,shaq,numeric-method}
-\alias{+,shaq,shaq-method}
-\alias{-,numeric,shaq-method}
-\alias{-,shaq,numeric-method}
-\alias{-,shaq,shaq-method}
-\alias{/,numeric,shaq-method}
-\alias{/,shaq,numeric-method}
-\alias{/,shaq,shaq-method}
-\alias{^,shaq,numeric-method}
-\alias{^,shaq,shaq-method}
 \alias{arithmetic}
+\alias{+,shaq,shaq-method}
+\alias{+,shaq,numeric-method}
+\alias{+,numeric,shaq-method}
+\alias{-,shaq,shaq-method}
+\alias{-,shaq,numeric-method}
+\alias{-,numeric,shaq-method}
+\alias{*,shaq,shaq-method}
+\alias{*,shaq,numeric-method}
+\alias{*,numeric,shaq-method}
+\alias{/,shaq,shaq-method}
+\alias{/,shaq,numeric-method}
+\alias{/,numeric,shaq-method}
+\alias{^,shaq,shaq-method}
+\alias{^,shaq,numeric-method}
 \title{Arithmetic Operators}
 \usage{
 \S4method{+}{shaq,shaq}(e1, e2)
@@ -66,6 +66,7 @@ For binary operations involving two shaqs, they must be distributed
 
 Each operation is completely local.
 }
+
 \examples{
 \dontrun{
 library(kazaam)
@@ -80,4 +81,3 @@ finalize()
 }
 
 }
-

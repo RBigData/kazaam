@@ -6,8 +6,6 @@
 \alias{rcond,shaq-method}
 \title{rcond}
 \usage{
-rcond(x, norm, ...)
-
 \S4method{rcond}{shaq}(x, norm = c("O", "I", "1"), triangular = FALSE, ...)
 }
 \arguments{
@@ -32,6 +30,7 @@ calling \code{base::rcond()} on the local R matrix.
 The operation is completely local except for forming the crossproduct, which
 is an \code{allreduce()} call, quadratic on the number of columns.
 }
+
 \examples{
 \dontrun{
 library(kazaam)
@@ -47,4 +46,3 @@ finalize()
 }
 
 }
-

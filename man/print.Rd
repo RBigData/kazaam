@@ -23,6 +23,7 @@ Print method for a shaq.
 
 The operation is completely local.
 }
+
 \examples{
 \dontrun{
 library(kazaam)
@@ -34,4 +35,3 @@ finalize()
 }
 
 }
-

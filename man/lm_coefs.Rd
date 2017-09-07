@@ -33,6 +33,7 @@ balanced, so that each MPI rank owns roughly the same amount of data.
 
 The operation has the same communication as
 }
+
 \examples{
 \dontrun{
 library(kazaam)
@@ -51,4 +52,3 @@ finalize()
 \seealso{
 \code{\link{glms}}
 }
-
