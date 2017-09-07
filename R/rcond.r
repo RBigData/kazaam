@@ -34,6 +34,7 @@
 #' finalize()
 #' }
 #' 
+#' @method rcond shaq
 #' @name rcond
 #' @rdname rcond
 NULL
@@ -47,11 +48,6 @@ rcond.shaq = function(x, norm=c("O", "I", "1"), triangular=FALSE, ...)
   base::rcond(R, norm=norm, triangular=TRUE, ...)
 }
 
-
-
-#' @rdname rcond
-#' @export
-setGeneric(name="rcond", useAsDefault=base::rcond, package="kazaam")
 
 #' @rdname rcond
 #' @export
