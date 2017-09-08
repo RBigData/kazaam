@@ -1,9 +1,3 @@
-euc_norm = function(x)
-{
-  dim(x) = c(length(x), 1L) # eye rolling emoji
-  norm(x, type="F")
-}
-
 get_numbefore = function(x)
 {
   allm.local = unlist(pbdMPI::allgather(nrow(Data(x))))
@@ -11,9 +5,17 @@ get_numbefore = function(x)
   numbefore[comm.rank() + 1L]
 }
 
+
+
+l2_norm = function(x)
+{
+  dim(x) = c(length(x), 1L) # eye rolling emoji
+  norm(x, type="F")
+}
+
 find_index_of_closest = function(x, Y)
 {
-  dists = sapply(1:ncol(Y), function(j) euc_norm(x - Y[, j]))
+  dists = sapply(1:ncol(Y), function(j) l2_norm(x - Y[, j]))
   which.min(dists)
 }
 
