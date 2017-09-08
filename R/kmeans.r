@@ -6,7 +6,7 @@ euc_norm = function(x)
 
 get_numbefore = function(x)
 {
-  allm.local = unlist(allgather(nrow(Data(x))))
+  allm.local = unlist(pbdMPI::allgather(nrow(Data(x))))
   numbefore = c(0, cumsum(allm.local)[1:(length(allm.local)-1)])
   numbefore[comm.rank() + 1L]
 }
