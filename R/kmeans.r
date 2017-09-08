@@ -120,7 +120,6 @@ km.init = function(x, k, numbefore)
 #' @export
 km = function(x, k=2, maxiter=100)
 {
-  
   numbefore = get_numbefore(x)
   
   centers = centers.old = km.init(x, k, numbefore)
@@ -135,6 +134,6 @@ km = function(x, k=2, maxiter=100)
     centers.old = centers
   }
   
-  labels = shaq(labels, length(labels), 1L, checks=FALSE)
+  labels = shaq(matrix(labels), ncols=1L, checks=FALSE)
   list(centers=centers, labels=labels, iterations=iter)
 }

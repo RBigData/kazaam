@@ -67,6 +67,7 @@ shaq.matrix = function(Data, nrows, ncols, checks=TRUE)
     check.is.natnum(nrows)
   if (!missing(ncols))
     check.is.natnum(ncols)
+  
   check.is.flag(checks)
   
   if (missing(nrows) || missing(ncols))
