@@ -2,11 +2,12 @@ suppressMessages(library(kazaam))
 set.seed(1234)
 
 m.local = 10
+m = m.local*comm.size()
 n = 2
 
 k = comm.size()
 data = matrix(rnorm(m.local*n, mean=10*comm.rank()), m.local, n)
-x = shaq(data)
+x = shaq(data, m, n, checks=FALSE)
 
 cl = km(x, k=k)
 
