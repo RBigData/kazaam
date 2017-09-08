@@ -5,13 +5,13 @@
 #include <mpi.h>
 
 
-// upper triangle of t(x) %*% x
 void dsyrk_(const char *const restrict uplo, const char *const restrict trans,
   const int *const restrict n, const int *const restrict k,
   const double *const restrict alpha, const double *const restrict a,
   const int *const restrict lda, const double *const restrict beta,
   double *const restrict c, const int *const restrict ldc);
 
+// upper triangle of x'x
 static inline void crossprod(const int m, const int n, const double alpha, const double *const restrict x, double *const restrict c)
 {
   dsyrk_(&(char){'L'}, &(char){'T'}, &n, &m, &alpha, x, &m, &(double){0.0}, c, &n);

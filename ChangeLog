@@ -4,6 +4,7 @@ Release 0.2-0:
   * Added "^" method.
   * Added sum() method.
   * Improved memory usage and communication pattern of crossprod().
+  * Added k-means method km().
 
 Release 0.1-0:
   * Added expand() and collapse().
