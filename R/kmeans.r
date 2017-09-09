@@ -7,23 +7,9 @@ get_numbefore = function(x)
 
 
 
-l2_norm = function(x)
-{
-  dim(x) = c(length(x), 1L) # eye rolling emoji
-  norm(x, type="F")
-}
-
-find_index_of_closest = function(x, Y)
-{
-  dists = sapply(1:ncol(Y), function(j) l2_norm(x - Y[, j]))
-  which.min(dists)
-}
-
-
-
 km.assign = function(x, centers)
 {
-  sapply(1:nrow(Data(x)), function(i) find_index_of_closest(Data(x)[i, ], centers))
+  .Call(R_km_assign, Data(x), centers)
 }
 
 
@@ -131,8 +117,10 @@ km = function(x, k=2, maxiter=100)
   {
     centers = km.update(x, centers, labels)
     labels = km.assign(x, centers)
+    
     if (isTRUE(all.equal(centers, centers.old)))
       break
+    
     centers.old = centers
   }
   
