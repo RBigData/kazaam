@@ -25,7 +25,6 @@ SPMD_LDFLAGS=`${R_SCMD} "source('./R/get_conf.r');get.conf('PKG_LIBS','"${R_ARCH
 echo " "
 echo "****************** Results of kazaam package configure *****************"
 echo " "
-echo ">> SLAP_LDFLAGS = ${SLAP_LDFLAGS}"
 echo ">> SPMD_CPPFLAGS = ${SPMD_CPPFLAGS}"
 echo ">> SPMD_LDFLAGS = ${SPMD_LDFLAGS}"
 echo " "
