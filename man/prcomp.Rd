@@ -17,7 +17,7 @@
 
 \item{scale.}{Should columns are rescaled to unit variance?}
 
-\item{tol}{Ignored.}
+\item{tol}{The cutoff for components.}
 
 \item{...}{Ignored.}
 }
