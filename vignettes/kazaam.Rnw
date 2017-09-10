@@ -9,7 +9,7 @@
 
 \mytitle{Guide to the kazaam Package}
 \mysubtitle{}
-\myversion{0.1-0}
+\myversion{0.2-0}
 \myauthor{
 \centering
 Drew Schmidt \\ 
