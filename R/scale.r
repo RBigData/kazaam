@@ -38,7 +38,6 @@ scale.shaq = function(x, center=TRUE, scale=TRUE)
   if (!center && !scale) # u dum
     return(x)
   
-  
   cm = colMeans(x)
   
   if (center)

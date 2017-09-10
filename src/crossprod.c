@@ -38,13 +38,14 @@ static inline void symmetrize(const int n, double *restrict x)
 
 
 
-SEXP R_mpicrossprod(SEXP x)
+SEXP R_mpicrossprod(SEXP x, SEXP alpha_)
 {
   SEXP ret;
   size_t pos = 0;
   const int m = nrows(x);
   const int n = ncols(x);
   const size_t compact_len = (n*n) - (n*(n-1))/2;
+  const double alpha = REAL(alpha_)[0];
   
   PROTECT(ret = allocMatrix(REALSXP, n, n));
   double *ret_pt = REAL(ret);
@@ -74,7 +75,7 @@ SEXP R_mpicrossprod(SEXP x)
   for (int j=0; j<n; j++)
   {
     for (int i=j; i<n; i++)
-      ret_pt[i + n*j] = compact[pos++];
+      ret_pt[i + n*j] = alpha * compact[pos++];
   }
   
   symmetrize(n, ret_pt);

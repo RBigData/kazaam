@@ -31,6 +31,17 @@ NULL
 
 
 
+cp.internal = function(x, alpha)
+{
+  data = Data(x)
+  if (!is.double(data))
+    storage.mode(data) = "double"
+  
+  alpha = as.double(alpha)
+  
+  .Call(R_mpicrossprod, data, alpha)
+}
+
 cp.shaq = function(x, y = NULL)
 {
   if (!is.null(y))
@@ -47,11 +58,7 @@ cp.shaq = function(x, y = NULL)
   {
     # cp.local = base::crossprod(Data(x))
     # allreduce(cp.local)
-    data = Data(x)
-    if (!is.double(data))
-      storage.mode(data) = "double"
-    
-    .Call(R_mpicrossprod, data)
+    cp.internal(x, 1.0)
   }
 }
 
