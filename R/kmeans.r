@@ -58,6 +58,10 @@ km.init = function(x, k, numbefore)
 #' 
 #' k-means via Lloyd's Algorithm.
 #' 
+#' Note that the function does not respect \code{set.seed()} or
+#' \code{comm.set.seed()}.  For managing random seeds, use the \code{seed}
+#' parameter.
+#' 
 #' @details
 #' The iterations stop either when the maximum number of iterations have been
 #' achieved, or when the centers in the current iteration are basically the same
@@ -79,6 +83,10 @@ km.init = function(x, k, numbefore)
 #' The 'k' in k-means.
 #' @param maxiter
 #' The maximum number of iterations possible.
+#' @param seed
+#' A seed for determining the (random) initial centroids.  Each process has to
+#' use the same seed or very strange things may happen.  If you do not provide
+#' a seed, a good initial seed will be chosen.
 #' 
 #' @return
 #' A list containing the cluster centers (global), the observation labels i.e.
@@ -108,7 +116,7 @@ km.init = function(x, k, numbefore)
 #' @export
 km = function(x, k=2, maxiter=100, seed=get_random_seed())
 {
-  comm.set.seed(seed, diff=FALSE)
+  pbdMPI::comm.set.seed(seed, diff=FALSE)
   
   numbefore = get_numbefore(x)
   
