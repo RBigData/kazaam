@@ -1,3 +1,7 @@
+add1 = function(x) .Call(R_add1, x)
+
+memcpy = function(dest, src) .Call(R_memcpy, dest, src)
+
 get_numbefore = function(x)
 {
   allm.local = unlist(pbdMPI::allgather(nrow(Data(x))))
@@ -5,32 +9,28 @@ get_numbefore = function(x)
   numbefore[comm.rank() + 1L]
 }
 
-
-
-km.assign = function(x, centers)
+get_random_seed = function()
 {
-  .Call(R_km_assign, Data(x), centers)
+  if (comm.rank() == 0)
+    seed = bitwXor(Sys.getpid(), as.integer(Sys.time()))
+  else
+    seed = 0L
+  
+  allreduce(seed)
+}
+
+
+
+km.assign = function(x, centers, labels)
+{
+  .Call(R_km_assign, Data(x), centers, labels)
 }
 
 
 
 km.update = function(x, centers, labels)
 {
-  k = ncol(centers)
-  
-  n.labels = sapply(1:k, function(i) length(which(labels == i)))
-  n.labels = allreduce(n.labels)
-  
-  centers = matrix(0, ncol(x), k)
-  for (lab in 1:k)
-  {
-    cs = colSums(Data(x)[which(labels==lab), , drop=FALSE])
-    if (length(cs) > 0)
-      centers[, lab] = cs
-  }
-  
-  centers = allreduce(centers)
-  sweep(centers, MARGIN=2, STATS=n.labels, FUN='/')
+  .Call(R_km_update, Data(x), centers, labels)
 }
 
 
@@ -106,24 +106,32 @@ km.init = function(x, k, numbefore)
 #' TODO
 #' 
 #' @export
-km = function(x, k=2, maxiter=100)
+km = function(x, k=2, maxiter=100, seed=get_random_seed())
 {
+  comm.set.seed(seed, diff=FALSE)
+  
   numbefore = get_numbefore(x)
   
-  centers = centers.old = km.init(x, k, numbefore)
-  labels = km.assign(x, centers)
+  centers = km.init(x, k, numbefore)
+  centers.old = matrix(0.0, nrow(centers), ncol(centers))
+  memcpy(centers.old, centers)
+  
+  labels = integer(nrow(Data(x)))
+  km.assign(x, centers, labels)
   
   for (iter in 1:maxiter)
   {
-    centers = km.update(x, centers, labels)
-    labels = km.assign(x, centers)
+    km.update(x, centers, labels)
+    km.assign(x, centers, labels)
     
     if (isTRUE(all.equal(centers, centers.old)))
       break
     
-    centers.old = centers
+    memcpy(centers.old, centers)
   }
   
-  labels = shaq(matrix(labels), ncols=1L, checks=FALSE)
-  list(centers=centers, labels=labels, iterations=iter)
+  add1(labels)
+  
+  labels.shaq = shaq(matrix(labels), ncols=1L, checks=FALSE)
+  list(centers=centers, labels=labels.shaq, iterations=iter)
 }

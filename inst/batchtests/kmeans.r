@@ -1,5 +1,4 @@
 suppressMessages(library(kazaam))
-set.seed(1234)
 
 m.local = 10
 m = m.local*comm.size()
@@ -9,7 +8,7 @@ k = comm.size()
 data = matrix(rnorm(m.local*n, mean=10*comm.rank()), m.local, n)
 x = shaq(data, m, n, checks=FALSE)
 
-cl = km(x, k=k)
+cl = km(x, k=k, seed=1234)
 
 test = allreduce(sum(diff(Data(cl$labels))))
 comm.print(all.equal(test, 0.0))

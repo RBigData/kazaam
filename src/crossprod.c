@@ -1,8 +1,8 @@
 // NOTE: throughout we are assuming m > n
 
+#include <mpi.h>
 #include <R.h>
 #include <Rinternals.h>
-#include <mpi.h>
 
 
 void dsyrk_(const char *const restrict uplo, const char *const restrict trans,
