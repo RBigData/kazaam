@@ -111,7 +111,8 @@ km.init = function(x, k, numbefore)
 #' }
 #' 
 #' @references
-#' TODO
+#' Phillips, J.. Data Mining: Algorithms, Geometry, and Probability.
+#' https://www.cs.utah.edu/~jeffp/DMBook/DM-AGP.html
 #' 
 #' @export
 km = function(x, k=2, maxiter=100, seed=get_random_seed())

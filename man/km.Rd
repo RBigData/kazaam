@@ -66,5 +66,6 @@ finalize()
 
 }
 \references{
-TODO
+Phillips, J.. Data Mining: Algorithms, Geometry, and Probability.
+https://www.cs.utah.edu/~jeffp/DMBook/DM-AGP.html
 }
