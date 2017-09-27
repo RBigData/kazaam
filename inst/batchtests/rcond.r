@@ -3,9 +3,6 @@ comm.set.seed(1234)
 
 tester = function(x, dx)
 {
-  test = rcond(dx)
-  comm.print(all.equal(rcond(x), test))
-  
   norm = "O"
   test = rcond(dx, norm)
   comm.print(all.equal(rcond(x, norm), test))
