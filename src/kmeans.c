@@ -134,7 +134,10 @@ SEXP R_km_update(SEXP x_, SEXP centers_, SEXP labels_)
   
   check = MPI_Allreduce(MPI_IN_PLACE, centers, n*k, MPI_DOUBLE, MPI_SUM, MPI_COMM_WORLD);
   if (check != MPI_SUCCESS)
+  {
+    free(nlabels);
     error("MPI_Allreduce returned error code %d\n", check);
+  }
   
   
   
@@ -145,7 +148,10 @@ SEXP R_km_update(SEXP x_, SEXP centers_, SEXP labels_)
   
   check = MPI_Allreduce(MPI_IN_PLACE, nlabels, k, MPI_INTEGER, MPI_SUM, MPI_COMM_WORLD);
   if (check != MPI_SUCCESS)
+  {
+    free(nlabels);
     error("MPI_Allreduce returned error code %d\n", check);
+  }
     
   for (int j=0; j<k; j++)
   {
