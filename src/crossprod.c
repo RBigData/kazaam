@@ -11,13 +11,13 @@ void dsyrk_(const char *const restrict uplo, const char *const restrict trans,
   const int *const restrict lda, const double *const restrict beta,
   double *const restrict c, const int *const restrict ldc);
 
-// upper triangle of x'x
+// lower triangle of x'x
 static inline void crossprod(const int m, const int n, const double alpha, const double *const restrict x, double *const restrict c)
 {
   dsyrk_(&(char){'L'}, &(char){'T'}, &n, &m, &alpha, x, &m, &(double){0.0}, c, &n);
 }
 
-// Copy upper triangle to lower
+// Copy lower triangle to lower
 static inline void symmetrize(const int n, double *restrict x)
 {
   const int blocksize = 8; // TODO check cache line explicitly
@@ -50,38 +50,33 @@ SEXP R_mpicrossprod(SEXP x, SEXP alpha_)
   PROTECT(ret = allocMatrix(REALSXP, n, n));
   double *ret_pt = REAL(ret);
   
-  double *compact = malloc(compact_len * sizeof(*compact));
-  if (compact == NULL)
-    error("OOM");
-  
-  
   // store the crossproduct compactly (diag + upper tri as an array)
   crossprod(m, n, 1.0, REAL(x), ret_pt);
   
-  pos = 0;
-  for (int j=0; j<n; j++)
+  pos = n;
+  for (int j=1; j<n; j++)
   {
     for (int i=j; i<n; i++)
-      compact[pos++] = ret_pt[i + n*j];
+      ret_pt[pos++] = ret_pt[i + n*j];
   }
   
   // combine packed crossproduct across MPI ranks
-  int check = MPI_Allreduce(MPI_IN_PLACE, compact, compact_len, MPI_DOUBLE, MPI_SUM, MPI_COMM_WORLD);
+  int check = MPI_Allreduce(MPI_IN_PLACE, ret_pt, compact_len, MPI_DOUBLE, MPI_SUM, MPI_COMM_WORLD);
   if (check != MPI_SUCCESS)
     error("MPI_Allreduce returned error code %d\n", check);
   
   // reconstruct the crossproduct as a full matrix
-  pos = 0;
-  for (int j=0; j<n; j++)
+  for (int j=n-1; j>0; j--)
   {
-    for (int i=j; i<n; i++)
-      ret_pt[i + n*j] = alpha * compact[pos++];
+    for (int i=n-1; i>=j; i--)
+    {
+      ret_pt[i + n*j] = alpha * ret_pt[--pos];
+    }
   }
   
   symmetrize(n, ret_pt);
   
   
-  free(compact);
   UNPROTECT(1);
   return ret;
 }
