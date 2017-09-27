@@ -1,15 +1,14 @@
-// NOTE: throughout we are assuming m > n
+// NOTE: throughout we are explicitly assuming m > n
 
 #include <mpi.h>
 #include <R.h>
 #include <Rinternals.h>
 
+#include "mpi_utils.h"
+#include "types.h"
 
-void dsyrk_(const char *const restrict uplo, const char *const restrict trans,
-  const int *const restrict n, const int *const restrict k,
-  const double *const restrict alpha, const double *const restrict a,
-  const int *const restrict lda, const double *const restrict beta,
-  double *const restrict c, const int *const restrict ldc);
+void dsyrk_(cchar_r uplo, cchar_r trans, cint_r n, cint_r k, cdbl_r alpha,
+  cdbl_r a, cint_r lda, cdbl_r beta, dbl_r c, cint_r ldc);
 
 // lower triangle of x'x
 static inline void crossprod(const int m, const int n, const double alpha, const double *const restrict x, double *const restrict c)
@@ -50,7 +49,7 @@ SEXP R_mpicrossprod(SEXP x, SEXP alpha_)
   PROTECT(ret = allocMatrix(REALSXP, n, n));
   double *ret_pt = REAL(ret);
   
-  // store the crossproduct compactly (diag + upper tri as an array)
+  // store the crossproduct compactly (diag + tri as an array)
   crossprod(m, n, 1.0, REAL(x), ret_pt);
   
   pos = n;
@@ -63,7 +62,7 @@ SEXP R_mpicrossprod(SEXP x, SEXP alpha_)
   // combine packed crossproduct across MPI ranks
   int check = MPI_Allreduce(MPI_IN_PLACE, ret_pt, compact_len, MPI_DOUBLE, MPI_SUM, MPI_COMM_WORLD);
   if (check != MPI_SUCCESS)
-    error("MPI_Allreduce returned error code %d\n", check);
+    R_mpi_throw_err(check);
   
   // reconstruct the crossproduct as a full matrix
   for (int j=n-1; j>0; j--)

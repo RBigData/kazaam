@@ -1,12 +1,12 @@
 #include <R.h>
 #include <Rinternals.h>
 
+#include "types.h"
+
 
 #define STR(x) ((char*)CHAR(STRING_ELT(x,0)))
 
-void dtrtri_(const char *const restrict uplo, const char *const restrict diag, 
-  const int *const restrict n, double *const restrict a,
-  const int *const restrict lda, const int *const restrict info);
+void dtrtri_(cchar_r uplo, cchar_r diag, cint_r n, dbl_r a, cint_r lda, int_r info);
 
 // type checks disabled because the function isn't public-facing. Let's see if I
 // regret this decision
