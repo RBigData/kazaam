@@ -73,6 +73,9 @@ SEXP R_mpicrossprod(SEXP x, SEXP alpha_)
     }
   }
   
+  for (int i=0; i<n; i++)
+    ret_pt[i] *= alpha;
+  
   symmetrize(n, ret_pt);
   
   
