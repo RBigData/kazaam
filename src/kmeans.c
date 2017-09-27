@@ -2,11 +2,8 @@
 #include <R.h>
 #include <Rinternals.h>
 
+#include "types.h"
 
-typedef double *const restrict dbl_r;
-typedef const double *const restrict cdbl_r;
-typedef int *const restrict int_r;
-typedef const int *const restrict cint_r;
 
 // -----------------------------------------------------------------------------
 // utils
