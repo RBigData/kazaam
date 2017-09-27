@@ -5,6 +5,16 @@
 #include "types.h"
 
 
+static inline void R_mpi_throw_err(int check)
+{
+  int rank;
+  MPI_Comm_rank(MPI_COMM_WORLD, &rank);
+  if (rank == 0)
+    error("MPI_Allreduce returned error code %d\n", check);
+  else
+    error(""); // FIXME
+}
+
 // -----------------------------------------------------------------------------
 // utils
 // -----------------------------------------------------------------------------
@@ -136,9 +146,8 @@ SEXP R_km_update(SEXP x_, SEXP centers_, SEXP labels_)
   if (check != MPI_SUCCESS)
   {
     free(nlabels);
-    error("MPI_Allreduce returned error code %d\n", check);
+    R_mpi_throw_err(check);
   }
-  
   
   
   memset(nlabels, 0, k*sizeof(*nlabels));
@@ -150,7 +159,7 @@ SEXP R_km_update(SEXP x_, SEXP centers_, SEXP labels_)
   if (check != MPI_SUCCESS)
   {
     free(nlabels);
-    error("MPI_Allreduce returned error code %d\n", check);
+    R_mpi_throw_err(check);
   }
     
   for (int j=0; j<k; j++)
