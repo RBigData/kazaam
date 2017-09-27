@@ -63,9 +63,9 @@ ranshaq = function(generator, nrows, ncols, local=FALSE, ...)
   else
   {
     size = comm.size()
-    nrows.local = as.integer(nrows %/% size)
-    base = as.integer(nrows %/% size)
-    rem = as.integer(nrows - nrows.local*size)
+    nrows.local = floor(nrows %/% size)
+    base = floor(nrows %/% size)
+    rem = floor(nrows - nrows.local*size)
     if (comm.rank()+1 <= rem)
       nrows.local = nrows.local + 1L
   }
