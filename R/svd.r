@@ -49,10 +49,7 @@ NULL
 
 svd.shaq = function(x, retu=FALSE, retv=FALSE)
 {
-  if (!retu && !retv)
-    only.values = TRUE
-  else
-    only.values = FALSE
+  only.values = !retu && !retv
   
   cp = cp.shaq(x)
   

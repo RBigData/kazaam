@@ -16,7 +16,7 @@ static inline void crossprod(const int m, const int n, const double alpha, const
   dsyrk_(&(char){'L'}, &(char){'T'}, &n, &m, &alpha, x, &m, &(double){0.0}, c, &n);
 }
 
-// Copy lower triangle to lower
+// Copy lower triangle to upper
 static inline void symmetrize(const int n, double *restrict x)
 {
   const int blocksize = 8; // TODO check cache line explicitly
