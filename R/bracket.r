@@ -43,7 +43,7 @@ bracket.shaq = function(x, i, j)
   
   if (missing(i))
   {
-    Data = Data(x)[, j, drop=FALSE]
+    Data = DATA(x)[, j, drop=FALSE]
     if (length(j) == 0 || (length(j) == 1 && j == 0))
       ncols = 0
     else if (is.logical(j))
@@ -68,14 +68,14 @@ setMethod("[", signature(x="shaq"), bracket.shaq)
 bracket_replace.shaq = function(x, i, j, ..., value)
 {
   if (is.shaq(value))
-    val = Data(value)
+    val = DATA(value)
   else
     val = value
   
   if (missing(i) && missing(j))
     DATA(x) = val
   else if (missing(i))
-    Data(x)[, j] = val
+    DATA(x)[, j] = val
   else # FIXME
     comm.stop("not yet implemented for i non-missing")
   

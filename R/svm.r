@@ -60,7 +60,7 @@ hinge_loss = function(z) pmax(0, z)
 cost_svm = function(w, x, y)
 {
   m = nrow(x)
-  J.local = 1/m * sum(hinge_loss(1 - Data(y) * Data(x) %*% w))
+  J.local = 1/m * sum(hinge_loss(1 - DATA(y) * DATA(x) %*% w))
 
   allreduce(J.local) + 1/m * 0.5 * norm2(w)
 }

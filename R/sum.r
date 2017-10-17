@@ -40,7 +40,7 @@ NULL
 summer = function(x, na.rm)
 {
   if (is.shaq(x))
-    sum(Data(x), na.rm=na.rm)
+    sum(DATA(x), na.rm=na.rm)
   else
   {
     if (comm.rank() == 0)
@@ -64,7 +64,7 @@ sum.shaq = function(x, ..., na.rm=FALSE)
     allreduce(s)
   else
   {
-    local = sum(Data(x), na.rm=na.rm) + s
+    local = sum(DATA(x), na.rm=na.rm) + s
     allreduce(local)
   }
 }

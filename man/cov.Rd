@@ -2,9 +2,9 @@
 % Please edit documentation in R/cov.r
 \docType{methods}
 \name{cov}
+\alias{cor,shaq-method}
 \alias{cov}
 \alias{cov,shaq-method}
-\alias{cor,shaq-method}
 \title{Covariance and Correlation}
 \usage{
 \S4method{cov}{shaq}(x, y = NULL, use = "everything", method = "pearson")
@@ -32,7 +32,6 @@ Covariance and (pearson) correlation.
 The operation is completely local except for forming the crossproduct, which
 is an \code{allreduce()} call, quadratic on the number of columns.
 }
-
 \examples{
 \dontrun{
 library(kazaam)
@@ -45,3 +44,4 @@ finalize()
 }
 
 }
+

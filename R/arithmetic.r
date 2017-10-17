@@ -47,7 +47,7 @@ shaqshaq.check = function(s1, s2)
   if (nrow(s1) != nrow(s1)  ||  ncol(s1) != ncol(s2))
     stop("non-conformable arrays")
   
-  if (nrow(Data(s1)) != nrow(Data(s2))  ||  ncol(Data(s1)) != ncol(Data(s2)))
+  if (nrow(DATA(s1)) != nrow(DATA(s2))  ||  ncol(DATA(s1)) != ncol(DATA(s2)))
     stop("shaqs not distributed identically")
 }
 
@@ -60,7 +60,7 @@ setMethod("+", signature(e1="shaq", e2="shaq"),
   {
     shaqshaq.check(e1, e2)
     
-    DATA(e1) = Data(e1) + Data(e2)
+    DATA(e1) = DATA(e1) + DATA(e2)
     e1
   }
 )
@@ -72,7 +72,7 @@ setMethod("+", signature(e1="shaq", e2="numeric"),
   {
     bounds.check(e1, e2)
     
-    DATA(e1) = Data(e1) + e2
+    DATA(e1) = DATA(e1) + e2
     e1
   }
 )
@@ -95,7 +95,7 @@ setMethod("-", signature(e1="shaq", e2="shaq"),
   {
     shaqshaq.check(e1, e2)
     
-    DATA(e1) = Data(e1) - Data(e2)
+    DATA(e1) = DATA(e1) - DATA(e2)
     e1
   }
 )
@@ -107,7 +107,7 @@ setMethod("-", signature(e1="shaq", e2="numeric"),
   {
     bounds.check(e1, e2)
     
-    DATA(e1) = Data(e1) - e2
+    DATA(e1) = DATA(e1) - e2
     e1
   }
 )
@@ -119,7 +119,7 @@ setMethod("-", signature(e1="numeric", e2="shaq"),
   {
     bounds.check(e2, e1)
     
-    DATA(e2) = e1 - Data(e2)
+    DATA(e2) = e1 - DATA(e2)
     e2
   }
 )
@@ -133,7 +133,7 @@ setMethod("*", signature(e1="shaq", e2="shaq"),
   {
     shaqshaq.check(e1, e2)
     
-    DATA(e1) = Data(e1) * Data(e2)
+    DATA(e1) = DATA(e1) * DATA(e2)
     e1
   }
 )
@@ -145,7 +145,7 @@ setMethod("*", signature(e1="shaq", e2="numeric"),
   {
     bounds.check(e1, e2)
     
-    DATA(e1) = Data(e1) * e2
+    DATA(e1) = DATA(e1) * e2
     e1
   }
 )
@@ -169,7 +169,7 @@ setMethod("/", signature(e1="shaq", e2="shaq"),
   {
     shaqshaq.check(e1, e2)
     
-    DATA(e1) = Data(e1) / Data(e2)
+    DATA(e1) = DATA(e1) / DATA(e2)
     e1
   }
 )
@@ -181,7 +181,7 @@ setMethod("/", signature(e1="shaq", e2="numeric"),
   {
     bounds.check(e1, e2)
     
-    DATA(e1) = Data(e1) / e2
+    DATA(e1) = DATA(e1) / e2
     e1
   }
 )
@@ -193,7 +193,7 @@ setMethod("/", signature(e1="numeric", e2="shaq"),
   {
     bounds.check(e2, e1)
     
-    DATA(e2) = e1 / Data(e2)
+    DATA(e2) = e1 / DATA(e2)
     e2
   }
 )
@@ -207,7 +207,7 @@ setMethod("^", signature(e1="shaq", e2="shaq"),
   {
     shaqshaq.check(e1, e2)
     
-    DATA(e1) = Data(e1) ^ Data(e2)
+    DATA(e1) = DATA(e1) ^ DATA(e2)
     e1
   }
 )
@@ -219,7 +219,7 @@ setMethod("^", signature(e1="shaq", e2="numeric"),
   {
     bounds.check(e1, e2)
     
-    DATA(e1) = Data(e1) ^ e2
+    DATA(e1) = DATA(e1) ^ e2
     e1
   }
 )

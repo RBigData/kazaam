@@ -33,7 +33,7 @@ NULL
 
 cp.internal = function(x, alpha)
 {
-  data = Data(x)
+  data = DATA(x)
   if (!is.double(data))
     storage.mode(data) = "double"
   
@@ -48,7 +48,7 @@ cp.shaq = function(x, y = NULL)
   {
     if (is.shaq(y))
     {
-      cp.local = crossprod(Data(x), Data(y))
+      cp.local = crossprod(DATA(x), DATA(y))
       allreduce(cp.local)
     }
     else
@@ -56,7 +56,7 @@ cp.shaq = function(x, y = NULL)
   }
   else
   {
-    # cp.local = base::crossprod(Data(x))
+    # cp.local = base::crossprod(DATA(x))
     # allreduce(cp.local)
     cp.internal(x, 1.0)
   }

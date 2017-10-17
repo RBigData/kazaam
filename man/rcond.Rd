@@ -30,7 +30,6 @@ calling \code{base::rcond()} on the local R matrix.
 The operation is completely local except for forming the crossproduct, which
 is an \code{allreduce()} call, quadratic on the number of columns.
 }
-
 \examples{
 \dontrun{
 library(kazaam)
@@ -46,3 +45,4 @@ finalize()
 }
 
 }
+

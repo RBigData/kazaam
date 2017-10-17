@@ -4,7 +4,7 @@ memcpy = function(dest, src) .Call(R_memcpy, dest, src)
 
 get_numbefore = function(x)
 {
-  allm.local = unlist(pbdMPI::allgather(nrow(Data(x))))
+  allm.local = unlist(pbdMPI::allgather(nrow(DATA(x))))
   numbefore = c(0, cumsum(allm.local)[1:(length(allm.local)-1)])
   numbefore[comm.rank() + 1L]
 }
@@ -23,14 +23,14 @@ get_random_seed = function()
 
 km.assign = function(x, centers, labels)
 {
-  .Call(R_km_assign, Data(x), centers, labels)
+  .Call(R_km_assign, DATA(x), centers, labels)
 }
 
 
 
 km.update = function(x, centers, labels)
 {
-  .Call(R_km_update, Data(x), centers, labels)
+  .Call(R_km_update, DATA(x), centers, labels)
 }
 
 
@@ -39,13 +39,13 @@ km.update = function(x, centers, labels)
 km.init = function(x, k, numbefore)
 {
   m = nrow(x)
-  m.local = nrow(Data(x))
+  m.local = nrow(DATA(x))
   
   rows = sort(sample(1:m, size=k, replace=FALSE))
   centers.rows.local = numbefore < rows & rows <= numbefore+m.local
   
   x.local.ind = rows[which(centers.rows.local)] - numbefore
-  centers.local = t(Data(x)[x.local.ind, ])
+  centers.local = t(DATA(x)[x.local.ind, ])
   
   centers = matrix(0, ncol(x), k)
   centers[, centers.rows.local] = centers.local
@@ -125,7 +125,7 @@ km = function(x, k=2, maxiter=100, seed=get_random_seed())
   centers.old = matrix(0.0, nrow(centers), ncol(centers))
   memcpy(centers.old, centers)
   
-  labels = integer(nrow(Data(x)))
+  labels = integer(nrow(DATA(x)))
   km.assign(x, centers, labels)
   
   for (iter in 1:maxiter)

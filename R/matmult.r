@@ -41,7 +41,7 @@ matmult.shaq = function(x, y)
   
   nrows = nrow(x)
   ncols = NCOL(y)
-  Data = Data(x) %*% y
+  Data = DATA(x) %*% y
   
   shaq(Data, nrows, ncols, checks=FALSE)
 }

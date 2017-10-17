@@ -62,7 +62,7 @@ NULL
 cost_gaussian = function(theta, x, y)
 {
   m = nrow(x)
-  J.local = (1/(2*m))*sum((Data(x)%*%theta - Data(y))^2)
+  J.local = (1/(2*m))*sum((DATA(x)%*%theta - DATA(y))^2)
   
   allreduce(J.local)
 }
@@ -87,9 +87,9 @@ linkinv_logistic = binomial(logit)$linkinv
 cost_logistic = function(theta, x, y)
 {
   m = nrow(x)
-  eta = Data(x)%*%theta
+  eta = DATA(x)%*%theta
   h = linkinv_logistic(eta)
-  J.local = (1/m)*sum((-Data(y)*log(h)) - ((1-Data(y))*log(1-h)))
+  J.local = (1/m)*sum((-DATA(y)*log(h)) - ((1-DATA(y))*log(1-h)))
   
   allreduce(J.local)
 }
@@ -113,8 +113,8 @@ linkinv_poisson = poisson(log)$linkinv
 
 cost_poisson = function(theta, x, y)
 {
-  eta = Data(x)%*%theta
-  J.local = -sum(Data(y) * eta - linkinv_poisson(eta))
+  eta = DATA(x)%*%theta
+  J.local = -sum(DATA(y) * eta - linkinv_poisson(eta))
   
   allreduce(J.local)
 }

@@ -39,13 +39,13 @@ cbind.shaq = function(..., deparse.level=1)
   
   nrows = nrow(args[[1]])
   ncols = sum(sapply(args, ncol))
-  nrows.local = nrow(Data(args[[1]]))
-  ncols.local = sapply(args, function(x) ncol(Data(x)))
+  nrows.local = nrow(DATA(args[[1]]))
+  ncols.local = sapply(args, function(x) ncol(DATA(x)))
   Data = matrix(0, nrows.local, sum(ncols.local))
   
   ncols.local = c(0L, cumsum(ncols.local))
   for (i in 1:length(args))
-    Data[, ncols.local[i] + (1:ncol(Data(args[[i]])))] = Data(args[[i]])
+    Data[, ncols.local[i] + (1:ncol(DATA(args[[i]])))] = DATA(args[[i]])
   
   shaq(Data, nrows, ncols, checks=FALSE)
 }

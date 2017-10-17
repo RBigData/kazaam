@@ -36,7 +36,7 @@ colsum.shaq = function(x, na.rm = FALSE, dims = 1L)
 {
   check.is.flag(na.rm)
   
-  cs = base::colSums(Data(x), na.rm=na.rm)
+  cs = base::colSums(DATA(x), na.rm=na.rm)
   allreduce(cs)
 }
 
@@ -44,7 +44,7 @@ colmean.shaq = function(x, na.rm = FALSE, dims = 1L)
 {
   check.is.flag(na.rm)
   
-  cs = base::colSums(Data(x), na.rm=na.rm)
+  cs = base::colSums(DATA(x), na.rm=na.rm)
   allreduce(cs) / nrow(x)
 }
 

@@ -10,7 +10,7 @@ x = shaq(data, m, n, checks=FALSE)
 
 cl = km(x, k=k, seed=1234)
 
-test = allreduce(sum(diff(Data(cl$labels))))
+test = allreduce(sum(diff(DATA(cl$labels))))
 comm.print(all.equal(test, 0.0))
 
 # y = collapse(x)

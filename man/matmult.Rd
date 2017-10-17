@@ -2,8 +2,8 @@
 % Please edit documentation in R/matmult.r
 \docType{methods}
 \name{matmult}
-\alias{matmult}
 \alias{\%*\%,shaq,matrix-method}
+\alias{matmult}
 \title{Matrix Multiplication}
 \usage{
 \S4method{\%*\%}{shaq,matrix}(x, y)
@@ -27,7 +27,6 @@ The two shaqs must be distributed \emph{identically}.
 
 The operation is completely local.
 }
-
 \examples{
 \dontrun{
 library(kazaam)
@@ -40,3 +39,4 @@ finalize()
 }
 
 }
+

@@ -2,18 +2,18 @@
 % Please edit documentation in R/02-getters.r
 \docType{methods}
 \name{getters}
-\alias{getters}
-\alias{nrow,shaq-method}
-\alias{NROW,shaq-method}
-\alias{nrow.local}
-\alias{nrow.local,shaq-method}
-\alias{ncol,shaq-method}
+\alias{DATA}
+\alias{DATA,shaq-method}
 \alias{NCOL,shaq-method}
+\alias{NROW,shaq-method}
+\alias{getters}
+\alias{length,shaq-method}
+\alias{ncol,shaq-method}
 \alias{ncol.local}
 \alias{ncol.local,shaq-method}
-\alias{length,shaq-method}
-\alias{Data}
-\alias{Data,shaq-method}
+\alias{nrow,shaq-method}
+\alias{nrow.local}
+\alias{nrow.local,shaq-method}
 \title{getters}
 \usage{
 \S4method{nrow}{shaq}(x)
@@ -34,9 +34,9 @@ ncol.local(x)
 
 \S4method{length}{shaq}(x)
 
-Data(x)
+DATA(x)
 
-\S4method{Data}{shaq}(x)
+\S4method{DATA}{shaq}(x)
 }
 \arguments{
 \item{x}{A shaq.}
@@ -54,7 +54,7 @@ submatrix (\code{Data()}).
 
 Each operation is completely local.
 }
-
 \seealso{
 \code{\link{setters}}
 }
+

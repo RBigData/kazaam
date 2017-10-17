@@ -34,7 +34,7 @@ having one less row than the others.
 \item{\code{nrows,}}{ncols
 The global matrix dimension.}
 }}
-
 \seealso{
 \code{\link{shaq}}
 }
+

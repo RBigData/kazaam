@@ -45,7 +45,11 @@
 #' @rdname svd
 NULL
 
- 
+
+
+utils::globalVariables(c("n", "p"))
+
+
 
 svd.shaq = function(x, retu=FALSE, retv=FALSE)
 {
@@ -61,7 +65,7 @@ svd.shaq = function(x, retu=FALSE, retv=FALSE)
   {
     # u.local = ev$vectors %*% diag(1/d)
     u.local = sweep(ev$vectors, STATS=1/d, MARGIN=2, FUN="*")
-    u.local = Data(x) %*% u.local
+    u.local = DATA(x) %*% u.local
     u = shaq(u.local, nrow(x), ncol(x), checks=FALSE)
   }
   else

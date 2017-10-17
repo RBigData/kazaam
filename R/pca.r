@@ -49,8 +49,8 @@
 prcomp.shaq = function(x, retx=TRUE, center=TRUE, scale.=FALSE, tol=NULL, ...)
 {
   x <- scale(x, center=center, scale=scale.)
-  x.center <- attr(Data(x), "scaled:center")
-  x.scale <- attr(Data(x) , "scaled:scale")
+  x.center <- attr(DATA(x), "scaled:center")
+  x.scale <- attr(DATA(x) , "scaled:scale")
   if (any(x.scale == 0))
       comm.stop("cannot rescale a constant/zero column to unit variance")
   

@@ -36,7 +36,7 @@ collapse = function(x)
     ret = matrix(0, nrow(x), ncol(x))
     
     top = nrow.local(x)
-    ret[1:top, ] = Data(x)
+    ret[1:top, ] = DATA(x)
     
     if (size > 1)
     {
@@ -51,7 +51,7 @@ collapse = function(x)
     }
     
     # preserve attributes
-    attrs = attributes(Data(x))[-which(names(attributes(Data(x)))=="dim")]
+    attrs = attributes(DATA(x))[-which(names(attributes(DATA(x)))=="dim")]
     if (length(attrs))
       attributes(ret) = c(attributes(ret), attrs)
     
@@ -59,7 +59,7 @@ collapse = function(x)
   }
   else
   {
-    send(Data(x), rank.dest=0)
+    send(DATA(x), rank.dest=0)
     
     invisible(NULL)
   }
