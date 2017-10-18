@@ -2,6 +2,7 @@
 
 S3method(cbind,shaq)
 S3method(prcomp,shaq)
+S3method(shaq,"NULL")
 S3method(shaq,matrix)
 S3method(shaq,numeric)
 export("DATA<-")

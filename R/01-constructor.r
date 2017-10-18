@@ -4,10 +4,10 @@
 #' 
 #' @details
 #' If \code{nrows} and/or \code{ncols} is missing, then it will be imputed.
-#' This means one must be especially careful to manually provide \code{ncols}
-#' if some of ranks have "placeholder data" (a 0x0 matrix), which is typical
-#' when reading from a subset of processors and then broadcasting out to the
-#' remainder.
+#' One can pass \code{NULL} for the \code{Data} argument to specify that that
+#' MPI rank owns no data. In this case, you \emph{must} manually provide
+#' \code{ncols}. This use case is typical when reading from a subset of
+#' processors and then broadcasting out to the remainder.
 #' 
 #' @section Communication:
 #' If \code{checks=TRUE}, a check on the global number of rows is performed.
@@ -23,7 +23,7 @@
 #' require communication, and with many MPI ranks, could be expensive.
 #' 
 #' @seealso
-#' \code{\link{shaq-class}}
+#' \code{\link{shaq-class}} and \code{\link{load_balance}}
 #' 
 #' @name shaq
 #' @rdname shaq
@@ -37,8 +37,7 @@ shaq <- function (Data, nrows, ncols, checks=TRUE)
 
 intuit.shaq.nrows = function(Data)
 {
-  rowcheck = allreduce(NROW(Data))
-  rowcheck
+  allreduce(NROW(Data))
 }
 
 check.shaq.ncols = function(Data, ncols)
@@ -121,4 +120,17 @@ shaq.numeric = function(Data, nrows, ncols, checks=TRUE)
   Data = matrix(Data, as.integer(nrows.local), ncols)
   
   new("shaq", Data=Data, nrows=nrows, ncols=ncols)
+}
+
+
+
+#' @rdname shaq
+#' @export
+shaq.NULL = function(Data, nrows, ncols, checks=TRUE)
+{
+  if (missing(ncols))
+    stop("'ncols' can not be missing if 'Data' is NULL on any rank")
+  
+  Data = matrix(nrow=0, ncol=ncols)
+  shaq.matrix(Data, nrows, ncols, checks)
 }

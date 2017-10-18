@@ -70,9 +70,9 @@ balance.info <- function(X.gbd, comm=0, gbd.major=1L, method="llb")
   COMM.RANK <- comm.rank(comm)
   
   if (gbd.major == 1)
-    N.gbd <- nrow(X.gbd)
+    N.gbd <- NROW(X.gbd)
   else if (gbd.major == 2)
-    N.gbd <- ncol(X.gbd)
+    N.gbd <- NCOL(X.gbd)
   else
     comm.stop("gbd.major = 1 or 2.", comm = comm)
   
@@ -218,9 +218,9 @@ balance.info <- function(X.gbd, comm=0, gbd.major=1L, method="llb")
   if (bal.info$new.N.allgbd[pbdMPI::spmd.comm.rank(comm) + 1] == 0)
   {
     if (gbd.major == 1)
-      ret <- matrix(0, nrow = 0, ncol = p)
+      ret <- matrix(nrow=0, ncol=p)
     else
-      ret <- matrix(0, nrow = p, ncol = 0)
+      ret <- matrix(nrow=p, ncol=0)
   }
   
   pbdMPI::wait()
