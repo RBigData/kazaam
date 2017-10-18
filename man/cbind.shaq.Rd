@@ -4,7 +4,7 @@
 \alias{cbind.shaq}
 \title{cbind}
 \usage{
-cbind.shaq(..., deparse.level = 1)
+\method{cbind}{shaq}(..., deparse.level = 1)
 }
 \arguments{
 \item{...}{A collection of shaqs.}

@@ -28,6 +28,7 @@
 #' finalize()
 #' }
 #' 
+#' @method cbind shaq
 #' @export
 cbind.shaq = function(..., deparse.level=1)
 {
