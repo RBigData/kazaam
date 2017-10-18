@@ -21,10 +21,9 @@ Imports:
     stats
 ByteCompile: yes
 Authors@R: c(
-    person("Drew", "Schmidt", role = c("aut", "cre"), email="wrathematics@gmail.com"), 
-    person("Wei-Chen", "Chen", role = "aut"),
+    person("Drew", "Schmidt", role = c("aut", "cre", "cph"), email="wrathematics@gmail.com"), 
+    person("Wei-Chen", "Chen", role = "aut", "cph"),
     person("Mike", "Matheson", role = "aut"),
-    person("George", "Ostrouchov", role = "aut"),
     person("ORNL", role = "cph")
     )
 URL: http://r-pbd.org/
