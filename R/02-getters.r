@@ -21,47 +21,47 @@ NULL
 
 
 
-nrows_shaq = function(x) x@nrows
+nrows.shaq = function(x) x@nrows
 
 #' @rdname getters
 #' @export
-setMethod("nrow", signature(x="shaq"), nrows_shaq)
+setMethod("nrow", signature(x="shaq"), nrows.shaq)
 
 #' @rdname getters
 #' @export
-setMethod("NROW", signature(x="shaq"), nrows_shaq)
+setMethod("NROW", signature(x="shaq"), nrows.shaq)
 
-nrows.local_shaq = function(x) NROW(DATA(x))
-
-#' @rdname getters
-#' @export
-setGeneric(name="nrow.local", useAsDefault=nrows.local_shaq, package="kazaam")
+nrows.local.shaq = function(x) NROW(DATA(x))
 
 #' @rdname getters
 #' @export
-setMethod("nrow.local", signature(x="shaq"), nrows.local_shaq)
-
-
-
-ncols_shaq = function(x) x@ncols
+setGeneric(name="nrow.local", useAsDefault=nrows.local.shaq, package="kazaam")
 
 #' @rdname getters
 #' @export
-setMethod("ncol", signature(x="shaq"), ncols_shaq)
+setMethod("nrow.local", signature(x="shaq"), nrows.local.shaq)
+
+
+
+ncols.shaq = function(x) x@ncols
 
 #' @rdname getters
 #' @export
-setMethod("NCOL", signature(x="shaq"), ncols_shaq)
-
-ncols.local_shaq = function(x) NCOL(DATA(x))
+setMethod("ncol", signature(x="shaq"), ncols.shaq)
 
 #' @rdname getters
 #' @export
-setGeneric(name="ncol.local", useAsDefault=ncols.local_shaq, package="kazaam")
+setMethod("NCOL", signature(x="shaq"), ncols.shaq)
+
+ncols.local.shaq = function(x) NCOL(DATA(x))
 
 #' @rdname getters
 #' @export
-setMethod("ncol.local", signature(x="shaq"), ncols.local_shaq)
+setGeneric(name="ncol.local", useAsDefault=ncols.local.shaq, package="kazaam")
+
+#' @rdname getters
+#' @export
+setMethod("ncol.local", signature(x="shaq"), ncols.local.shaq)
 
 
 
@@ -71,12 +71,12 @@ setMethod("length", signature(x="shaq"), function(x) nrow(x)*ncol(x))
 
 
 
-DATA_get_shaq = function(x) x@Data
+DATA.get.shaq = function(x) x@Data
 
 #' @rdname getters
 #' @export
-setGeneric(name="DATA", useAsDefault=DATA_get_shaq, package="kazaam")
+setGeneric(name="DATA", useAsDefault=DATA.get.shaq, package="kazaam")
 
 #' @rdname getters
 #' @export
-setMethod("DATA", signature(x="shaq"), DATA_get_shaq)
+setMethod("DATA", signature(x="shaq"), DATA.get.shaq)

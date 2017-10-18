@@ -32,7 +32,7 @@ setter = function(x, value, checks)
 {
   if (checks)
   {
-    nrows = check_shaq(DATA(x), nrow(x), ncol(x))
+    nrows = check.shaq(DATA(x), nrow(x), ncol(x))
     x@nrows = nrows
   }
   
@@ -41,16 +41,16 @@ setter = function(x, value, checks)
   x
 }
 
-Data_set_shaq = function(x, value) setter(x, value, checks=TRUE)
+DATA.set.shaq = function(x, value) setter(x, value, checks=TRUE)
 
-DATA_set_shaq = function(x, value) setter(x, value, checks=FALSE)
+DATA.set.shaq = function(x, value) setter(x, value, checks=FALSE)
 
 
-
-#' @rdname setters
-#' @export
-setGeneric(name="DATA<-", useAsDefault=DATA_set_shaq, package="kazaam")
 
 #' @rdname setters
 #' @export
-setMethod("DATA<-", signature(x="shaq"), DATA_set_shaq)
+setGeneric(name="DATA<-", useAsDefault=DATA.set.shaq, package="kazaam")
+
+#' @rdname setters
+#' @export
+setMethod("DATA<-", signature(x="shaq"), DATA.set.shaq)
