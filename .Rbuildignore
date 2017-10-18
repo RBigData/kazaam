@@ -1,3 +1,5 @@
+.vscode
+
 ^\.travis\.yml$
 
 vignettes/cover/build_cover.sh
