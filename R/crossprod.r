@@ -9,7 +9,7 @@
 #' @param x
 #' A shaq.
 #' @param y
-#' Must be \code{NULL}.
+#' A shaq or \code{NULL}.
 #' 
 #' @return 
 #' A regular matrix.
@@ -62,10 +62,34 @@ cp.shaq = function(x, y = NULL)
   }
 }
 
+tcp.shaq = function(x, y = NULL)
+{
+  if (!is.null(y))
+  {
+    if (is.tshaq(y))
+    {
+      tcp.local = tcrossprod(DATA(x), DATA(y))
+      allreduce(tcp.local)
+    }
+    else
+      comm.stop("argument 'y' must be a tshaq or NULL")
+  }
+  else
+  {
+    # cp.local = base::crossprod(DATA(x))
+    # allreduce(cp.local)
+    cp.internal(x, 1.0)
+  }
+}
+
 
 
 #' @rdname crossprod
 #' @export
 setMethod("crossprod", signature(x="shaq", y="ANY"), cp.shaq)
+
+#' @rdname crossprod
+#' @export
+setMethod("tcrossprod", signature(x="tshaq", y="ANY"), tcp.shaq)
 
 # TODO matrix-shaq method
