@@ -7,8 +7,6 @@
 \alias{NCOL,gbd1d-method}
 \alias{NROW,gbd1d-method}
 \alias{dim,gbd1d-method}
-\alias{dim.local}
-\alias{dim.local,gbd1d-method}
 \alias{getters}
 \alias{length,gbd1d-method}
 \alias{ncol,gbd1d-method}
@@ -42,10 +40,6 @@ DATA(x)
 \S4method{DATA}{gbd1d}(x)
 
 \S4method{dim}{gbd1d}(x)
-
-dim.local(x)
-
-\S4method{dim.local}{gbd1d}(x)
 }
 \arguments{
 \item{x}{A shaq.}

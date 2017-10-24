@@ -86,13 +86,3 @@ setMethod("DATA", signature(x="gbd1d"), DATA.get.shaq)
 #' @rdname getters
 #' @export
 setMethod("dim", signature(x="gbd1d"), function(x) c(x@nrows, x@ncols))
-
-dim.local.shaq = function(x) dim(DATA(x))
-
-#' @rdname getters
-#' @export
-setGeneric(name="dim.local", useAsDefault=dim.local.shaq, package="kazaam")
-
-#' @rdname getters
-#' @export
-setMethod("dim.local", signature(x="gbd1d"), dim.local.shaq)
