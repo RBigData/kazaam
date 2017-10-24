@@ -27,11 +27,15 @@
 #' 
 #' @name shaq
 #' @rdname shaq
+NULL
+
+#' @rdname shaq
 #' @export
-shaq <- function (Data, nrows, ncols, checks=TRUE)
-{
-  UseMethod("shaq", Data)
-}
+shaq <- function (Data, nrows, ncols, checks=TRUE) UseMethod("shaq", Data)
+
+#' @rdname shaq
+#' @export
+tshaq <- function (Data, nrows, ncols, checks=TRUE) UseMethod("tshaq", Data)
 
 
 
@@ -83,9 +87,6 @@ shaq.matrix = function(Data, nrows, ncols, checks=TRUE)
   new("shaq", Data=Data, nrows=nrows, ncols=ncols)
 }
 
-
-
-
 #' @rdname shaq
 #' @export
 shaq.numeric = function(Data, nrows, ncols, checks=TRUE)
@@ -117,12 +118,10 @@ shaq.numeric = function(Data, nrows, ncols, checks=TRUE)
   if (comm.rank()+1L < rem)
     nrows.local = nrows.local + 1
   
-  Data = matrix(Data, as.integer(nrows.local), ncols)
+  Data = matrix(Data, floor(nrows.local), ncols)
   
   new("shaq", Data=Data, nrows=nrows, ncols=ncols)
 }
-
-
 
 #' @rdname shaq
 #' @export
@@ -133,4 +132,101 @@ shaq.NULL = function(Data, nrows, ncols, checks=TRUE)
   
   Data = matrix(nrow=0, ncol=ncols)
   shaq.matrix(Data, nrows, ncols, checks)
+}
+
+
+
+intuit.tshaq.ncols = function(Data)
+{
+  allreduce(NCOL(Data))
+}
+
+check.tshaq.nrows = function(Data, nrows)
+{
+  colcheck = comm.all(NROW(Data) == nrows)
+  if (!isTRUE(colcheck))
+    comm.stop("local row dimensions disagree across ranks")
+}
+
+check.tshaq = function(Data, nrows, ncols)
+{
+  check.tshaq.nrows(Data, ncols)
+  
+  ncols = intuit.tshaq.ncols(Data)
+  
+  return(ncols)
+}
+
+
+
+#' @rdname shaq
+#' @export
+tshaq.matrix = function(Data, nrows, ncols, checks=TRUE)
+{
+  if (!missing(nrows))
+    check.is.natnum(nrows)
+  if (!missing(ncols))
+    check.is.natnum(ncols)
+  
+  check.is.flag(checks)
+  
+  if (missing(nrows) || missing(ncols))
+  {
+    if (missing(ncols))
+      ncols = intuit.tshaq.ncols(Data)
+    
+    if (missing(nrows))
+      nrows = NROW(Data)
+  }
+  else if (checks)
+    ncols = check.tshaq(Data, nrows, ncols)
+  
+  new("tshaq", Data=Data, nrows=nrows, ncols=ncols)
+}
+
+#' @rdname shaq
+#' @export
+tshaq.numeric = function(Data, nrows, ncols, checks=TRUE)
+{
+  if (!missing(nrows))
+    check.is.natnum(nrows)
+  if (!missing(ncols))
+    check.is.natnum(ncols)
+  check.is.flag(checks)
+  
+  if (missing(nrows) || missing(ncols))
+  {
+    if (missing(nrows) && missing(ncols))
+    {
+      nrows = 1L
+      ncols = length(Data)
+    }
+    else if (missing(nrows))
+      nrows = 1L
+    else if (missing(ncols))
+      ncols = 1L
+  }
+  
+  
+  size = comm.size()
+  base = ncols %/% size
+  rem = ncols - base*size
+  ncols.local = base
+  if (comm.rank()+1L < rem)
+    ncols.local = ncols.local + 1
+  
+  Data = matrix(Data, nrows, floor(ncols.local))
+  
+  new("tshaq", Data=Data, nrows=nrows, ncols=ncols)
+}
+
+#' @rdname shaq
+#' @export
+tshaq.NULL = function(Data, nrows, ncols, checks=TRUE)
+{
+  if (missing(nrows))
+    stop("'nrows' can not be missing if 'Data' is NULL on any rank")
+  
+  Data = matrix(nrow=0, ncol=nrows)
+  tshaq.matrix(Data, nrows, ncols, checks)
 }

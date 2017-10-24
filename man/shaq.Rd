@@ -5,15 +5,27 @@
 \alias{shaq.NULL}
 \alias{shaq.matrix}
 \alias{shaq.numeric}
+\alias{tshaq}
+\alias{tshaq.NULL}
+\alias{tshaq.matrix}
+\alias{tshaq.numeric}
 \title{shaq}
 \usage{
 shaq(Data, nrows, ncols, checks = TRUE)
+
+tshaq(Data, nrows, ncols, checks = TRUE)
 
 \method{shaq}{matrix}(Data, nrows, ncols, checks = TRUE)
 
 \method{shaq}{numeric}(Data, nrows, ncols, checks = TRUE)
 
 \method{shaq}{NULL}(Data, nrows, ncols, checks = TRUE)
+
+\method{tshaq}{matrix}(Data, nrows, ncols, checks = TRUE)
+
+\method{tshaq}{numeric}(Data, nrows, ncols, checks = TRUE)
+
+\method{tshaq}{NULL}(Data, nrows, ncols, checks = TRUE)
 }
 \arguments{
 \item{Data}{The local submatrix.}
