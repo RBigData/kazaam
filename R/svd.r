@@ -79,8 +79,6 @@ svd.shaq = function(x, retu=FALSE, retv=FALSE)
   list(d=d, u=u, v=v)
 }
 
-
-
 #' @rdname svd
 #' @export
 setMethod("svd", signature(x="shaq"),
@@ -102,6 +100,61 @@ setMethod("svd", signature(x="shaq"),
     
     if (nv && NCOL(ret$v) > nv)
       ret$v = ret$v[, 1:nv]
+    
+    ret
+  }
+)
+
+
+
+svd.tshaq = function(x, retu=FALSE, retv=FALSE)
+{
+  only.values = !retu && !retv
+  
+  cp = tcp.shaq(x)
+  
+  ev = eigen(cp, only.values=only.values, symmetric=TRUE)
+  
+  d = sqrt(ev$values)
+  
+  if (retu)
+    u = ev$vectors
+  else
+    u = NULL
+  
+  if (retv)
+  {
+    v.local = sweep(ev$vectors, STATS=1/d, MARGIN=2, FUN="*")
+    v.local = v.local %*% DATA(x)
+    v = shaq(v.local, nrow(x), ncol(x), checks=FALSE)
+  }
+  else
+    v = NULL
+  
+  list(d=d, u=u, v=v)
+}
+
+#' @rdname svd
+#' @export
+setMethod("svd", signature(x="tshaq"),
+  function(x, nu = min(n, p), nv = min(n, p), LINPACK = FALSE)
+  {
+    n = nrow(x)
+    p = ncol(x)
+    
+    check.is.natnum(nu)
+    check.is.natnum(nv)
+    
+    if (nv && ncol(x) > nv)
+      comm.stop("argument 'nv' must be 0 or ncol(x)")
+    
+    retu = nu > 0
+    retv = nv > 0
+    
+    ret = svd.tshaq(x, retu, retv)
+    
+    if (nu && NCOL(ret$u) > nu)
+      ret$u = ret$u[, 1:nu]
     
     ret
   }
