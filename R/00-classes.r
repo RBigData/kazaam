@@ -30,9 +30,15 @@
 #' \code{\link{shaq}}
 #' 
 #' @name shaq-class
+#' @rdname shaq-class
 #' @docType class
+NULL
+
+
+
+#' @rdname shaq-class
 setClass(
-  Class="shaq", 
+  Class="gbd1d",
   representation=representation(
     Data="matrix",
     nrows="numeric",
@@ -42,8 +48,20 @@ setClass(
   
   prototype=prototype(
     Data=matrix(nrow=0, ncol=0),
-    nrows=0,
-    ncols=0
+    nrows=0L,
+    ncols=0L
     # balanced=NA
   )
+)
+
+#' @rdname shaq-class
+setClass(
+  Class="shaq",
+  contains="gbd1d"
+)
+
+#' @rdname shaq-class
+setClass(
+  Class="tshaq",
+  contains="gbd1d"
 )
