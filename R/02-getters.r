@@ -25,11 +25,11 @@ nrows.shaq = function(x) x@nrows
 
 #' @rdname getters
 #' @export
-setMethod("nrow", signature(x="shaq"), nrows.shaq)
+setMethod("nrow", signature(x="gbd1d"), nrows.shaq)
 
 #' @rdname getters
 #' @export
-setMethod("NROW", signature(x="shaq"), nrows.shaq)
+setMethod("NROW", signature(x="gbd1d"), nrows.shaq)
 
 nrows.local.shaq = function(x) NROW(DATA(x))
 
@@ -39,7 +39,7 @@ setGeneric(name="nrow.local", useAsDefault=nrows.local.shaq, package="kazaam")
 
 #' @rdname getters
 #' @export
-setMethod("nrow.local", signature(x="shaq"), nrows.local.shaq)
+setMethod("nrow.local", signature(x="gbd1d"), nrows.local.shaq)
 
 
 
@@ -47,11 +47,11 @@ ncols.shaq = function(x) x@ncols
 
 #' @rdname getters
 #' @export
-setMethod("ncol", signature(x="shaq"), ncols.shaq)
+setMethod("ncol", signature(x="gbd1d"), ncols.shaq)
 
 #' @rdname getters
 #' @export
-setMethod("NCOL", signature(x="shaq"), ncols.shaq)
+setMethod("NCOL", signature(x="gbd1d"), ncols.shaq)
 
 ncols.local.shaq = function(x) NCOL(DATA(x))
 
@@ -61,13 +61,13 @@ setGeneric(name="ncol.local", useAsDefault=ncols.local.shaq, package="kazaam")
 
 #' @rdname getters
 #' @export
-setMethod("ncol.local", signature(x="shaq"), ncols.local.shaq)
+setMethod("ncol.local", signature(x="gbd1d"), ncols.local.shaq)
 
 
 
 #' @rdname getters
 #' @export
-setMethod("length", signature(x="shaq"), function(x) nrow(x)*ncol(x))
+setMethod("length", signature(x="gbd1d"), function(x) nrow(x)*ncol(x))
 
 
 
