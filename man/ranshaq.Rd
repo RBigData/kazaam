@@ -2,9 +2,12 @@
 % Please edit documentation in R/ranshaq.r
 \name{ranshaq}
 \alias{ranshaq}
+\alias{rantshaq}
 \title{ranshaq}
 \usage{
 ranshaq(generator, nrows, ncols, local = FALSE, ...)
+
+rantshaq(generator, nrows, ncols, local = FALSE, ...)
 }
 \arguments{
 \item{generator}{A function, such as \code{runif()} or \code{rnorm()} (passed without parens).
