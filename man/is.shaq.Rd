@@ -2,18 +2,21 @@
 % Please edit documentation in R/is.shaq.r
 \name{is.shaq}
 \alias{is.shaq}
+\alias{is.tshaq}
 \title{is.shaq}
 \usage{
 is.shaq(x)
+
+is.tshaq(x)
 }
 \arguments{
 \item{x}{An R object.}
 }
 \value{
-A logical value, indicating whether or not the input is a shaq.
+A logical value, indicating whether or not the input is a shaq/tshaq.
 }
 \description{
-Test if an object is a shaq.
+Test if an object is a shaq or tshaq.
 }
 \section{Communication}{
 
