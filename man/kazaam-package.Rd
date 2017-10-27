@@ -16,9 +16,6 @@ distributed objects.  The naming is a bit "tongue-in-cheek", with the class
 a play on the fact that 'Shaquille' 'ONeal' ('Shaq') is very tall, and he
 starred in the film 'Kazaam'.
 }
-\author{
-Drew Schmidt \email{wrathematics@gmail.com}, Wei-Chen Chen, Mike Matheson, and George Ostrouchov.
-}
 \references{
 Programming with Big Data in R Website: \url{http://r-pbd.org/}
 }

@@ -24,6 +24,7 @@ Authors@R: c(
     person("Drew", "Schmidt", role = c("aut", "cre", "cph"), email="wrathematics@gmail.com"), 
     person("Wei-Chen", "Chen", role = "aut", "cph"),
     person("Mike", "Matheson", role = "aut"),
+    person("George", "Ostrouchov", role = "ctb"),
     person("ORNL", role = "cph")
     )
 URL: http://r-pbd.org/
