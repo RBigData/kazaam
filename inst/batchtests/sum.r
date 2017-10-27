@@ -4,7 +4,7 @@ y = 1:5 # deliberately global
 
 if (comm.rank() == 0){
   x = matrix(1:30, 10)
-  z = matrix(rnorm(14), 2)
+  z = matrix(rnorm(14), ncol=2)
 } else {
   x = NULL
 }

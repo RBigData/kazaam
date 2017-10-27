@@ -36,32 +36,52 @@ NULL
 
 
 
+check_shaq = function(object)
+{
+  if (is.na(object@nrows) || is.na(object@ncols) || object@nrows < 0 || object@ncols < 0)
+    return(paste0("impossible dimensions: given nrows=", object@nrows, " ncols=", object@ncols))
+  if (object@nrows < object@ncols)
+    return("must have nrows >= ncols for class shaq")
+}
+
+check_tshaq = function(object)
+{
+  if (is.na(object@nrows) || is.na(object@ncols) || object@nrows < 0 || object@ncols < 0)
+    return(paste0("impossible dimensions: given nrows=", object@nrows, " ncols=", object@ncols))
+  if (object@nrows > object@ncols)
+    return("must have nrows <= ncols for class tshaq")
+}
+
+
+
 #' @rdname shaq-class
 setClass(
-  Class="gbd1d",
-  representation=representation(
-    Data="matrix",
-    nrows="numeric",
-    ncols="numeric"
+  Class = "gbd1d",
+  representation = representation(
+    Data = "matrix",
+    nrows = "numeric",
+    ncols = "numeric"
     # balanced="logical"
   ),
   
   prototype=prototype(
-    Data=matrix(nrow=0, ncol=0),
-    nrows=0L,
-    ncols=0L
+    Data = matrix(nrow=0, ncol=0),
+    nrows = 0L,
+    ncols = 0L
     # balanced=NA
   )
 )
 
 #' @rdname shaq-class
 setClass(
-  Class="shaq",
-  contains="gbd1d"
+  Class = "shaq",
+  contains = "gbd1d",
+  validity = check_shaq
 )
 
 #' @rdname shaq-class
 setClass(
-  Class="tshaq",
-  contains="gbd1d"
+  Class = "tshaq",
+  contains = "gbd1d",
+  validity = check_tshaq
 )
