@@ -1,5 +1,5 @@
 // Modified from the coop package. Copyright (c) 2016-2017 Drew Schmidt#include <mpi.h>
-
+#include <mpi.h>
 #include <R.h>
 #include <Rinternals.h>
 
