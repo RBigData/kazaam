@@ -10,6 +10,12 @@
 #' 
 #' @param x
 #' A shaq or a numeric vector.
+#' @param base
+#' Logarithm base.
+#' @param digits
+#' Number of decimal places to use.
+#' @param ...
+#' Additional arguments.
 #' 
 #' @return 
 #' A shaq.

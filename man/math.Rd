@@ -73,6 +73,12 @@
 }
 \arguments{
 \item{x}{A shaq or a numeric vector.}
+
+\item{base}{Logarithm base.}
+
+\item{...}{Additional arguments.}
+
+\item{digits}{Number of decimal places to use.}
 }
 \value{
 A shaq.
