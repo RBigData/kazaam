@@ -34,12 +34,20 @@ NULL
 cp.internal = function(x, alpha)
 {
   data = DATA(x)
-  if (!is.double(data))
-    storage.mode(data) = "double"
-  
   alpha = as.double(alpha)
   
-  .Call(R_mpicrossprod, data, alpha)
+  if (is.float(data))
+  {
+    ret = .Call(R_float_mpicrossprod, DATA(data), alpha)
+    float32(ret) 
+  }
+  else
+  {
+    if (!is.double(data))
+      storage.mode(data) = "double"
+    
+    .Call(R_mpicrossprod, data, alpha)
+  }
 }
 
 cp.shaq = function(x, y = NULL)

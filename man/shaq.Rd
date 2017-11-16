@@ -3,10 +3,12 @@
 \name{shaq}
 \alias{shaq}
 \alias{shaq.NULL}
+\alias{shaq.float32}
 \alias{shaq.matrix}
-\alias{shaq.numeric}
+\alias{shaq.vector}
 \alias{tshaq}
 \alias{tshaq.NULL}
+\alias{tshaq.float32}
 \alias{tshaq.matrix}
 \alias{tshaq.numeric}
 \title{shaq}
@@ -17,11 +19,15 @@ tshaq(Data, nrows, ncols, checks = TRUE)
 
 \method{shaq}{matrix}(Data, nrows, ncols, checks = TRUE)
 
-\method{shaq}{numeric}(Data, nrows, ncols, checks = TRUE)
+\method{shaq}{float32}(Data, nrows, ncols, checks = TRUE)
+
+\method{shaq}{vector}(Data, nrows, ncols, checks = TRUE)
 
 \method{shaq}{NULL}(Data, nrows, ncols, checks = TRUE)
 
 \method{tshaq}{matrix}(Data, nrows, ncols, checks = TRUE)
+
+\method{tshaq}{float32}(Data, nrows, ncols, checks = TRUE)
 
 \method{tshaq}{numeric}(Data, nrows, ncols, checks = TRUE)
 

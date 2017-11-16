@@ -29,6 +29,8 @@
 #' @seealso
 #' \code{\link{shaq}}
 #' 
+#' @import float
+#' 
 #' @name shaq-class
 #' @rdname shaq-class
 #' @docType class
@@ -54,11 +56,13 @@ check_tshaq = function(object)
 
 
 
+setClassUnion("Mat", c("matrix", "float32"))
+
 #' @rdname shaq-class
 setClass(
   Class = "gbd1d",
   representation = representation(
-    Data = "matrix",
+    Data = "Mat",
     nrows = "numeric",
     ncols = "numeric"
     # balanced="logical"
