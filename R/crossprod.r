@@ -57,7 +57,7 @@ cp.shaq = function(x, y = NULL)
     if (is.shaq(y))
     {
       cp.local = crossprod(DATA(x), DATA(y))
-      allreduce(cp.local)
+      MPI_Allreduce(cp.local)
     }
     else
       comm.stop("argument 'y' must be a shaq or NULL")
@@ -77,7 +77,7 @@ tcp.shaq = function(x, y = NULL)
     if (is.tshaq(y))
     {
       tcp.local = tcrossprod(DATA(x), DATA(y))
-      allreduce(tcp.local)
+      MPI_Allreduce(tcp.local)
     }
     else
       comm.stop("argument 'y' must be a tshaq or NULL")

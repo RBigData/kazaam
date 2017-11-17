@@ -16,7 +16,7 @@ get_random_seed = function()
   else
     seed = 0L
   
-  allreduce(seed)
+  MPI_Allreduce(seed)
 }
 
 
@@ -49,7 +49,7 @@ km.init = function(x, k, numbefore)
   
   centers = matrix(0, ncol(x), k)
   centers[, centers.rows.local] = centers.local
-  allreduce(centers)
+  MPI_Allreduce(centers)
 }
 
 

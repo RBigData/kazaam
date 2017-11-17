@@ -5,6 +5,8 @@ Release 0.2-0:
   * Added sum() method.
   * Improved memory usage and communication pattern of crossprod().
   * Added k-means method km().
+  * Added some skeleton support for 32-bit floats.
+  * Swapped out allreduce() for the faster, low-level interface.
 
 Release 0.1-0:
   * Added expand() and collapse().

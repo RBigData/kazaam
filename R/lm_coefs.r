@@ -51,7 +51,7 @@ lm_coefs = function(x, y, tol=1e-7)
   Q = qr_Q(x, R)
   
   ### NOTE here we assume that x (and hence Q) and y are distributed in identical fashion!
-  qty = allreduce(crossprod(DATA(Q), DATA(y)))
+  qty = MPI_Allreduce(crossprod(DATA(Q), DATA(y)))
   rank = max(which(abs(diag(R)) > tol))
   
   if (rank < ncol(x))
