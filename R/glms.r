@@ -64,7 +64,7 @@ cost_gaussian = function(theta, x, y)
   m = nrow(x)
   J.local = (1/(2*m))*sum((DATA(x)%*%theta - DATA(y))^2)
   
-  allreduce(J.local)
+  as.double(allreduce_dbl(J.local))
 }
 
 #' @rdname glms
@@ -91,7 +91,7 @@ cost_logistic = function(theta, x, y)
   h = linkinv_logistic(eta)
   J.local = (1/m)*sum((-DATA(y)*log(h)) - ((1-DATA(y))*log(1-h)))
   
-  allreduce(J.local)
+  allreduce_dbl(J.local)
 }
 
 #' @rdname glms
@@ -116,7 +116,7 @@ cost_poisson = function(theta, x, y)
   eta = DATA(x)%*%theta
   J.local = -sum(DATA(y) * eta - linkinv_poisson(eta))
   
-  allreduce(J.local)
+  allreduce_dbl(J.local)
 }
 
 #' @rdname glms

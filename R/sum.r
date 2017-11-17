@@ -61,11 +61,11 @@ sum.shaq = function(x, ..., na.rm=FALSE)
     s = 0
   
   if (is.na(s))
-    allreduce(s)
+    pbdMPI::allreduce(s)
   else
   {
     local = sum(DATA(x), na.rm=na.rm) + s
-    allreduce(local)
+    pbdMPI::allreduce(local)
   }
 }
 
