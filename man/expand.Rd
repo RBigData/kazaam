@@ -4,13 +4,15 @@
 \alias{expand}
 \title{expand}
 \usage{
-expand(x)
+expand(x, class = "shaq")
 }
 \arguments{
 \item{x}{A regular matrix.}
+
+\item{class}{'shaq' or 'tshaq'}
 }
 \value{
-A shaq.
+A shaq or a tshaq.
 }
 \description{
 Expand a regular matrix owned on MPI rank 0 into a shaq.
