@@ -125,8 +125,8 @@ svd.tshaq = function(x, retu=FALSE, retv=FALSE)
   if (retv)
   {
     v.local = sweep(ev$vectors, STATS=1/d, MARGIN=2, FUN="*")
-    v.local = crossprod(v.local, DATA(x))
-    v = shaq(t(v.local), ncol(x), nrow(x), checks=FALSE)
+    v.local = crossprod(DATA(x), v.local)
+    v = shaq(v.local, ncol(x), nrow(x), checks=FALSE)
   }
   else
     v = NULL
