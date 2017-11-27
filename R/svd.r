@@ -125,8 +125,8 @@ svd.tshaq = function(x, retu=FALSE, retv=FALSE)
   if (retv)
   {
     v.local = sweep(ev$vectors, STATS=1/d, MARGIN=2, FUN="*")
-    v.local = v.local %*% DATA(x)
-    v = shaq(v.local, nrow(x), ncol(x), checks=FALSE)
+    v.local = crossprod(v.local, DATA(x))
+    v = shaq(t(v.local), ncol(x), nrow(x), checks=FALSE)
   }
   else
     v = NULL
@@ -145,9 +145,6 @@ setMethod("svd", signature(x="tshaq"),
     check.is.natnum(nu)
     check.is.natnum(nv)
     
-    if (nv && ncol(x) > nv)
-      comm.stop("argument 'nv' must be 0 or ncol(x)")
-    
     retu = nu > 0
     retv = nv > 0
     
@@ -155,6 +152,9 @@ setMethod("svd", signature(x="tshaq"),
     
     if (nu && NCOL(ret$u) > nu)
       ret$u = ret$u[, 1:nu]
+
+    if (nv && NCOL(ret$v) > nv)
+      ret$v = ret$v[, 1:nv]
     
     ret
   }
