@@ -52,7 +52,7 @@ expand.shaq = function(x)
     bcast(dim)
     
     size = comm.size()
-    id = get.jid(NROW(x), all=TRUE)
+    id = pbdMPI::get.jid(NROW(x), all=TRUE)
     
     if (size > 1)
     {
@@ -93,7 +93,7 @@ expand.tshaq = function(x)
     bcast(dim)
     
     size = comm.size()
-    id = get.jid(NCOL(x), all=TRUE)
+    id = pbdMPI::get.jid(NCOL(x), all=TRUE)
     
     if (size > 1)
     {
@@ -121,7 +121,7 @@ expand.tshaq = function(x)
 #' @export
 expand = function(x, class="shaq")
 {
-  class = comm.match.arg(tolower(class), c("shaq", "tshaq"))
+  class = pbdMPI::comm.match.arg(tolower(class), c("shaq", "tshaq"))
   if (class == "shaq")
     expand.shaq(x)
   else
