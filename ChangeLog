@@ -7,6 +7,10 @@ Release 0.2-0:
   * Added k-means method km().
   * Added some skeleton support for 32-bit floats.
   * Swapped out allreduce() for the faster, low-level interface.
+  * Added new tshaq class for short+wide data.
+  * Added t() method.
+  * Added binary logical operators (==, !=, etc).
+  * Added La.svd() method.
 
 Release 0.1-0:
   * Added expand() and collapse().
