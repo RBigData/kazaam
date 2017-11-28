@@ -25,4 +25,17 @@ comm.print(all.equal(d, d_test))
 comm.print(all.equal(abs(u), abs(u_test)))
 comm.print(all.equal(abs(v), abs(v_test)))
 
+
+
+x = rantshaq(stats::rnorm, 3, 10)
+v = svd(x)$v
+vt = La.svd(x)$vt
+comm.print(all.equal(abs(DATA(v)), abs(DATA(t(vt)))))
+
+x = t(x)
+v = svd(x)$v
+vt = La.svd(x)$vt
+comm.print(all.equal(abs(v), abs(t(vt))))
+
+
 finalize()

@@ -2,6 +2,8 @@
 % Please edit documentation in R/svd.r
 \docType{methods}
 \name{svd}
+\alias{La.svd,shaq-method}
+\alias{La.svd,tshaq-method}
 \alias{svd}
 \alias{svd,shaq-method}
 \alias{svd,tshaq-method}
@@ -10,6 +12,10 @@
 \S4method{svd}{shaq}(x, nu = min(n, p), nv = min(n, p), LINPACK = FALSE)
 
 \S4method{svd}{tshaq}(x, nu = min(n, p), nv = min(n, p), LINPACK = FALSE)
+
+\S4method{La.svd}{shaq}(x, nu = min(n, p), nv = min(n, p))
+
+\S4method{La.svd}{tshaq}(x, nu = min(n, p), nv = min(n, p))
 }
 \arguments{
 \item{x}{A shaq.}
