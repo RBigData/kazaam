@@ -233,7 +233,7 @@ setMethod("La.svd", signature(x="tshaq"),
       ret$u = ret$u[, 1:nu]
 
     if (nv && NROW(ret$vt) > nv)
-      DATA(ret$vt) = DATA(vt)[1:nv, ]
+      DATA(ret$vt) = DATA(ret$vt)[1:nv, ]
     
     ret
   }
