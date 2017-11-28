@@ -143,14 +143,14 @@ intuit.tshaq.ncols = function(Data)
 
 check.tshaq.nrows = function(Data, nrows)
 {
-  colcheck = comm.all(NROW(Data) == nrows)
-  if (!isTRUE(colcheck))
+  rowcheck = comm.all(NROW(Data) == nrows)
+  if (!isTRUE(rowcheck))
     comm.stop("local row dimensions disagree across ranks")
 }
 
 check.tshaq = function(Data, nrows, ncols)
 {
-  check.tshaq.nrows(Data, ncols)
+  check.tshaq.nrows(Data, nrows)
   
   ncols = intuit.tshaq.ncols(Data)
   
