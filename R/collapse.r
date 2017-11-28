@@ -36,7 +36,12 @@ collapse.shaq = function(x)
   if (comm.rank() == 0)
   {
     size = comm.size()
-    ret = matrix(0, nrow(x), ncol(x))
+    if (is.integer(DATA(x)))
+      ret = matrix(0L, nrow(x), ncol(x))
+    else if (is.logical(DATA(x)))
+      ret = matrix(FALSE, nrow(x), ncol(x))
+    else
+      ret = matrix(0.0, nrow(x), ncol(x))
     
     top = nrow.local(x)
     ret[1:top, ] = DATA(x)
@@ -76,7 +81,12 @@ collapse.tshaq = function(x)
   if (comm.rank() == 0)
   {
     size = comm.size()
-    ret = matrix(0, nrow(x), ncol(x))
+    if (is.integer(DATA(x)))
+      ret = matrix(0L, nrow(x), ncol(x))
+    else if (is.logical(DATA(x)))
+      ret = matrix(FALSE, nrow(x), ncol(x))
+    else
+      ret = matrix(0.0, nrow(x), ncol(x))
     
     top = ncol.local(x)
     ret[, 1:top] = DATA(x)
