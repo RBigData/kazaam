@@ -3,12 +3,10 @@
 \docType{methods}
 \name{scale}
 \alias{scale}
-\alias{scale,shaq,logical,logical-method}
+\alias{scale,shaq-method}
 \title{Scale}
 \usage{
-scale(x, center = TRUE, scale = TRUE)
-
-\S4method{scale}{shaq,logical,logical}(x, center = TRUE, scale = TRUE)
+\S4method{scale}{shaq}(x, center = TRUE, scale = TRUE)
 }
 \arguments{
 \item{x}{A shaq.}

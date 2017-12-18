@@ -31,11 +31,11 @@ NULL
 
 #' @rdname shaq
 #' @export
-shaq <- function (Data, nrows, ncols, checks=TRUE) UseMethod("shaq", Data)
+shaq <- function(Data, nrows, ncols, checks=TRUE) UseMethod("shaq", Data)
 
 #' @rdname shaq
 #' @export
-tshaq <- function (Data, nrows, ncols, checks=TRUE) UseMethod("tshaq", Data)
+tshaq <- function(Data, nrows, ncols, checks=TRUE) UseMethod("tshaq", Data)
 
 
 
@@ -62,9 +62,7 @@ check.shaq = function(Data, nrows, ncols)
 
 
 
-#' @rdname shaq
-#' @export
-shaq.matrix = function(Data, nrows, ncols, checks=TRUE)
+shaq.Mat = function(Data, nrows, ncols, checks=TRUE)
 {
   if (!missing(nrows))
     check.is.natnum(nrows)
@@ -89,7 +87,15 @@ shaq.matrix = function(Data, nrows, ncols, checks=TRUE)
 
 #' @rdname shaq
 #' @export
-shaq.numeric = function(Data, nrows, ncols, checks=TRUE)
+shaq.matrix = shaq.Mat
+
+#' @rdname shaq
+#' @export
+shaq.float32 = shaq.Mat
+
+#' @rdname shaq
+#' @export
+shaq.vector = function(Data, nrows, ncols, checks=TRUE)
 {
   if (!missing(nrows))
     check.is.natnum(nrows)
@@ -118,7 +124,7 @@ shaq.numeric = function(Data, nrows, ncols, checks=TRUE)
   if (comm.rank()+1L < rem)
     nrows.local = nrows.local + 1
   
-  Data = matrix(Data, floor(nrows.local), ncols)
+  dim(Data) = c(floor(nrows.local), ncols)
   
   new("shaq", Data=Data, nrows=nrows, ncols=ncols)
 }
@@ -159,9 +165,7 @@ check.tshaq = function(Data, nrows, ncols)
 
 
 
-#' @rdname shaq
-#' @export
-tshaq.matrix = function(Data, nrows, ncols, checks=TRUE)
+tshaq.Mat = function(Data, nrows, ncols, checks=TRUE)
 {
   if (!missing(nrows))
     check.is.natnum(nrows)
@@ -183,6 +187,14 @@ tshaq.matrix = function(Data, nrows, ncols, checks=TRUE)
   
   new("tshaq", Data=Data, nrows=nrows, ncols=ncols)
 }
+
+#' @rdname shaq
+#' @export
+tshaq.matrix = tshaq.Mat
+
+#' @rdname shaq
+#' @export
+tshaq.float32 = tshaq.Mat
 
 #' @rdname shaq
 #' @export
@@ -215,7 +227,7 @@ tshaq.numeric = function(Data, nrows, ncols, checks=TRUE)
   if (comm.rank()+1L < rem)
     ncols.local = ncols.local + 1
   
-  Data = matrix(Data, nrows, floor(ncols.local))
+  dim(Data) = c(nrows, floor(ncols.local))
   
   new("tshaq", Data=Data, nrows=nrows, ncols=ncols)
 }

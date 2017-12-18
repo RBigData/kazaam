@@ -77,6 +77,9 @@ reg.fit = function(x, y, maxiter=100)
   
   control = list(maxit=maxiter)
   theta = numeric(ncol(x))
+  if (is.float(DATA(x)))
+    theta = fl(theta)
+  
   optim(par=theta, fn=cost_gaussian, x=x, y=y, method="CG", control=control)
 }
 

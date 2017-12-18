@@ -9,7 +9,8 @@ MPI_INCLUDE = $(shell ${R_SCMD} \
 MPI_LIB = $(shell ${R_SCMD} \
   "source('../R/get_conf.r');get.conf('MPI_LIB','"${R_ARCH}"')")
 
+SLAPACK_LIBS = `${R_SCMD} "float:::ldflags()"`
 
 PKG_CPPFLAGS = -I"$(MPI_INCLUDE)"
 PKG_CFLAGS = $(SHLIB_OPENMP_CFLAGS) 
-PKG_LIBS = $(LAPACK_LIBS) $(BLAS_LIBS) $(FLIBS) $(MPI_LIB) $(SHLIB_OPENMP_CFLAGS)
+PKG_LIBS = $(LAPACK_LIBS) $(BLAS_LIBS) $(FLIBS) $(MPI_LIB) $(SHLIB_OPENMP_CFLAGS) $(SLAPACK_LIBS)
