@@ -109,18 +109,6 @@ SEXP R_float_mpicrossprod(SEXP x, SEXP alpha_)
   const size_t compact_len = COMPACT_LEN(minmn);
   const float alpha = REAL(alpha_)[0];
   
-  static void (*float_crossprod)(int,int,float,float*,float*) = NULL;
-  if (float_crossprod == NULL)
-    float_crossprod = (void(*)(int,int,float,float*,float*)) R_GetCCallable("float", "float_crossprod");
-  
-  static void (*float_tcrossprod)(int,int,float,float*,float*) = NULL;
-  if (float_tcrossprod == NULL)
-    float_tcrossprod = (void(*)(int,int,float,float*,float*)) R_GetCCallable("float", "float_tcrossprod");
-  
-  static void (*float_symmetrize)(int,int,float*) = NULL;
-  if (float_symmetrize == NULL)
-    float_symmetrize = (void(*)(int,int,float*)) R_GetCCallable("float", "float_symmetrize");
-  
   PROTECT(ret = allocMatrix(INTSXP, minmn, minmn));
   float *ret_pt = FLOAT(ret);
   

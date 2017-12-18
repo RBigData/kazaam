@@ -19,9 +19,9 @@ Depends:
 Imports:
     methods,
     stats,
-    float
+    float (>= 0.1-2)
 LinkingTo:
-    float
+    float (>= 0.1-2)
 ByteCompile: yes
 Authors@R: c(
     person("Drew", "Schmidt", role = c("aut", "cre", "cph"), email="wrathematics@gmail.com"), 
