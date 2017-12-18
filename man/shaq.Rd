@@ -10,7 +10,7 @@
 \alias{tshaq.NULL}
 \alias{tshaq.float32}
 \alias{tshaq.matrix}
-\alias{tshaq.numeric}
+\alias{tshaq.vector}
 \title{shaq}
 \usage{
 shaq(Data, nrows, ncols, checks = TRUE)
@@ -29,7 +29,7 @@ tshaq(Data, nrows, ncols, checks = TRUE)
 
 \method{tshaq}{float32}(Data, nrows, ncols, checks = TRUE)
 
-\method{tshaq}{numeric}(Data, nrows, ncols, checks = TRUE)
+\method{tshaq}{vector}(Data, nrows, ncols, checks = TRUE)
 
 \method{tshaq}{NULL}(Data, nrows, ncols, checks = TRUE)
 }

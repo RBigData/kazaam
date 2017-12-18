@@ -198,7 +198,7 @@ tshaq.float32 = tshaq.Mat
 
 #' @rdname shaq
 #' @export
-tshaq.numeric = function(Data, nrows, ncols, checks=TRUE)
+tshaq.vector = function(Data, nrows, ncols, checks=TRUE)
 {
   if (!missing(nrows))
     check.is.natnum(nrows)

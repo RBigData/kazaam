@@ -35,12 +35,15 @@ a regular matrix.
 Singular value decomposition.
 }
 \details{
-The factorization works by first forming the crossproduct \eqn{X^T X}
-and then taking its eigenvalue decomposition.  In this case, the square root
-of the eigenvalues are the singular values.  If the left/right singular
-vectors \eqn{U} or \eqn{V} are desired, then in either case, \eqn{V} is
-computed (the eigenvectors).  From these, \eqn{U} can be reconstructed, since
-if \eqn{X = U\Sigma V^T}, then \eqn{U = XV\Sigma^{-1}}.
+The factorization works by first forming the crossproduct \eqn{X^T X} for
+shaqs (\eqn{XX^T} for tshaqs) and then taking its eigenvalue decomposition.
+In this case, the square root of the eigenvalues are the singular values.
+
+For shaqs, if the left/right singular vectors \eqn{U} or \eqn{V} are desired,
+then in either case, \eqn{V} is computed (the eigenvectors).  From these,
+\eqn{U} can be reconstructed, since if \eqn{X = U\Sigma V^T}, then \eqn{U =
+XV\Sigma^{-1}}. For tshaqs, a similar game can be played, noting that the
+left singular vectors \eqn{U} map to the eigenvectors of \eqn{XX^T}.
 }
 \section{Communication}{
 
