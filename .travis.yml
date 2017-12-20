@@ -9,4 +9,4 @@ before_install:
 
 r_github_packages:
   - wrathematics/float
-
+  - rbigdata/pbdMPI

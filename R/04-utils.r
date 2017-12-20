@@ -20,7 +20,7 @@ allreduce_int = function(x, x.buffer=integer(length(x)), op="sum", comm=0)
 
 allreduce_float = function(x, x.buffer=fl(integer(length(x))), op="sum", comm=0)
 {
-  ret = spmd.allreduce.float(x, x.buffer, op, comm)
+  ret = pbdMPI::spmd.allreduce.float(x, x.buffer, op, comm)
   if (is.matrix(x))
     dim(ret) = dim(x)
   
