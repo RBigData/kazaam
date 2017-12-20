@@ -14,14 +14,13 @@ Description: Many data science problems reduce to operations on very tall,
     starred in the film 'Kazaam'.
 License: BSD 2-clause License + file LICENSE
 Depends:
-    R (>= 3.0.0),
-    pbdMPI (>= 0.3-0)
+    R (>= 3.0.2),
+    pbdMPI (>= 0.3-4)
 Imports:
     methods,
     stats,
     float (>= 0.1-2)
-LinkingTo:
-    float (>= 0.1-2)
+LinkingTo: float (>= 0.1-2)
 ByteCompile: yes
 Authors@R: c(
     person("Drew", "Schmidt", role = c("aut", "cre", "cph"), email="wrathematics@gmail.com"), 

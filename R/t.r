@@ -21,8 +21,6 @@
 #' finalize()
 #' }
 #' 
-#' @method t shaq
-#' @method t tshaq
 #' @name t
 #' @rdname t
 NULL
@@ -30,6 +28,7 @@ NULL
 
 
 #' @rdname t
+#' @method t shaq
 #' @export
 t.shaq = function(x)
 {
@@ -40,6 +39,7 @@ t.shaq = function(x)
 
 
 #' @rdname t
+#' @method t tshaq
 #' @export
 t.tshaq = function(x)
 {

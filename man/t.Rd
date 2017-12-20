@@ -6,9 +6,9 @@
 \alias{t.tshaq}
 \title{t}
 \usage{
-t.shaq(x)
+\method{t}{shaq}(x)
 
-t.tshaq(x)
+\method{t}{tshaq}(x)
 }
 \arguments{
 \item{x}{A shaq or tshaq.}
