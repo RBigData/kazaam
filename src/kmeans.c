@@ -1,3 +1,7 @@
+#if _WIN32 || _WIN64
+#include <stdint.h>
+#endif
+
 #include <mpi.h>
 #include <R.h>
 #include <Rinternals.h>

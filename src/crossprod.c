@@ -1,4 +1,8 @@
 // Modified from the coop package. Copyright (c) 2016-2017 Drew Schmidt
+#if _WIN32 || _WIN64
+#include <stdint.h>
+#endif
+
 #include <mpi.h>
 #include <R.h>
 #include <Rinternals.h>
