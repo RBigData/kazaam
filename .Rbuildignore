@@ -1,4 +1,8 @@
+.vscode
+
 ^\.travis\.yml$
+
+LICENSE.md
 
 vignettes/cover/build_cover.sh
 vignettes/cover/kazaam.tex

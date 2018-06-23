@@ -3,13 +3,13 @@
 \docType{methods}
 \name{print}
 \alias{print}
-\alias{print,shaq-method}
-\alias{show,shaq-method}
+\alias{print,gbd1d-method}
+\alias{show,gbd1d-method}
 \title{print}
 \usage{
-\S4method{print}{shaq}(x, ...)
+\S4method{print}{gbd1d}(x, ...)
 
-\S4method{show}{shaq}(object)
+\S4method{show}{gbd1d}(object)
 }
 \arguments{
 \item{x, object}{A shaq.}
@@ -23,7 +23,6 @@ Print method for a shaq.
 
 The operation is completely local.
 }
-
 \examples{
 \dontrun{
 library(kazaam)
@@ -35,3 +34,4 @@ finalize()
 }
 
 }
+

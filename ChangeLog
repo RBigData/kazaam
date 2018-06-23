@@ -1,3 +1,17 @@
+Release 0.2-0:
+  * Added rsvd() method.
+  * Added rcond() method.
+  * Added "^" method.
+  * Added sum() method.
+  * Improved memory usage and communication pattern of crossprod().
+  * Added k-means method km().
+  * Added some skeleton support for 32-bit floats.
+  * Swapped out allreduce() for the faster, low-level interface.
+  * Added new tshaq class for short+wide data.
+  * Added t() method.
+  * Added binary logical operators (==, !=, etc).
+  * Added La.svd() method.
+
 Release 0.1-0:
   * Added expand() and collapse().
   * Added multiplication methods.
@@ -12,4 +26,3 @@ Release 0.1-0:
   * Added lm (coefficient getter) method.
   * Added random shaq constructors.
   * Added gradient descent-based lm, logistic, and poisson regression fitters.
-  

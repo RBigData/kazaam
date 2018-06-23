@@ -19,7 +19,5 @@ starred in the film 'Kazaam'.
 \references{
 Programming with Big Data in R Website: \url{http://r-pbd.org/}
 }
-\author{
-Drew Schmidt \email{wrathematics@gmail.com}, Wei-Chen Chen, Mike Matheson, and George Ostrouchov.
-}
 \keyword{Package}
+

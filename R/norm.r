@@ -63,22 +63,18 @@ norm.shaq = function(x, type = c("O", "I", "F", "M", "2"))
   
   if (type %in% c("O", "1"))
   {
-    cs_abs = base::colSums(abs(Data(x)))
-    max(allreduce(cs_abs))
+    cs_abs = base::colSums(abs(DATA(x)))
+    max(MPI_Allreduce(cs_abs))
   }
   else if (type == "I")
-  {
-    comm.max(norm(Data(x), type="I"))
-  }
+    comm.max(norm(DATA(x), type="I"))
   else if (type == "F")
   {
-    tmp = norm(Data(x), type="F")
-    sqrt(allreduce(tmp*tmp))
+    tmp = norm(DATA(x), type="F")
+    sqrt(MPI_Allreduce(tmp*tmp))
   }
   else if (type == "M")
-  {
-    comm.max(max(abs(Data(x))))
-  }
+    comm.max(max(abs(DATA(x))))
   else if (type == "2")
     svd(x, 0, 0)$d[1L]
   else

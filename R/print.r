@@ -32,7 +32,9 @@ print_shaq = function(x)
   {
     size = comm.size()
     rank = if (size > 1) "ranks" else "rank"
-    cat(paste0("# A shaq: ", nrow(x), "x", ncol(x), " on ", size, " MPI ", rank, "\n"))
+    type = ifelse(is.shaq(x), "shaq", "tshaq")
+    
+    cat(paste0("# A ", type, ": ", nrow(x), "x", ncol(x), " on ", size, " MPI ", rank, "\n"))
     
     toprow = min(10, nrow.local(x))
     topcol = min(6, ncol.local(x))
@@ -40,7 +42,7 @@ print_shaq = function(x)
       cat("# [no elements to display]\n")
     else
     {
-      submat = Data(x)[1:toprow, 1:topcol, drop=FALSE]
+      submat = DATA(x)[1:toprow, 1:topcol, drop=FALSE]
       print(submat)
       
       if (toprow < nrow(x) || topcol < ncol(x))
@@ -53,8 +55,8 @@ print_shaq = function(x)
 
 #' @rdname print
 #' @export
-setMethod("print", signature(x="shaq"), function(x, ...) print_shaq(x))
+setMethod("print", signature(x="gbd1d"), function(x, ...) print_shaq(x))
 
 #' @rdname print
 #' @export
-setMethod("show", signature(object="shaq"), function(object) print_shaq(object))
+setMethod("show", signature(object="gbd1d"), function(object) print_shaq(object))

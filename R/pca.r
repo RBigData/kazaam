@@ -22,7 +22,7 @@
 #' @param retx 
 #' Should the rotated variables be returned?
 #' @param tol 
-#' Ignored.
+#' The cutoff for components.
 #' @param ...
 #' Ignored.
 #' 
@@ -49,22 +49,34 @@
 prcomp.shaq = function(x, retx=TRUE, center=TRUE, scale.=FALSE, tol=NULL, ...)
 {
   x <- scale(x, center=center, scale=scale.)
-  cen <- attr(Data(x), "scaled:center")
-  sc <- attr(Data(x) , "scaled:scale")
-  if (any(sc == 0))
+  x.center <- attr(DATA(x), "scaled:center")
+  x.scale <- attr(DATA(x) , "scaled:scale")
+  if (any(x.scale == 0))
       comm.stop("cannot rescale a constant/zero column to unit variance")
   
   s <- svd(x, nu=0)
   s$d <- s$d/sqrt(max(1, nrow(x) - 1))
-  # if (!is.null(tol)) {
-  #     rank <- max(sum(s$d > (s$d[1L] * tol)), 1)
-  #     if (rank < ncol(x)) {
-  #         s$v <- s$v[, 1L:rank]
-  #         s$d <- s$d[1L:rank]
-  #     }
-  # }
-  center = if (is.null(cen)) FALSE else cen
-  scale = if (is.null(sc)) FALSE else sc
+  
+  if (!is.null(tol))
+  {
+    rank <- max(as.integer(sum(s$d > (s$d[1L] * tol))), 1L)
+    if (rank < ncol(x))
+    {
+      s$v <- s$v[, 1L:rank, drop=FALSE]
+      s$d <- s$d[1L:rank]
+    }
+  }
+  
+  if (is.null(x.center))
+    center = FALSE
+  else
+    center = x.center
+  
+  if (is.null(x.scale))
+    scale = FALSE
+  else
+    scale = x.scale
+  
   r <- list(sdev=s$d, rotation=s$v, center=center, scale=scale)
   if (retx)
     r$x <- x %*% s$v

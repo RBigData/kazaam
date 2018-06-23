@@ -2,9 +2,9 @@
 % Please edit documentation in R/bracket.r
 \docType{methods}
 \name{bracket}
-\alias{bracket}
 \alias{[,shaq-method}
 \alias{[<-,shaq-method}
+\alias{bracket}
 \title{subsetting}
 \usage{
 \S4method{[}{shaq}(x, i, j)
@@ -32,7 +32,6 @@ Subsetting via \code{`[`} for shaq objects.
 
 Each operation is completely local.
 }
-
 \examples{
 \dontrun{
 library(kazaam)
@@ -44,3 +43,4 @@ finalize()
 }
 
 }
+

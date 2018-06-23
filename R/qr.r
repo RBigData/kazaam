@@ -74,7 +74,7 @@ qr_Q = function(x, R)
   else
     check.is.matrix(R)
   
-  Q.local = Data(x) %*% .trinv(R)
+  Q.local = DATA(x) %*% .trinv(R)
   
   shaq(Q.local, nrow(x), ncol(x), checks=FALSE)
 }

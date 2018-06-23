@@ -17,7 +17,7 @@
 
 \item{scale.}{Should columns are rescaled to unit variance?}
 
-\item{tol}{Ignored.}
+\item{tol}{The cutoff for components.}
 
 \item{...}{Ignored.}
 }
@@ -42,7 +42,6 @@ The communication is an \code{allreduce()} call, quadratic on the number of
 columns.  Most of the run time should be dominated by relatively expensive
  local operations.
 }
-
 \examples{
 \dontrun{
 library(kazaam)
@@ -55,3 +54,4 @@ finalize()
 }
 
 }
+

@@ -3,13 +3,10 @@
 \docType{methods}
 \name{scale}
 \alias{scale}
-\alias{scale}
-\alias{scale,shaq,logical,logical-method}
+\alias{scale,shaq-method}
 \title{Scale}
 \usage{
-scale(x, center = TRUE, scale = TRUE)
-
-\S4method{scale}{shaq,logical,logical}(x, center = TRUE, scale = TRUE)
+\S4method{scale}{shaq}(x, center = TRUE, scale = TRUE)
 }
 \arguments{
 \item{x}{A shaq.}
@@ -29,7 +26,6 @@ Centers and/or scales the columns of a distributed matrix.
 The communication consists of two allreduce calls, each quadratic on the
 number of columns.
 }
-
 \examples{
 \dontrun{
 library(kazaam)
@@ -42,3 +38,4 @@ finalize()
 }
 
 }
+

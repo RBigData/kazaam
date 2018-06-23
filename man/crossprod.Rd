@@ -4,14 +4,17 @@
 \name{crossprod}
 \alias{crossprod}
 \alias{crossprod,shaq-method}
+\alias{tcrossprod,tshaq-method}
 \title{Matrix Multiplication}
 \usage{
 \S4method{crossprod}{shaq}(x, y = NULL)
+
+\S4method{tcrossprod}{tshaq}(x, y = NULL)
 }
 \arguments{
 \item{x}{A shaq.}
 
-\item{y}{Must be \code{NULL}.}
+\item{y}{A shaq or \code{NULL}.}
 }
 \value{
 A regular matrix.
@@ -24,7 +27,6 @@ Conceptually, this computes \code{t(x) \%*\% x} for a shaq \code{x}.
 The operation consists of a local crossproduct, followed by an
 \code{allreduce()} call, quadratic on the number of columns.
 }
-
 \examples{
 \dontrun{
 library(kazaam)
@@ -37,3 +39,4 @@ finalize()
 }
 
 }
+

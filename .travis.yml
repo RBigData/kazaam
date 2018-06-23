@@ -7,3 +7,6 @@ before_install:
   - sudo apt-get install -y -q libopenmpi-dev openmpi-bin
   - LD_PRELOAD=/usr/lib/openmpi/lib/libmpi.so
 
+r_github_packages:
+  - wrathematics/float
+  - rbigdata/pbdMPI

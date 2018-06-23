@@ -22,7 +22,6 @@ Only rank 0 will own the matrix on return.
 
 Short answer: quite a bit.  Each local submatrix has to be sent to rank 0.
 }
-
 \examples{
 \dontrun{
 library(kazaam)
@@ -35,3 +34,4 @@ finalize()
 }
 
 }
+

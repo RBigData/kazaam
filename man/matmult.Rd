@@ -2,8 +2,8 @@
 % Please edit documentation in R/matmult.r
 \docType{methods}
 \name{matmult}
-\alias{matmult}
 \alias{\%*\%,shaq,matrix-method}
+\alias{matmult}
 \title{Matrix Multiplication}
 \usage{
 \S4method{\%*\%}{shaq,matrix}(x, y)
@@ -11,7 +11,7 @@
 \arguments{
 \item{x}{A shaq.}
 
-\item{y}{A regular matrix, globally ownd on all ranks.  Since the number of columns
+\item{y}{A regular matrix, globally owned on all ranks.  Since the number of columns
 of a shaq should be small, this matrix should be small as well.}
 }
 \value{
@@ -27,7 +27,6 @@ The two shaqs must be distributed \emph{identically}.
 
 The operation is completely local.
 }
-
 \examples{
 \dontrun{
 library(kazaam)
@@ -40,3 +39,4 @@ finalize()
 }
 
 }
+

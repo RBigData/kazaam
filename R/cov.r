@@ -48,14 +48,14 @@ cov.shaq = function (x, y=NULL, use="everything", method="pearson")
 {
   covcor.check.y(y)
   
-  crossprod(scale(x, TRUE, FALSE)) / (nrow(x) - 1)
+  cp.internal(scale(x, TRUE, FALSE), 1.0/(nrow(x) - 1L))
 }
 
 cor.shaq = function (x, y=NULL, use="everything", method="pearson")
 {
   covcor.check.y(y)
   
-  crossprod(scale(x, TRUE, TRUE)) / (nrow(x) - 1)
+  cp.internal(scale(x, TRUE, TRUE), 1.0/(nrow(x) - 1L))
 }
 
 

@@ -25,7 +25,6 @@ should be distributed in identical fashion.
 
 The operation is completely local.
 }
-
 \examples{
 \dontrun{
 library(kazaam)
@@ -38,3 +37,4 @@ finalize()
 }
 
 }
+

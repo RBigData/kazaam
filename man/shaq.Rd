@@ -2,15 +2,36 @@
 % Please edit documentation in R/01-constructor.r
 \name{shaq}
 \alias{shaq}
+\alias{shaq.NULL}
+\alias{shaq.float32}
 \alias{shaq.matrix}
-\alias{shaq.numeric}
+\alias{shaq.vector}
+\alias{tshaq}
+\alias{tshaq.NULL}
+\alias{tshaq.float32}
+\alias{tshaq.matrix}
+\alias{tshaq.vector}
 \title{shaq}
 \usage{
 shaq(Data, nrows, ncols, checks = TRUE)
 
+tshaq(Data, nrows, ncols, checks = TRUE)
+
 \method{shaq}{matrix}(Data, nrows, ncols, checks = TRUE)
 
-\method{shaq}{numeric}(Data, nrows, ncols, checks = TRUE)
+\method{shaq}{float32}(Data, nrows, ncols, checks = TRUE)
+
+\method{shaq}{vector}(Data, nrows, ncols, checks = TRUE)
+
+\method{shaq}{NULL}(Data, nrows, ncols, checks = TRUE)
+
+\method{tshaq}{matrix}(Data, nrows, ncols, checks = TRUE)
+
+\method{tshaq}{float32}(Data, nrows, ncols, checks = TRUE)
+
+\method{tshaq}{vector}(Data, nrows, ncols, checks = TRUE)
+
+\method{tshaq}{NULL}(Data, nrows, ncols, checks = TRUE)
 }
 \arguments{
 \item{Data}{The local submatrix.}
@@ -25,10 +46,10 @@ Constructor for shaq objects.
 }
 \details{
 If \code{nrows} and/or \code{ncols} is missing, then it will be imputed.
-This means one must be especially careful to manually provide \code{ncols}
-if some of ranks have "placeholder data" (a 0x0 matrix), which is typical
-when reading from a subset of processors and then broadcasting out to the
-remainder.
+One can pass \code{NULL} for the \code{Data} argument to specify that that
+MPI rank owns no data. In this case, you \emph{must} manually provide
+\code{ncols}. This use case is typical when reading from a subset of
+processors and then broadcasting out to the remainder.
 }
 \section{Communication}{
 
@@ -36,7 +57,7 @@ If \code{checks=TRUE}, a check on the global number of rows is performed.
 This amounts to an allgather operation on a logical value (the local
 dimension check).
 }
-
 \seealso{
-\code{\link{shaq-class}}
+\code{\link{shaq-class}} and \code{\link{load_balance}}
 }
+

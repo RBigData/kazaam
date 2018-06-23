@@ -34,14 +34,21 @@
 #' finalize()
 #' }
 #' 
+#' @name ranshaq
+#' @rdname ranshaq
+NULL
+
+
+
+#' @rdname ranshaq
 #' @export
 ranshaq = function(generator, nrows, ncols, local=FALSE, ...)
 {
+  check.is.flag(local)
   if (!missing(nrows))
     check.is.posint(nrows)
   if (!missing(ncols))
     check.is.posint(ncols)
-  check.is.flag(local)
   
   
   if (missing(nrows) && missing(ncols))
@@ -63,15 +70,58 @@ ranshaq = function(generator, nrows, ncols, local=FALSE, ...)
   else
   {
     size = comm.size()
-    nrows.local = as.integer(nrows %/% size)
-    base = as.integer(nrows %/% size)
-    rem = as.integer(nrows - nrows.local*size)
+    nrows.local = floor(nrows %/% size)
+    base = floor(nrows %/% size)
+    rem = floor(nrows - nrows.local*size)
     if (comm.rank()+1 <= rem)
       nrows.local = nrows.local + 1L
   }
   
-  Data = generator(nrows.local*ncols, ...)
+  Data = generator(nrows.local * ncols, ...)
   dim(Data) <- c(nrows.local, ncols)
-  
   shaq(Data, nrows, ncols, checks=FALSE)
+}
+
+
+
+#' @rdname ranshaq
+#' @export
+rantshaq = function(generator, nrows, ncols, local=FALSE, ...)
+{
+  check.is.flag(local)
+  if (!missing(nrows))
+    check.is.posint(nrows)
+  if (!missing(ncols))
+    check.is.posint(ncols)
+  
+  
+  if (missing(nrows) && missing(ncols))
+  {
+    s = tshaq(matrix(nrow=0, ncol=0), 0, 0, checks=FALSE)
+    return(s)
+  }
+  else if (missing(ncols))
+    ncols = 1L
+  else if (missing(nrows))
+    nrows = 1L
+  
+  
+  if (local)
+  {
+    ncols.local = ncols
+    ncols = ncols * comm.size()
+  }
+  else
+  {
+    size = comm.size()
+    ncols.local = floor(ncols %/% size)
+    base = floor(ncols %/% size)
+    rem = floor(ncols - ncols.local*size)
+    if (comm.rank()+1 <= rem)
+      ncols.local = ncols.local + 1L
+  }
+  
+  Data = generator(nrows * ncols.local, ...)
+  dim(Data) <- c(nrows, ncols.local)
+  tshaq(Data, nrows, ncols, checks=FALSE)
 }

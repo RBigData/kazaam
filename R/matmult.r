@@ -11,7 +11,7 @@
 #' @param x
 #' A shaq.
 #' @param y
-#' A regular matrix, globally ownd on all ranks.  Since the number of columns
+#' A regular matrix, globally owned on all ranks.  Since the number of columns
 #' of a shaq should be small, this matrix should be small as well.
 #' 
 #' @return 
@@ -41,7 +41,7 @@ matmult.shaq = function(x, y)
   
   nrows = nrow(x)
   ncols = NCOL(y)
-  Data = Data(x) %*% y
+  Data = DATA(x) %*% y
   
   shaq(Data, nrows, ncols, checks=FALSE)
 }

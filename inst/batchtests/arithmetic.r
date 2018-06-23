@@ -15,6 +15,8 @@ if (comm.rank() == 0){
   
   d1 = x / 2
   d2 = 2 / x
+  
+  pow = x^(-1)
 } else {
   x = NULL
 }
@@ -43,6 +45,9 @@ d1_t = collapse(dx / 2)
 d2_t = collapse(2 / dx)
 comm.print(all.equal(d1, d1_t))
 comm.print(all.equal(d2, d2_t))
+
+pow_t = collapse(dx ^ (-1))
+comm.print(all.equal(pow, pow_t))
 
 
 finalize()

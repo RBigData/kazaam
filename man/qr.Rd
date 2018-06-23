@@ -2,8 +2,8 @@
 % Please edit documentation in R/qr.r
 \name{qr}
 \alias{qr}
-\alias{qr_R}
 \alias{qr_Q}
+\alias{qr_R}
 \title{QR Decomposition Methods}
 \usage{
 qr_R(x)
@@ -34,7 +34,6 @@ is handled by an efficient triangular inverse routine.
 The operation is completely local except for forming the crossproduct, which
 is an \code{allreduce()} call, quadratic on the number of columns.
 }
-
 \examples{
 \dontrun{
 library(kazaam)
@@ -50,3 +49,4 @@ finalize()
 }
 
 }
+

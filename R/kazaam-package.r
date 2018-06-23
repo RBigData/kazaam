@@ -12,15 +12,16 @@
 #' starred in the film 'Kazaam'.
 #' 
 #' @importFrom pbdMPI isend irecv send recv allreduce bcast comm.size comm.rank
-#'    comm.stop comm.all comm.max get.jid
+#'     comm.stop comm.all comm.max
 #' @import methods
-#' @importFrom stats prcomp optim
+#' @importFrom stats prcomp optim runif
+#' @importFrom float float32 is.float
 #' 
-#' @useDynLib kazaam R_trinv
+#' @useDynLib kazaam R_mpicrossprod R_float_mpicrossprod R_add1 R_memcpy
+#'   R_km_assign R_km_update R_trinv
 #' 
 #' @name kazaam-package
 #' @docType package
-#' @author Drew Schmidt \email{wrathematics@gmail.com}, Wei-Chen Chen, Mike Matheson, and George Ostrouchov.
 #' @references Programming with Big Data in R Website: \url{http://r-pbd.org/}
 #' @keywords Package
 NULL
