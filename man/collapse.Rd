@@ -22,16 +22,18 @@ Only rank 0 will own the matrix on return.
 
 Short answer: quite a bit.  Each local submatrix has to be sent to rank 0.
 }
+
 \examples{
-\dontrun{
-library(kazaam)
-dx = ranshaq(runif, 10, 3)
+spmd.code = "
+  suppressMessages(library(kazaam))
+  dx = ranshaq(runif, 10, 3)
+  
+  x = collapse(dx)
+  comm.print(x)
+  
+  finalize()
+"
 
-x = collapse(dx)
-comm.print(x)
+pbdMPI::execmpi(spmd.code=spmd.code, nranks=2)
 
-finalize()
 }
-
-}
-

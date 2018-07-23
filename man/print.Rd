@@ -23,15 +23,17 @@ Print method for a shaq.
 
 The operation is completely local.
 }
+
 \examples{
-\dontrun{
-library(kazaam)
-x = shaq(1, 10, 3)
+spmd.code = "
+  library(kazaam)
+  x = shaq(1, 10, 3)
 
-x # same as print(x) or comm.print(x)
+  x # same as print(x) or comm.print(x)
 
-finalize()
+  finalize()
+"
+
+pbdMPI::execmpi(spmd.code=spmd.code, nranks=2)
+
 }
-
-}
-

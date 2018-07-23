@@ -23,6 +23,7 @@ Transpose a shaq or tshaq distributed matrix.
 
 The operation is completely local.
 }
+
 \examples{
 \dontrun{
 library(kazaam)
@@ -34,4 +35,3 @@ finalize()
 }
 
 }
-

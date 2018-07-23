@@ -2,6 +2,7 @@
 % Please edit documentation in R/ranshaq.r
 \name{ranshaq}
 \alias{ranshaq}
+\alias{ranshaq}
 \alias{rantshaq}
 \title{ranshaq}
 \usage{
@@ -30,20 +31,22 @@ Generate a random shaq object.
 
 The operation is entirely local.
 }
+
 \examples{
-\dontrun{
-library(kazaam)
+spmd.code="
+  library(kazaam)
 
-# a 10x3 shaq with random uniform data
-x = ranshaq(runif, 10, 3)
-x
+  # a 10x3 shaq with random uniform data
+  x = ranshaq(runif, 10, 3)
+  x
 
-# a (comm.size() * 10)x3 shaq with random normal data
-y = ranshaq(rnorm, 10, 3, local=TRUE)
-y
+  # a (comm.size() * 10)x3 shaq with random normal data
+  y = ranshaq(rnorm, 10, 3, local=TRUE)
+  y
 
-finalize()
+  finalize()
+"
+
+pbdMPI::execmpi(spmd.code=spmd.code, nranks=2)
+
 }
-
-}
-

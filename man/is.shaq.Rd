@@ -2,6 +2,7 @@
 % Please edit documentation in R/is.shaq.r
 \name{is.shaq}
 \alias{is.shaq}
+\alias{is.shaq}
 \alias{is.tshaq}
 \title{is.shaq}
 \usage{
@@ -22,6 +23,7 @@ Test if an object is a shaq or tshaq.
 
 The operation is completely local.
 }
+
 \examples{
 \dontrun{
 library(kazaam)
@@ -33,4 +35,3 @@ finalize()
 }
 
 }
-

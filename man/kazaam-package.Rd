@@ -20,4 +20,3 @@ starred in the film 'Kazaam'.
 Programming with Big Data in R Website: \url{http://r-pbd.org/}
 }
 \keyword{Package}
-

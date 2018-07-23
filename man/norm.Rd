@@ -50,6 +50,7 @@ If \code{type == "M"} then the communication consists of an allgather.
 If \code{type == "2"} then the communication consists of the same as that of
 an \code{svd()} call:  an allreduce, quadratic on the number of columns.
 }
+
 \examples{
 \dontrun{
 library(kazaam)
@@ -62,4 +63,3 @@ finalize()
 }
 
 }
-

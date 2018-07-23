@@ -15,19 +15,21 @@
 #' A shaq or a tshaq.
 #' 
 #' @examples
-#' \dontrun{
-#' library(kazaam)
-#' if (comm.rank() == 0){
-#'   x = matrix(runif(30), 10, 3)
-#' } else {
-#'   x = NULL
-#' }
+#' spmd.code = "
+#'   library(kazaam)
+#'   if (comm.rank() == 0){
+#'     x = matrix(runif(30), 10, 3)
+#'   } else {
+#'     x = NULL
+#'   }
+#'   
+#'   dx = expand(x)
+#'   dx
+#'   
+#'   finalize()
+#' "
 #' 
-#' dx = expand(x)
-#' dx
-#' 
-#' finalize()
-#' }
+#' pbdMPI::execmpi(spmd.code=spmd.code, nranks=2)
 #' 
 #' @name expand
 #' @rdname expand

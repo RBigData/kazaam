@@ -11,14 +11,16 @@
 #' Ignored
 #' 
 #' @examples
-#' \dontrun{
-#' library(kazaam)
-#' x = shaq(1, 10, 3)
+#' spmd.code = "
+#'   library(kazaam)
+#'   x = shaq(1, 10, 3)
+#'
+#'   x # same as print(x) or comm.print(x)
+#'
+#'   finalize()
+#' "
 #' 
-#' x # same as print(x) or comm.print(x)
-#' 
-#' finalize()
-#' }
+#' pbdMPI::execmpi(spmd.code=spmd.code, nranks=2)
 #' 
 #' @name print
 #' @rdname print
