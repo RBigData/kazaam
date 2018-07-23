@@ -24,7 +24,8 @@ A single value.
 Sums the elements of a shaq.
 }
 \details{
-TODO
+Combinations of shaq and numeric matrices/vectors can be used, so long as the
+first item is always a shaq.
 }
 \section{Communication}{
 
