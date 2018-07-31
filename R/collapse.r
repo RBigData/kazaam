@@ -15,15 +15,17 @@
 #' A regular matrix (rank 0) or \code{NULL} (everyone else).
 #' 
 #' @examples
-#' \dontrun{
-#' library(kazaam)
-#' dx = ranshaq(runif, 10, 3)
+#' spmd.code = "
+#'   suppressMessages(library(kazaam))
+#'   dx = ranshaq(runif, 10, 3)
+#'   
+#'   x = collapse(dx)
+#'   comm.print(x)
+#'   
+#'   finalize()
+#' "
 #' 
-#' x = collapse(dx)
-#' comm.print(x)
-#' 
-#' finalize()
-#' }
+#' pbdMPI::execmpi(spmd.code=spmd.code, nranks=2)
 #' 
 #' @export
 collapse <- function (x) UseMethod("collapse", x)

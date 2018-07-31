@@ -9,7 +9,7 @@
 #' A function, such as \code{runif()} or \code{rnorm()} (passed without parens).
 #' See examples for a demonstration of usage.
 #' @param nrows,ncols
-#' The number of rows 
+#' The number of rows
 #' @param local
 #' Is the problem size \code{nrows*ncols} specifying the local or global problem
 #' size?
@@ -20,19 +20,21 @@
 #' A shaq.
 #' 
 #' @examples
-#' \dontrun{
-#' library(kazaam)
+#' spmd.code="
+#'   library(kazaam)
+#'
+#'   # a 10x3 shaq with random uniform data
+#'   x = ranshaq(runif, 10, 3)
+#'   x
+#'
+#'   # a (comm.size() * 10)x3 shaq with random normal data
+#'   y = ranshaq(rnorm, 10, 3, local=TRUE)
+#'   y
+#'
+#'   finalize()
+#' "
 #' 
-#' # a 10x3 shaq with random uniform data
-#' x = ranshaq(runif, 10, 3)
-#' x
-#' 
-#' # a (comm.size() * 10)x3 shaq with random normal data
-#' y = ranshaq(rnorm, 10, 3, local=TRUE)
-#' y
-#' 
-#' finalize()
-#' }
+#' pbdMPI::execmpi(spmd.code=spmd.code, nranks=2)
 #' 
 #' @name ranshaq
 #' @rdname ranshaq

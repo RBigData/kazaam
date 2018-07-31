@@ -2,9 +2,9 @@
 % Please edit documentation in R/03-setters.r
 \docType{methods}
 \name{setters}
+\alias{setters}
 \alias{DATA<-}
 \alias{DATA<-,shaq-method}
-\alias{setters}
 \title{setters}
 \usage{
 DATA(x) <- value
@@ -34,7 +34,7 @@ With \code{Data<-}, a check on the global number of rows is performed.  This
 amounts to an allgather operation on a logical value (the local dimension
 check).
 }
+
 \seealso{
 \code{\link{getters}}, \code{\link{bracket}}
 }
-

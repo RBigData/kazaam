@@ -3,7 +3,10 @@
 #' Randomized singular value decomposition.
 #' 
 #' @details
-#' TODO
+#' A randomized SVD is an approximate method for computing using random
+#' projections to estimate singular values/vectors. It is usually faster than
+#' a full SVD (say via \code{svd()}) when only the first few singular
+#' values/vectors are needed.
 #' 
 #' @section Communication:
 #' The operation is completely local except for forming the crossproduct, which

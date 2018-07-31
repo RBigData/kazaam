@@ -2,15 +2,16 @@
 % Please edit documentation in R/01-constructor.r
 \name{shaq}
 \alias{shaq}
-\alias{shaq.NULL}
-\alias{shaq.float32}
-\alias{shaq.matrix}
-\alias{shaq.vector}
+\alias{shaq}
 \alias{tshaq}
-\alias{tshaq.NULL}
-\alias{tshaq.float32}
+\alias{shaq.matrix}
+\alias{shaq.float32}
+\alias{shaq.vector}
+\alias{shaq.NULL}
 \alias{tshaq.matrix}
+\alias{tshaq.float32}
 \alias{tshaq.vector}
+\alias{tshaq.NULL}
 \title{shaq}
 \usage{
 shaq(Data, nrows, ncols, checks = TRUE)
@@ -57,7 +58,7 @@ If \code{checks=TRUE}, a check on the global number of rows is performed.
 This amounts to an allgather operation on a logical value (the local
 dimension check).
 }
+
 \seealso{
 \code{\link{shaq-class}} and \code{\link{load_balance}}
 }
-

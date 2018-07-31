@@ -2,9 +2,9 @@
 % Please edit documentation in R/glms.r
 \name{glms}
 \alias{glms}
+\alias{reg.fit}
 \alias{logistic.fit}
 \alias{poisson.fit}
-\alias{reg.fit}
 \title{Generalized Linear Model Fitters}
 \usage{
 reg.fit(x, y, maxiter = 100)
@@ -42,6 +42,7 @@ be load balanced, so that each MPI rank owns roughly the same amount of data.
 The communication consists of an allreduce of 1 double (the local
 cost/objective function value) at each iteration of the optimization.
 }
+
 \examples{
 \dontrun{
 library(kazaam)
@@ -67,4 +68,3 @@ Duda, R.O., Hart, P.E. and Stork, D.G., 1973. Pattern classification (pp.
 \seealso{
 \code{\link{lm_coefs}}
 }
-

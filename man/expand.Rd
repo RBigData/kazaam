@@ -2,6 +2,7 @@
 % Please edit documentation in R/expand.r
 \name{expand}
 \alias{expand}
+\alias{expand}
 \title{expand}
 \usage{
 expand(x, class = "shaq")
@@ -22,20 +23,22 @@ Expand a regular matrix owned on MPI rank 0 into a shaq.
 Short answer: quite a bit.  Each local submatrix has to be received from rank
 0.
 }
+
 \examples{
-\dontrun{
-library(kazaam)
-if (comm.rank() == 0){
-  x = matrix(runif(30), 10, 3)
-} else {
-  x = NULL
+spmd.code = "
+  library(kazaam)
+  if (comm.rank() == 0){
+    x = matrix(runif(30), 10, 3)
+  } else {
+    x = NULL
+  }
+  
+  dx = expand(x)
+  dx
+  
+  finalize()
+"
+
+pbdMPI::execmpi(spmd.code=spmd.code, nranks=2)
+
 }
-
-dx = expand(x)
-dx
-
-finalize()
-}
-
-}
-

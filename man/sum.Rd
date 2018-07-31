@@ -24,12 +24,14 @@ A single value.
 Sums the elements of a shaq.
 }
 \details{
-TODO
+Combinations of shaq and numeric matrices/vectors can be used, so long as the
+first item is always a shaq.
 }
 \section{Communication}{
 
 Communication consists of a an allreduce on a single value.
 }
+
 \examples{
 \dontrun{
 library(kazaam)
@@ -42,4 +44,3 @@ finalize()
 }
 
 }
-

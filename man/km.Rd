@@ -46,6 +46,7 @@ There is also a check at the beginning of the call to find out how many
 observations come before the current process's data, which is an allgather
 operation.
 }
+
 \examples{
 \dontrun{
 suppressMessages(library(kazaam))
@@ -68,4 +69,3 @@ finalize()
 Phillips, J.. Data Mining: Algorithms, Geometry, and Probability.
 https://www.cs.utah.edu/~jeffp/DMBook/DM-AGP.html
 }
-

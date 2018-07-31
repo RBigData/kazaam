@@ -2,29 +2,29 @@
 % Please edit documentation in R/math.r
 \docType{methods}
 \name{math}
+\alias{math}
+\alias{sqrt,shaq-method}
 \alias{abs,shaq-method}
-\alias{acos,shaq-method}
-\alias{acosh,shaq-method}
+\alias{exp,shaq-method}
+\alias{log,shaq-method}
+\alias{log2,shaq-method}
+\alias{log10,shaq-method}
+\alias{sin,shaq-method}
+\alias{cos,shaq-method}
+\alias{tan,shaq-method}
 \alias{asin,shaq-method}
-\alias{asinh,shaq-method}
+\alias{acos,shaq-method}
 \alias{atan,shaq-method}
+\alias{sinh,shaq-method}
+\alias{cosh,shaq-method}
+\alias{tanh,shaq-method}
+\alias{asinh,shaq-method}
+\alias{acosh,shaq-method}
 \alias{atanh,shaq-method}
 \alias{ceiling,shaq-method}
-\alias{cos,shaq-method}
-\alias{cosh,shaq-method}
-\alias{exp,shaq-method}
 \alias{floor,shaq-method}
-\alias{log,shaq-method}
-\alias{log10,shaq-method}
-\alias{log2,shaq-method}
-\alias{math}
-\alias{round,shaq-method}
-\alias{sin,shaq-method}
-\alias{sinh,shaq-method}
-\alias{sqrt,shaq-method}
-\alias{tan,shaq-method}
-\alias{tanh,shaq-method}
 \alias{trunc,shaq-method}
+\alias{round,shaq-method}
 \title{math}
 \usage{
 \S4method{sqrt}{shaq}(x)
@@ -93,6 +93,7 @@ In each case, the corresponding base R function is called on the local data.
 
 Each operation is completely local.
 }
+
 \examples{
 \dontrun{
 library(kazaam)
@@ -106,4 +107,3 @@ finalize()
 }
 
 }
-

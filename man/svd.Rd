@@ -2,11 +2,11 @@
 % Please edit documentation in R/svd.r
 \docType{methods}
 \name{svd}
-\alias{La.svd,shaq-method}
-\alias{La.svd,tshaq-method}
 \alias{svd}
 \alias{svd,shaq-method}
 \alias{svd,tshaq-method}
+\alias{La.svd,shaq-method}
+\alias{La.svd,tshaq-method}
 \title{svd}
 \usage{
 \S4method{svd}{shaq}(x, nu = min(n, p), nv = min(n, p), LINPACK = FALSE)
@@ -50,6 +50,7 @@ left singular vectors \eqn{U} map to the eigenvectors of \eqn{XX^T}.
 The operation is completely local except for forming the crossproduct, which
 is an \code{allreduce()} call, quadratic on the number of columns.
 }
+
 \examples{
 \dontrun{
 library(kazaam)
@@ -64,4 +65,3 @@ finalize()
 }
 
 }
-
