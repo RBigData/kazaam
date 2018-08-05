@@ -2,6 +2,7 @@
 % Please edit documentation in R/00-classes.r
 \docType{class}
 \name{shaq-class}
+\alias{shaq-class}
 \alias{gbd1d-class}
 \alias{shaq-class}
 \alias{tshaq-class}
@@ -36,7 +37,7 @@ having one less row than the others.
 \item{\code{nrows,}}{ncols
 The global matrix dimension.}
 }}
+
 \seealso{
 \code{\link{shaq}}
 }
-

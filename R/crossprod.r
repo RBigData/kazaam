@@ -99,5 +99,3 @@ setMethod("crossprod", signature(x="shaq", y="ANY"), cp.shaq)
 #' @rdname crossprod
 #' @export
 setMethod("tcrossprod", signature(x="tshaq", y="ANY"), tcp.shaq)
-
-# TODO matrix-shaq method

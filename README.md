@@ -21,9 +21,6 @@ install.packages("kazaam")
 The development version is maintained on GitHub, and can easily be installed by any of the packages that offer installations from GitHub:
 
 ```r
-### Pick your preference
-devtools::install_github("RBigData/kazaam")
-ghit::install_github("RBigData/kazaam")
 remotes::install_github("RBigData/kazaam")
 ```
 

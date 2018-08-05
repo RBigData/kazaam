@@ -2,6 +2,7 @@
 % Please edit documentation in R/svm.r
 \name{svm}
 \alias{svm}
+\alias{svm}
 \title{svm}
 \usage{
 svm(x, y, maxiter = 500)
@@ -34,6 +35,7 @@ be load balanced, so that each MPI rank owns roughly the same amount of data.
 The communication consists of an allreduce of 1 double (the local
 cost/objective function value) at each iteration of the optimization.
 }
+
 \examples{
 \dontrun{
 library(kazaam)
@@ -56,4 +58,3 @@ Cambridge University Press.
 \seealso{
 \code{\link{glm}}
 }
-

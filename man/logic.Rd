@@ -2,25 +2,25 @@
 % Please edit documentation in R/logic.r
 \docType{methods}
 \name{logic}
-\alias{!=,numeric,shaq-method}
-\alias{!=,shaq,numeric-method}
-\alias{!=,shaq,shaq-method}
-\alias{<,numeric,shaq-method}
-\alias{<,shaq,numeric-method}
-\alias{<,shaq,shaq-method}
-\alias{<=,numeric,shaq-method}
-\alias{<=,shaq,numeric-method}
-\alias{<=,shaq,shaq-method}
-\alias{==,numeric,shaq-method}
-\alias{==,shaq,numeric-method}
-\alias{==,shaq,shaq-method}
-\alias{>,numeric,shaq-method}
-\alias{>,shaq,numeric-method}
-\alias{>,shaq,shaq-method}
-\alias{>=,numeric,shaq-method}
-\alias{>=,shaq,numeric-method}
-\alias{>=,shaq,shaq-method}
 \alias{logic}
+\alias{<,shaq,shaq-method}
+\alias{<,shaq,numeric-method}
+\alias{<,numeric,shaq-method}
+\alias{>,shaq,shaq-method}
+\alias{>,shaq,numeric-method}
+\alias{>,numeric,shaq-method}
+\alias{<=,shaq,shaq-method}
+\alias{<=,shaq,numeric-method}
+\alias{<=,numeric,shaq-method}
+\alias{>=,shaq,shaq-method}
+\alias{>=,shaq,numeric-method}
+\alias{>=,numeric,shaq-method}
+\alias{==,shaq,shaq-method}
+\alias{==,shaq,numeric-method}
+\alias{==,numeric,shaq-method}
+\alias{!=,shaq,shaq-method}
+\alias{!=,shaq,numeric-method}
+\alias{!=,numeric,shaq-method}
 \title{Logical Operators}
 \usage{
 \S4method{<}{shaq,shaq}(e1, e2)
@@ -76,6 +76,7 @@ For binary operations involving two shaqs, they must be distributed
 
 Each operation is completely local.
 }
+
 \examples{
 \dontrun{
 library(kazaam)
@@ -88,4 +89,3 @@ finalize()
 }
 
 }
-

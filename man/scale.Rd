@@ -26,6 +26,7 @@ Centers and/or scales the columns of a distributed matrix.
 The communication consists of two allreduce calls, each quadratic on the
 number of columns.
 }
+
 \examples{
 \dontrun{
 library(kazaam)
@@ -38,4 +39,3 @@ finalize()
 }
 
 }
-

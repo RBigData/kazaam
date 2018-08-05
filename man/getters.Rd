@@ -2,19 +2,19 @@
 % Please edit documentation in R/02-getters.r
 \docType{methods}
 \name{getters}
-\alias{DATA}
-\alias{DATA,gbd1d-method}
-\alias{NCOL,gbd1d-method}
-\alias{NROW,gbd1d-method}
-\alias{dim,gbd1d-method}
 \alias{getters}
-\alias{length,gbd1d-method}
-\alias{ncol,gbd1d-method}
-\alias{ncol.local}
-\alias{ncol.local,gbd1d-method}
 \alias{nrow,gbd1d-method}
+\alias{NROW,gbd1d-method}
 \alias{nrow.local}
 \alias{nrow.local,gbd1d-method}
+\alias{ncol,gbd1d-method}
+\alias{NCOL,gbd1d-method}
+\alias{ncol.local}
+\alias{ncol.local,gbd1d-method}
+\alias{length,gbd1d-method}
+\alias{DATA}
+\alias{DATA,gbd1d-method}
+\alias{dim,gbd1d-method}
 \title{getters}
 \usage{
 \S4method{nrow}{gbd1d}(x)
@@ -57,7 +57,7 @@ submatrix (\code{DATA()}).
 
 Each operation is completely local.
 }
+
 \seealso{
 \code{\link{setters}}
 }
-
