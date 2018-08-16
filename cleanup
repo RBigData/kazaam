@@ -4,3 +4,6 @@ rm -rf ./src/*.so
 rm -rf ./src/*.o
 
 rm -rf ./src/Makevars
+
+rm -rf ./src-*
+
