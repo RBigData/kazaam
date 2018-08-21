@@ -124,7 +124,7 @@ shaq.vector = function(Data, nrows, ncols, checks=TRUE)
   if (comm.rank()+1L < rem)
     nrows.local = nrows.local + 1
   
-  dim(Data) = c(floor(nrows.local), ncols)
+  Data = matrix(Data, as.integer(nrows.local), ncols)
   
   new("shaq", Data=Data, nrows=nrows, ncols=ncols)
 }
