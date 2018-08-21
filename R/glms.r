@@ -116,7 +116,7 @@ linkinv_poisson = poisson(log)$linkinv
 
 cost_poisson = function(theta, x, y)
 {
-  eta = DATA(x)%*%theta
+  eta = DATA(x) %*% theta
   J.local = -sum(DATA(y) * eta - linkinv_poisson(eta))
   
   allreduce_dbl(J.local)

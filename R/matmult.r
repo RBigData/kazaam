@@ -1,3 +1,18 @@
+matmult = function(x, y)
+{
+  if (is.double(x) && is.double(y))
+  {
+    if (NCOL(x) != NROW(y))
+      pbdMPI::comm.stop("non-conformable arguments")
+    
+    .Call(R_matmult_dgemm, x, y)
+  }
+  else
+    x %*% y
+}
+
+
+
 #' Matrix Multiplication
 #' 
 #' Multiplies two distributed matrices, if they are conformable.
