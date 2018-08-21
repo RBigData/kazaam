@@ -131,6 +131,10 @@ shaq.vector = function(Data, nrows, ncols, checks=TRUE)
 
 #' @rdname shaq
 #' @export
+shaq.integer = shaq.vector
+
+#' @rdname shaq
+#' @export
 shaq.NULL = function(Data, nrows, ncols, checks=TRUE)
 {
   if (missing(ncols))
