@@ -32,7 +32,6 @@ Authors@R: c(
     )
 URL: http://pbdr.org/
 BugReports: http://group.r-pbd.org/
-MailingList: Please send questions and comments regarding pbdR to
-        RBigData@gmail.com
+MailingList: Please send questions and comments regarding pbdR to RBigData@gmail.com
 Maintainer: Drew Schmidt <wrathematics@gmail.com>
-RoxygenNote: 6.0.1
+RoxygenNote: 6.1.0.9000

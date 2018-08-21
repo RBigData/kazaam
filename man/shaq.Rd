@@ -2,11 +2,11 @@
 % Please edit documentation in R/01-constructor.r
 \name{shaq}
 \alias{shaq}
-\alias{shaq}
 \alias{tshaq}
 \alias{shaq.matrix}
 \alias{shaq.float32}
 \alias{shaq.vector}
+\alias{shaq.integer}
 \alias{shaq.NULL}
 \alias{tshaq.matrix}
 \alias{tshaq.float32}
@@ -23,6 +23,8 @@ tshaq(Data, nrows, ncols, checks = TRUE)
 \method{shaq}{float32}(Data, nrows, ncols, checks = TRUE)
 
 \method{shaq}{vector}(Data, nrows, ncols, checks = TRUE)
+
+\method{shaq}{integer}(Data, nrows, ncols, checks = TRUE)
 
 \method{shaq}{NULL}(Data, nrows, ncols, checks = TRUE)
 

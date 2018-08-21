@@ -4,7 +4,6 @@
 \name{shaq-class}
 \alias{shaq-class}
 \alias{gbd1d-class}
-\alias{shaq-class}
 \alias{tshaq-class}
 \title{Class shaq}
 \description{

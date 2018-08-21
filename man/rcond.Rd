@@ -6,7 +6,8 @@
 \alias{rcond,shaq-method}
 \title{rcond}
 \usage{
-\S4method{rcond}{shaq}(x, norm = c("O", "I", "1"), triangular = FALSE, ...)
+\S4method{rcond}{shaq}(x, norm = c("O", "I", "1"), triangular = FALSE,
+  ...)
 }
 \arguments{
 \item{x}{A shaq.}

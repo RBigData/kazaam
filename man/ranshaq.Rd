@@ -2,7 +2,6 @@
 % Please edit documentation in R/ranshaq.r
 \name{ranshaq}
 \alias{ranshaq}
-\alias{ranshaq}
 \alias{rantshaq}
 \title{ranshaq}
 \usage{

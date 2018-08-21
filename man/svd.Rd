@@ -9,9 +9,11 @@
 \alias{La.svd,tshaq-method}
 \title{svd}
 \usage{
-\S4method{svd}{shaq}(x, nu = min(n, p), nv = min(n, p), LINPACK = FALSE)
+\S4method{svd}{shaq}(x, nu = min(n, p), nv = min(n, p),
+  LINPACK = FALSE)
 
-\S4method{svd}{tshaq}(x, nu = min(n, p), nv = min(n, p), LINPACK = FALSE)
+\S4method{svd}{tshaq}(x, nu = min(n, p), nv = min(n, p),
+  LINPACK = FALSE)
 
 \S4method{La.svd}{shaq}(x, nu = min(n, p), nv = min(n, p))
 
