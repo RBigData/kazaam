@@ -13,9 +13,9 @@ Description: Many data science problems reduce to operations on very tall,
     a play on the fact that 'Shaquille' 'ONeal' ('Shaq') is very tall, and he
     starred in the film 'Kazaam'.
 License: BSD 2-clause License + file LICENSE
-Depends: 
+Depends:
     R (>= 3.0.2),
-    pbdMPI (>= 0.3-6)
+    pbdMPI (>= 0.3-8)
 Imports:
     methods,
     stats,
