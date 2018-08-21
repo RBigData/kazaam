@@ -11,8 +11,7 @@
 #' a play on the fact that 'Shaquille' 'ONeal' ('Shaq') is very tall, and he
 #' starred in the film 'Kazaam'.
 #' 
-#' @importFrom pbdMPI isend irecv send recv allreduce bcast comm.size comm.rank
-#'     comm.stop comm.all comm.max
+#' @import pbdMPI
 #' @import methods
 #' @importFrom stats prcomp optim runif
 #' @importFrom float float32 is.float
