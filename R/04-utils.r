@@ -18,13 +18,11 @@ allreduce_int = function(x, x.buffer=integer(length(x)), op="sum", comm=0)
   ret
 }
 
-allreduce_float = function(x, x.buffer=fl(integer(length(x))), op="sum", comm=0)
+allreduce_float = function(x, x.buffer=integer(length(x)), op="sum", comm=0)
 {
-  ret = pbdMPI::spmd.allreduce.float(x, x.buffer, op, comm)
-  if (is.matrix(x))
-    dim(ret) = dim(x)
-  
-  ret
+  ret = pbdMPI::spmd.allreduce.float(x@Data, x.buffer, op, comm)
+  x@Data = ret
+  x
 }
 
 MPI_Allreduce = function(x, x.buffer, op="sum", comm=0)
@@ -46,7 +44,7 @@ MPI_Allreduce = function(x, x.buffer, op="sum", comm=0)
   else if (is.float(x))
   {
     if (missing(x.buffer))
-      x.buffer = fl(integer(length(x)))
+      x.buffer = integer(length(x))
     
     allreduce_float(x, x.buffer, op, comm)
   }
