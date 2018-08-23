@@ -42,7 +42,7 @@ scale.shaq = function(x, center=TRUE, scale=TRUE)
   
   if (center)
   {
-    Data = base::scale(DATA(x), center=cm, scale=FALSE)
+    Data = scale(DATA(x), center=cm, scale=FALSE)
     attr(Data, "scaled:center") = cm
   }
   
@@ -51,9 +51,9 @@ scale.shaq = function(x, center=TRUE, scale=TRUE)
     if (!center)
       Data = DATA(x)
     
-    csd = sqrt(allreduce(base::colSums(Data*Data)) / (nrow(x)-1))
+    csd = sqrt(allreduce(colSums(Data*Data)) / (nrow(x)-1))
     
-    Data = base::scale(if (center) Data else DATA(x), center=FALSE, scale=csd)
+    Data = scale(if (center) Data else DATA(x), center=FALSE, scale=csd)
     attr(Data, "scaled:scale") = csd
   }
   

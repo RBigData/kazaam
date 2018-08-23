@@ -61,7 +61,7 @@ cost_svm = function(w, x, y)
 {
   m = nrow(x)
   J.local = 1/m * sum(hinge_loss(1.0 - DATA(y)*matmult(DATA(x), w)))
-
+  
   allreduce_dbl(J.local) + 1/m * 0.5 * norm2(w)
 }
 
