@@ -6,6 +6,11 @@
 #' The operation consists of a local crossproduct, followed by an
 #' \code{allreduce()} call, quadratic on the number of columns.
 #' 
+#' For \code{crossprod()}, if the matrix distribution is poorly balanced
+#' (specifically, if any rank has fewer rows than columns), then an inefficient
+#' method is used. Similarly for \code{tcrossprod()} if the number of local rows
+#' is greater than the number of local columns.
+#' 
 #' @param x
 #' A shaq.
 #' @param y
@@ -65,9 +70,16 @@ cp.shaq = function(x, y = NULL)
   }
   else
   {
-    # cp.local = base::crossprod(DATA(x))
-    # allreduce(cp.local)
-    cp.internal(x, 1.0)
+    m = nrow(DATA(x))
+    n = ncol(DATA(x))
+    check = MPI_Allreduce(as.integer(m<n))
+    if (check)
+    {
+      cp.local = crossprod(DATA(x))
+      MPI_Allreduce(cp.local)
+    }
+    else
+      cp.internal(x, 1.0)
   }
 }
 
@@ -85,9 +97,16 @@ tcp.shaq = function(x, y = NULL)
   }
   else
   {
-    # cp.local = base::crossprod(DATA(x))
-    # allreduce(cp.local)
-    cp.internal(x, 1.0)
+    m = nrow(DATA(x))
+    n = ncol(DATA(x))
+    check = MPI_Allreduce(as.integer(m<n))
+    if (check)
+    {
+      tcp.local = tcrossprod(DATA(x))
+      MPI_Allreduce(tcp.local)
+    }
+    else
+      cp.internal(x, 1.0)
   }
 }
 
