@@ -30,7 +30,8 @@ km.assign = function(x, centers, labels)
 
 km.update = function(x, centers, labels)
 {
-  .Call(R_km_update, DATA(x), centers, labels)
+  comm_ptr = pbdMPI::get.mpi.comm.ptr(.pbd_env$SPMD.CT$comm)
+  .Call(R_km_update, DATA(x), centers, labels, comm_ptr)
 }
 
 

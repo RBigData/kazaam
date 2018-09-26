@@ -1,6 +1,6 @@
 # the generic allreduce() is very expensive for iterative components like our
 # svm and glm fitters
-allreduce_dbl = function(x, x.buffer=numeric(length(x)), op="sum", comm=0)
+allreduce_dbl = function(x, x.buffer=numeric(length(x)), op="sum", comm=.pbd_env$SPMD.CT$comm)
 {
   ret = pbdMPI::spmd.allreduce.double(x, x.buffer, op, comm)
   if (is.matrix(x))
@@ -9,7 +9,7 @@ allreduce_dbl = function(x, x.buffer=numeric(length(x)), op="sum", comm=0)
   ret
 }
 
-allreduce_int = function(x, x.buffer=integer(length(x)), op="sum", comm=0)
+allreduce_int = function(x, x.buffer=integer(length(x)), op="sum", comm=.pbd_env$SPMD.CT$comm)
 {
   ret = pbdMPI::spmd.allreduce.integer(x, x.buffer, op, comm)
   if (is.matrix(x))
@@ -18,14 +18,14 @@ allreduce_int = function(x, x.buffer=integer(length(x)), op="sum", comm=0)
   ret
 }
 
-allreduce_float = function(x, x.buffer=integer(length(x)), op="sum", comm=0)
+allreduce_float = function(x, x.buffer=integer(length(x)), op="sum", comm=.pbd_env$SPMD.CT$comm)
 {
   ret = pbdMPI::spmd.allreduce.float(x@Data, x.buffer, op, comm)
   x@Data = ret
   x
 }
 
-MPI_Allreduce = function(x, x.buffer, op="sum", comm=0)
+MPI_Allreduce = function(x, x.buffer, op="sum", comm=.pbd_env$SPMD.CT$comm)
 {
   if (is.double(x))
   {

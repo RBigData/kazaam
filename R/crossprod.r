@@ -33,12 +33,13 @@ NULL
 
 cp.internal = function(x, alpha)
 {
+  comm_ptr = pbdMPI::get.mpi.comm.ptr(.pbd_env$SPMD.CT$comm)
   data = DATA(x)
   alpha = as.double(alpha)
   
   if (is.float(data))
   {
-    ret = .Call(R_float_mpicrossprod, DATA(data), alpha)
+    ret = .Call(R_float_mpicrossprod, DATA(data), alpha, comm_ptr)
     float32(ret) 
   }
   else
@@ -46,7 +47,7 @@ cp.internal = function(x, alpha)
     if (!is.double(data))
       storage.mode(data) = "double"
     
-    .Call(R_mpicrossprod, data, alpha)
+    .Call(R_mpicrossprod, data, alpha, comm_ptr)
   }
 }
 

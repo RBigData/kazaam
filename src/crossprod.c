@@ -3,12 +3,11 @@
 #include <stdint.h>
 #endif
 
+#include <float/float32.h>
+#include <float/slapack.h>
 #include <mpi.h>
 #include <R.h>
 #include <Rinternals.h>
-
-#include <float/float32.h>
-#include <float/slapack.h>
 
 #include "mpi_utils.h"
 #include "types.h"
@@ -53,9 +52,10 @@ static inline void symmetrize(const int n, double *restrict x)
 
 
 
-SEXP R_mpicrossprod(SEXP x, SEXP alpha_)
+SEXP R_mpicrossprod(SEXP x, SEXP alpha_, SEXP comm_)
 {
   SEXP ret;
+  MPI_Comm *comm = get_mpi_comm_from_Robj(comm_);
   size_t pos = 0;
   const int m = nrows(x);
   const int n = ncols(x);
@@ -80,9 +80,9 @@ SEXP R_mpicrossprod(SEXP x, SEXP alpha_)
   }
   
   // combine packed crossproduct across MPI ranks
-  int check = MPI_Allreduce(MPI_IN_PLACE, ret_pt, compact_len, MPI_DOUBLE, MPI_SUM, MPI_COMM_WORLD);
+  int check = MPI_Allreduce(MPI_IN_PLACE, ret_pt, compact_len, MPI_DOUBLE, MPI_SUM, *comm);
   if (check != MPI_SUCCESS)
-    R_mpi_throw_err(check);
+    R_mpi_throw_err(check, comm);
   
   // reconstruct the crossproduct as a full matrix
   for (int j=minmn-1; j>0; j--)
@@ -103,9 +103,10 @@ SEXP R_mpicrossprod(SEXP x, SEXP alpha_)
 
 
 
-SEXP R_float_mpicrossprod(SEXP x, SEXP alpha_)
+SEXP R_float_mpicrossprod(SEXP x, SEXP alpha_, SEXP comm_)
 {
   SEXP ret;
+  MPI_Comm *comm = get_mpi_comm_from_Robj(comm_);
   size_t pos = 0;
   const int m = nrows(x);
   const int n = ncols(x);
@@ -130,9 +131,9 @@ SEXP R_float_mpicrossprod(SEXP x, SEXP alpha_)
   }
   
   // combine packed crossproduct across MPI ranks
-  int check = MPI_Allreduce(MPI_IN_PLACE, ret_pt, compact_len, MPI_FLOAT, MPI_SUM, MPI_COMM_WORLD);
+  int check = MPI_Allreduce(MPI_IN_PLACE, ret_pt, compact_len, MPI_FLOAT, MPI_SUM, *comm);
   if (check != MPI_SUCCESS)
-    R_mpi_throw_err(check);
+    R_mpi_throw_err(check, comm);
   
   // reconstruct the crossproduct as a full matrix
   for (int j=minmn-1; j>0; j--)
