@@ -1,4 +1,4 @@
-Copyright 2017 ORNL
+Copyright 2017-2018 ORNL
 Copyright 2012-2015 Drew Schmidt
 Copyright 2011-2015: Wei-Chen Chen
 
