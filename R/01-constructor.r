@@ -4,10 +4,16 @@
 #' 
 #' @details
 #' If \code{nrows} and/or \code{ncols} is missing, then it will be imputed.
+#' The internal logic tries closely to mimic R's, but it may do unexpected
+#' things that you do not want. You are encouraged to specify the distributed
+#' dimension (i.e., \code{nrows} for a \code{shaq}, \code{ncols} for
+#' \code{tshaq}).
+#' 
 #' One can pass \code{NULL} for the \code{Data} argument to specify that that
-#' MPI rank owns no data. In this case, you \emph{must} manually provide
-#' \code{ncols}. This use case is typical when reading from a subset of
-#' processors and then broadcasting out to the remainder.
+#' MPI rank owns no data. In this case, you \emph{must} manually provide the
+#' non-distributed dimension (i.e., \code{ncols} for \code{shaq}). This use case
+#' is typical when reading from a subset of processors and then broadcasting out
+#' to the remainder.
 #' 
 #' @section Communication:
 #' If \code{checks=TRUE}, a check on the global number of rows is performed.
@@ -107,7 +113,7 @@ shaq.vector = function(Data, nrows, ncols, checks=TRUE)
   {
     if (missing(nrows) && missing(ncols))
     {
-      nrows = length(Data)
+      nrows = MPI_Allreduce(length(Data))
       ncols = 1L
     }
     else if (missing(nrows))
@@ -117,8 +123,7 @@ shaq.vector = function(Data, nrows, ncols, checks=TRUE)
   }
   
   nrows.local = get_local_dim(nrows)
-  Data = matrix(Data, as.integer(nrows.local), ncols)
-  
+  Data = matrix(Data, nrows.local, ncols)
   new("shaq", Data=Data, nrows=nrows, ncols=ncols)
 }
 
@@ -212,7 +217,7 @@ tshaq.vector = function(Data, nrows, ncols, checks=TRUE)
     if (missing(nrows) && missing(ncols))
     {
       nrows = 1L
-      ncols = length(Data)
+      ncols = MPI_Allreduce(length(Data))
     }
     else if (missing(nrows))
       nrows = 1L
@@ -220,16 +225,8 @@ tshaq.vector = function(Data, nrows, ncols, checks=TRUE)
       ncols = 1L
   }
   
-  
-  size = comm.size()
-  base = ncols %/% size
-  rem = ncols - base*size
-  ncols.local = base
-  if (comm.rank()+1L < rem)
-    ncols.local = ncols.local + 1
-  
-  dim(Data) = c(nrows, floor(ncols.local))
-  
+  ncols.local = get_local_dim(ncols)
+  Data = matrix(Data, nrows, ncols.local)
   new("tshaq", Data=Data, nrows=nrows, ncols=ncols)
 }
 
