@@ -122,7 +122,11 @@ shaq.vector = function(Data, nrows, ncols, checks=TRUE)
       ncols = 1L
   }
   
-  nrows.local = get_local_dim(nrows)
+  if (checks)
+    nrows.local = get_local_dim(nrows)
+  else
+    nrows.local = floor(length(Data) / ncols)
+  
   Data = matrix(Data, nrows.local, ncols)
   new("shaq", Data=Data, nrows=nrows, ncols=ncols)
 }
@@ -225,7 +229,11 @@ tshaq.vector = function(Data, nrows, ncols, checks=TRUE)
       ncols = 1L
   }
   
-  ncols.local = get_local_dim(ncols)
+  if (checks)
+    ncols.local = get_local_dim(ncols)
+  else
+    ncols.local = floor(length(Data) / nrows)
+  
   Data = matrix(Data, nrows, ncols.local)
   new("tshaq", Data=Data, nrows=nrows, ncols=ncols)
 }
