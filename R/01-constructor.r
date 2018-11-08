@@ -116,14 +116,7 @@ shaq.vector = function(Data, nrows, ncols, checks=TRUE)
       ncols = 1L
   }
   
-  
-  size = comm.size()
-  base = nrows %/% size
-  rem = nrows - base*size
-  nrows.local = base
-  if (comm.rank()+1L < rem)
-    nrows.local = nrows.local + 1
-  
+  nrows.local = get_local_dim(nrows)
   Data = matrix(Data, as.integer(nrows.local), ncols)
   
   new("shaq", Data=Data, nrows=nrows, ncols=ncols)

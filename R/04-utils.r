@@ -66,3 +66,17 @@ binary.shaqshaq.check = function(s1, s2)
   if (nrow(DATA(s1)) != nrow(DATA(s2))  ||  ncol(DATA(s1)) != ncol(DATA(s2)))
     stop("shaqs not distributed identically")
 }
+
+
+
+# given nrows or ncols, get nrows.local or ncols.local
+get_local_dim = function(dim)
+{
+  size = comm.size()
+  local = dim %/% size
+  rem = dim - local*size
+  if (comm.rank()+1 <= rem)
+    local = local + 1L
+  
+  local
+}
