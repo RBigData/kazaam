@@ -7,9 +7,11 @@
 \alias{cor,shaq-method}
 \title{Covariance and Correlation}
 \usage{
-\S4method{cov}{shaq}(x, y = NULL, use = "everything", method = "pearson")
+\S4method{cov}{shaq}(x, y = NULL, use = "everything",
+  method = "pearson")
 
-\S4method{cor}{shaq}(x, y = NULL, use = "everything", method = "pearson")
+\S4method{cor}{shaq}(x, y = NULL, use = "everything",
+  method = "pearson")
 }
 \arguments{
 \item{x}{A shaq.}

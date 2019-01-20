@@ -37,7 +37,7 @@ NULL
 
 
 
-expand.shaq = function(x)
+expander = function(x, trans=FALSE)
 {
   if (comm.rank() == 0)
   {
@@ -54,67 +54,57 @@ expand.shaq = function(x)
     bcast(dim)
     
     size = comm.size()
-    id = pbdMPI::get.jid(NROW(x), all=TRUE)
+    if (!trans)
+      n = NROW(x)
+    else
+      n = NCOL(x)
     
-    if (size > 1)
+    id = pbdMPI::get.jid(n, all=TRUE)
+    
+    if (!trans)
     {
-      for (i in 1:(size - 1L))
+      if (size > 1)
       {
-        x.local = x[id[[i+1]], , drop=FALSE]
-        isend(x.local, rank.dest=i)
+        for (i in 1:(size - 1L))
+        {
+          x.local = x[id[[i+1]], , drop=FALSE]
+          send(x.local, rank.dest=i)
+        }
       }
+      
+      x.local = x[id[[1]], , drop=FALSE]
     }
-    
-    x.local = x[id[[1]], , drop=FALSE]
+    else
+    {
+      if (size > 1)
+      {
+        for (i in 1:(size - 1L))
+        {
+          x.local = x[, id[[i+1]], drop=FALSE]
+          send(x.local, rank.dest=i)
+        }
+      }
+      
+      x.local = x[, id[[1]], drop=FALSE]
+    }
   }
   else
   {
     dim = bcast()
-    x.local = irecv(rank.source=0)
+    x.local = recv(rank.source=0)
   }
   
   shaq(x.local, dim[1L], dim[2L], checks=FALSE)
 }
 
-
+expand.shaq = function(x)
+{
+  expander(x, trans=FALSE)
+}
 
 expand.tshaq = function(x)
 {
-  if (comm.rank() == 0)
-  {
-    if (!is.matrix(x))
-    {
-      if (is.atomic(x))
-        dim(x) = c(length(x), 1L)
-      else
-        stop("RANK 0: argument 'x' must be a matrix")
-    }
-    
-    
-    dim = dim(x)
-    bcast(dim)
-    
-    size = comm.size()
-    id = pbdMPI::get.jid(NCOL(x), all=TRUE)
-    
-    if (size > 1)
-    {
-      for (i in 1:(size - 1L))
-      {
-        x.local = x[, id[[i+1]], drop=FALSE]
-        isend(x.local, rank.dest=i)
-      }
-    }
-    
-    x.local = x[, id[[1]], drop=FALSE]
-  }
-  else
-  {
-    dim = bcast()
-    x.local = irecv(rank.source=0)
-  }
-  
-  tshaq(x.local, dim[1L], dim[2L], checks=FALSE)
+  expander(x, trans=TRUE)
 }
 
 

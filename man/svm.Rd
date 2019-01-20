@@ -2,7 +2,6 @@
 % Please edit documentation in R/svm.r
 \name{svm}
 \alias{svm}
-\alias{svm}
 \title{svm}
 \usage{
 svm(x, y, maxiter = 500)

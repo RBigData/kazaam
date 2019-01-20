@@ -2,7 +2,6 @@
 % Please edit documentation in R/expand.r
 \name{expand}
 \alias{expand}
-\alias{expand}
 \title{expand}
 \usage{
 expand(x, class = "shaq")

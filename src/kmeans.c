@@ -114,8 +114,9 @@ SEXP R_km_assign(SEXP x_, SEXP centers_, SEXP labels_)
 
 
 
-SEXP R_km_update(SEXP x_, SEXP centers_, SEXP labels_)
+SEXP R_km_update(SEXP x_, SEXP centers_, SEXP labels_, SEXP comm_)
 {
+  MPI_Comm *comm = get_mpi_comm_from_Robj(comm_);
   int check;
   const int m = nrows(x_);
   const int n = ncols(x_);
@@ -137,11 +138,11 @@ SEXP R_km_update(SEXP x_, SEXP centers_, SEXP labels_)
       centers[j + n*labels[i]] += x[i + m*j];
   }
   
-  check = MPI_Allreduce(MPI_IN_PLACE, centers, n*k, MPI_DOUBLE, MPI_SUM, MPI_COMM_WORLD);
+  check = MPI_Allreduce(MPI_IN_PLACE, centers, n*k, MPI_DOUBLE, MPI_SUM, *comm);
   if (check != MPI_SUCCESS)
   {
     free(nlabels);
-    R_mpi_throw_err(check);
+    R_mpi_throw_err(check, comm);
   }
   
   
@@ -150,11 +151,11 @@ SEXP R_km_update(SEXP x_, SEXP centers_, SEXP labels_)
   for (int i=0; i<m; i++)
     nlabels[labels[i]]++;
   
-  check = MPI_Allreduce(MPI_IN_PLACE, nlabels, k, MPI_INTEGER, MPI_SUM, MPI_COMM_WORLD);
+  check = MPI_Allreduce(MPI_IN_PLACE, nlabels, k, MPI_INTEGER, MPI_SUM, *comm);
   if (check != MPI_SUCCESS)
   {
     free(nlabels);
-    R_mpi_throw_err(check);
+    R_mpi_throw_err(check, comm);
   }
     
   for (int j=0; j<k; j++)

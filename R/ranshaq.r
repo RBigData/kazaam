@@ -70,14 +70,7 @@ ranshaq = function(generator, nrows, ncols, local=FALSE, ...)
     nrows = nrows * comm.size()
   }
   else
-  {
-    size = comm.size()
-    nrows.local = floor(nrows %/% size)
-    base = floor(nrows %/% size)
-    rem = floor(nrows - nrows.local*size)
-    if (comm.rank()+1 <= rem)
-      nrows.local = nrows.local + 1L
-  }
+    nrows.local = get_local_dim(nrows)
   
   Data = generator(nrows.local * ncols, ...)
   dim(Data) <- c(nrows.local, ncols)
@@ -114,14 +107,7 @@ rantshaq = function(generator, nrows, ncols, local=FALSE, ...)
     ncols = ncols * comm.size()
   }
   else
-  {
-    size = comm.size()
-    ncols.local = floor(ncols %/% size)
-    base = floor(ncols %/% size)
-    rem = floor(ncols - ncols.local*size)
-    if (comm.rank()+1 <= rem)
-      ncols.local = ncols.local + 1L
-  }
+    ncols.local = get_local_dim(ncols)
   
   Data = generator(nrows * ncols.local, ...)
   dim(Data) <- c(nrows, ncols.local)

@@ -1,6 +1,6 @@
 # the generic allreduce() is very expensive for iterative components like our
 # svm and glm fitters
-allreduce_dbl = function(x, x.buffer=numeric(length(x)), op="sum", comm=0)
+allreduce_dbl = function(x, x.buffer=numeric(length(x)), op="sum", comm=.pbd_env$SPMD.CT$comm)
 {
   ret = pbdMPI::spmd.allreduce.double(x, x.buffer, op, comm)
   if (is.matrix(x))
@@ -9,7 +9,7 @@ allreduce_dbl = function(x, x.buffer=numeric(length(x)), op="sum", comm=0)
   ret
 }
 
-allreduce_int = function(x, x.buffer=integer(length(x)), op="sum", comm=0)
+allreduce_int = function(x, x.buffer=integer(length(x)), op="sum", comm=.pbd_env$SPMD.CT$comm)
 {
   ret = pbdMPI::spmd.allreduce.integer(x, x.buffer, op, comm)
   if (is.matrix(x))
@@ -18,16 +18,14 @@ allreduce_int = function(x, x.buffer=integer(length(x)), op="sum", comm=0)
   ret
 }
 
-allreduce_float = function(x, x.buffer=fl(integer(length(x))), op="sum", comm=0)
+allreduce_float = function(x, x.buffer=integer(length(x)), op="sum", comm=.pbd_env$SPMD.CT$comm)
 {
-  ret = pbdMPI::spmd.allreduce.float(x, x.buffer, op, comm)
-  if (is.matrix(x))
-    dim(ret) = dim(x)
-  
-  ret
+  ret = pbdMPI::spmd.allreduce.float(x@Data, x.buffer, op, comm)
+  x@Data = ret
+  x
 }
 
-MPI_Allreduce = function(x, x.buffer, op="sum", comm=0)
+MPI_Allreduce = function(x, x.buffer, op="sum", comm=.pbd_env$SPMD.CT$comm)
 {
   if (is.double(x))
   {
@@ -46,7 +44,7 @@ MPI_Allreduce = function(x, x.buffer, op="sum", comm=0)
   else if (is.float(x))
   {
     if (missing(x.buffer))
-      x.buffer = fl(integer(length(x)))
+      x.buffer = integer(length(x))
     
     allreduce_float(x, x.buffer, op, comm)
   }
@@ -67,4 +65,18 @@ binary.shaqshaq.check = function(s1, s2)
   
   if (nrow(DATA(s1)) != nrow(DATA(s2))  ||  ncol(DATA(s1)) != ncol(DATA(s2)))
     stop("shaqs not distributed identically")
+}
+
+
+
+# given nrows or ncols, get nrows.local or ncols.local
+get_local_dim = function(dim)
+{
+  size = comm.size()
+  local = dim %/% size
+  rem = dim - local*size
+  if (comm.rank()+1 <= rem)
+    local = local + 1L
+  
+  local
 }

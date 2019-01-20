@@ -26,6 +26,11 @@ Conceptually, this computes \code{t(x) \%*\% x} for a shaq \code{x}.
 
 The operation consists of a local crossproduct, followed by an
 \code{allreduce()} call, quadratic on the number of columns.
+
+For \code{crossprod()}, if the matrix distribution is poorly balanced
+(specifically, if any rank has fewer rows than columns), then an inefficient
+method is used. Similarly for \code{tcrossprod()} if the number of local rows
+is greater than the number of local columns.
 }
 
 \examples{

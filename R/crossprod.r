@@ -6,6 +6,11 @@
 #' The operation consists of a local crossproduct, followed by an
 #' \code{allreduce()} call, quadratic on the number of columns.
 #' 
+#' For \code{crossprod()}, if the matrix distribution is poorly balanced
+#' (specifically, if any rank has fewer rows than columns), then an inefficient
+#' method is used. Similarly for \code{tcrossprod()} if the number of local rows
+#' is greater than the number of local columns.
+#' 
 #' @param x
 #' A shaq.
 #' @param y
@@ -33,12 +38,13 @@ NULL
 
 cp.internal = function(x, alpha)
 {
+  comm_ptr = pbdMPI::get.mpi.comm.ptr(.pbd_env$SPMD.CT$comm)
   data = DATA(x)
   alpha = as.double(alpha)
   
   if (is.float(data))
   {
-    ret = .Call(R_float_mpicrossprod, DATA(data), alpha)
+    ret = .Call(R_float_mpicrossprod, DATA(data), alpha, comm_ptr)
     float32(ret) 
   }
   else
@@ -46,7 +52,7 @@ cp.internal = function(x, alpha)
     if (!is.double(data))
       storage.mode(data) = "double"
     
-    .Call(R_mpicrossprod, data, alpha)
+    .Call(R_mpicrossprod, data, alpha, comm_ptr)
   }
 }
 
@@ -64,9 +70,16 @@ cp.shaq = function(x, y = NULL)
   }
   else
   {
-    # cp.local = base::crossprod(DATA(x))
-    # allreduce(cp.local)
-    cp.internal(x, 1.0)
+    m = nrow(DATA(x))
+    n = ncol(DATA(x))
+    check = MPI_Allreduce(as.integer(m<n))
+    if (check)
+    {
+      cp.local = crossprod(DATA(x))
+      MPI_Allreduce(cp.local)
+    }
+    else
+      cp.internal(x, 1.0)
   }
 }
 
@@ -84,9 +97,16 @@ tcp.shaq = function(x, y = NULL)
   }
   else
   {
-    # cp.local = base::crossprod(DATA(x))
-    # allreduce(cp.local)
-    cp.internal(x, 1.0)
+    m = nrow(DATA(x))
+    n = ncol(DATA(x))
+    check = MPI_Allreduce(as.integer(m<n))
+    if (check)
+    {
+      tcp.local = tcrossprod(DATA(x))
+      MPI_Allreduce(tcp.local)
+    }
+    else
+      cp.internal(x, 1.0)
   }
 }
 

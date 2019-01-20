@@ -13,9 +13,15 @@ Description: Many data science problems reduce to operations on very tall,
     a play on the fact that 'Shaquille' 'ONeal' ('Shaq') is very tall, and he
     starred in the film 'Kazaam'.
 License: BSD 2-clause License + file LICENSE
-Depends: R (>= 3.0.2), pbdMPI (>= 0.3-6)
-Imports: methods, stats, float (>= 0.1-2)
-LinkingTo: float (>= 0.1-2)
+Depends:
+    R (>= 3.0.2),
+    pbdMPI (>= 0.3-9)
+Imports:
+    methods,
+    stats,
+    float (>= 0.2-0)
+LinkingTo:
+    float (>= 0.2-0)
 ByteCompile: yes
 Authors@R: c(
     person("Drew", "Schmidt", role = c("aut", "cre", "cph"), email="wrathematics@gmail.com"), 
@@ -24,10 +30,8 @@ Authors@R: c(
     person("George", "Ostrouchov", role = "ctb"),
     person("ORNL", role = "cph")
     )
-URL: http://r-pbd.org/
+URL: http://pbdr.org/
 BugReports: http://group.r-pbd.org/
-MailingList: Please send questions and comments regarding pbdR to
-        RBigData@gmail.com
+MailingList: Please send questions and comments regarding pbdR to RBigData@gmail.com
 Maintainer: Drew Schmidt <wrathematics@gmail.com>
-RoxygenNote: 6.0.1
-NeedsCompilation: yes
+RoxygenNote: 6.1.0.9000

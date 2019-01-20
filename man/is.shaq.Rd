@@ -2,7 +2,6 @@
 % Please edit documentation in R/is.shaq.r
 \name{is.shaq}
 \alias{is.shaq}
-\alias{is.shaq}
 \alias{is.tshaq}
 \title{is.shaq}
 \usage{
