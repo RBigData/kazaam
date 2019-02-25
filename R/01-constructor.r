@@ -47,7 +47,8 @@ tshaq <- function(Data, nrows, ncols, checks=TRUE) UseMethod("tshaq", Data)
 
 intuit.shaq.nrows = function(Data)
 {
-  allreduce(NROW(Data))
+  nr = as.double(NROW(Data))
+  allreduce(nr)
 }
 
 check.shaq.ncols = function(Data, ncols)
