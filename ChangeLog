@@ -11,6 +11,7 @@ Release 0.2-0:
   * Added t() method.
   * Added binary logical operators (==, !=, etc).
   * Added La.svd() method.
+  * Added rand_measure().
 
 Release 0.1-0:
   * Added expand() and collapse().
