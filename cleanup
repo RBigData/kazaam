@@ -7,3 +7,4 @@ rm -rf ./src/Makevars
 
 rm -rf ./src-*
 
+rm -rf ./autom4te.cache
