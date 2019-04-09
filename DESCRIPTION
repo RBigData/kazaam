@@ -30,8 +30,8 @@ Authors@R: c(
     person("George", "Ostrouchov", role = "ctb"),
     person("ORNL", role = "cph")
     )
-URL: http://pbdr.org/
-BugReports: http://group.r-pbd.org/
+URL: https://pbdr.org/
+BugReports: http://group.pbdr.org/
 MailingList: Please send questions and comments regarding pbdR to RBigData@gmail.com
 Maintainer: Drew Schmidt <wrathematics@gmail.com>
 RoxygenNote: 6.1.1
