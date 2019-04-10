@@ -3,9 +3,6 @@ AC_PREREQ([2.69])
 AC_INIT([pbdBASE], [0.3-0])
 AC_CONFIG_SRCDIR([src/crossprod.c])
 
-AC_PROG_CC_C99
-
-
 # Determine R_HOME.
 : ${R_HOME=`R RHOME`}
 if test -z "${R_HOME}"; then
@@ -17,8 +14,8 @@ R_SCMD="${R_HOME}/bin/Rscript -e"
 
 
 # pbdMPI
-SPMD_CPPFLAGS=`${R_SCMD} "pbdMPI::get.conf('PKG_CPPFLAGS','"${R_ARCH}"','pbdMPI')"`
-SPMD_LDFLAGS=`${R_SCMD} "pbdMPI::get.conf('PKG_LIBS','"${R_ARCH}"','pbdMPI')"`
+SPMD_CPPFLAGS=`${R_SCMD} "source('./R/conf/get_conf.r');get.conf('PKG_CPPFLAGS','"${R_ARCH}"')"`
+SPMD_LDFLAGS=`${R_SCMD} "source('./R/conf/get_conf.r');get.conf('PKG_LIBS','"${R_ARCH}"')"`
 
 
 # Report
