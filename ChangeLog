@@ -13,6 +13,7 @@ Release 0.2-0:
   * Added La.svd() method.
   * Added rand_measure().
   * Added get_local_dim().
+  * Fixed build issue with x64 windows.
 
 Release 0.1-0:
   * Added expand() and collapse().
