@@ -21,6 +21,6 @@
 #' 
 #' @name kazaam-package
 #' @docType package
-#' @references Programming with Big Data in R Website: \url{https://r-pbd.org/}
+#' @references Programming with Big Data in R Website: \url{https://pbdr.org/}
 #' @keywords Package
 NULL
