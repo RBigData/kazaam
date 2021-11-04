@@ -3,9 +3,6 @@ AC_PREREQ([2.69])
 AC_INIT([pbdBASE], [0.3-0])
 AC_CONFIG_SRCDIR([src/crossprod.c])
 
-AC_PROG_CC_C99
-
-
 # Determine R_HOME.
 : ${R_HOME=`R RHOME`}
 if test -z "${R_HOME}"; then

@@ -52,10 +52,16 @@ Constructor for shaq objects.
 }
 \details{
 If \code{nrows} and/or \code{ncols} is missing, then it will be imputed.
+The internal logic tries closely to mimic R's, but it may do unexpected
+things that you do not want. You are encouraged to specify the distributed
+dimension (i.e., \code{nrows} for a \code{shaq}, \code{ncols} for
+\code{tshaq}).
+
 One can pass \code{NULL} for the \code{Data} argument to specify that that
-MPI rank owns no data. In this case, you \emph{must} manually provide
-\code{ncols}. This use case is typical when reading from a subset of
-processors and then broadcasting out to the remainder.
+MPI rank owns no data. In this case, you \emph{must} manually provide the
+non-distributed dimension (i.e., \code{ncols} for \code{shaq}). This use case
+is typical when reading from a subset of processors and then broadcasting out
+to the remainder.
 }
 \section{Communication}{
 
