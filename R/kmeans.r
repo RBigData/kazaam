@@ -1,5 +1,7 @@
+#' @useDynLib kazaam R_add1
 add1 = function(x) .Call(R_add1, x)
 
+#' @useDynLib kazaam R_memcpy
 memcpy = function(dest, src) .Call(R_memcpy, dest, src)
 
 get_numbefore = function(x)
@@ -21,6 +23,7 @@ get_random_seed = function()
 
 
 
+#' @useDynLib kazaam R_km_assign
 km.assign = function(x, centers, labels)
 {
   .Call(R_km_assign, DATA(x), centers, labels)
@@ -28,6 +31,7 @@ km.assign = function(x, centers, labels)
 
 
 
+#' @useDynLib kazaam R_km_update
 km.update = function(x, centers, labels)
 {
   comm_ptr = pbdMPI::get.mpi.comm.ptr(.pbd_env$SPMD.CT$comm)

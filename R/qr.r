@@ -42,6 +42,7 @@ NULL
 
 
 
+#' @useDynLib kazaam R_trinv
 .trinv = function(x)
 {
   .Call(R_trinv, x, 'U')

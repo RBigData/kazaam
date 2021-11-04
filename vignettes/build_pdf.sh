@@ -34,8 +34,7 @@ publish(){
 
 
 
-buildCover
-
+#buildCover
 buildVignette kazaam.Rnw
 
 cleanVignette

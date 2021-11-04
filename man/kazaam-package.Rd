@@ -17,6 +17,6 @@ a play on the fact that 'Shaquille' 'ONeal' ('Shaq') is very tall, and he
 starred in the film 'Kazaam'.
 }
 \references{
-Programming with Big Data in R Website: \url{http://r-pbd.org/}
+Programming with Big Data in R Website: \url{https://r-pbd.org/}
 }
 \keyword{Package}

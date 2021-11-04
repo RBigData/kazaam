@@ -34,4 +34,4 @@ URL: https://pbdr.org/
 BugReports: http://group.pbdr.org/
 MailingList: Please send questions and comments regarding pbdR to RBigData@gmail.com
 Maintainer: Drew Schmidt <wrathematics@gmail.com>
-RoxygenNote: 6.1.1
+RoxygenNote: 7.1.2

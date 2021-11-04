@@ -5,8 +5,7 @@
 \alias{prcomp.shaq}
 \title{Principal Components Analysis}
 \usage{
-\method{prcomp}{shaq}(x, retx = TRUE, center = TRUE, scale. = FALSE,
-  tol = NULL, ...)
+\method{prcomp}{shaq}(x, retx = TRUE, center = TRUE, scale. = FALSE, tol = NULL, ...)
 }
 \arguments{
 \item{x}{A shaq.}

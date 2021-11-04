@@ -1,3 +1,4 @@
+#' @useDynLib kazaam R_matmult_dgemm
 matmult = function(x, y)
 {
   if (is.double(x) && is.double(y))

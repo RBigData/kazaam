@@ -30,6 +30,9 @@
 #' finalize()
 #' }
 #' 
+#' @useDynLib kazaam R_mpicrossprod
+#' @useDynLib kazaam R_float_mpicrossprod
+#' 
 #' @name crossprod
 #' @rdname crossprod
 NULL

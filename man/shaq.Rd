@@ -29,7 +29,7 @@ tshaq(Data, nrows, ncols, checks = TRUE)
 
 \method{shaq}{double}(Data, nrows, ncols, checks = TRUE)
 
-\method{shaq}{NULL}(Data, nrows, ncols, checks = TRUE)
+\method{shaq}{`NULL`}(Data, nrows, ncols, checks = TRUE)
 
 \method{tshaq}{matrix}(Data, nrows, ncols, checks = TRUE)
 
@@ -37,7 +37,7 @@ tshaq(Data, nrows, ncols, checks = TRUE)
 
 \method{tshaq}{vector}(Data, nrows, ncols, checks = TRUE)
 
-\method{tshaq}{NULL}(Data, nrows, ncols, checks = TRUE)
+\method{tshaq}{`NULL`}(Data, nrows, ncols, checks = TRUE)
 }
 \arguments{
 \item{Data}{The local submatrix.}
