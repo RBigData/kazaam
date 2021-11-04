@@ -120,6 +120,9 @@ km = function(x, k=2, maxiter=100, seed=get_random_seed())
 {
   pbdMPI::comm.set.seed(seed, diff=FALSE)
   
+  if (!is.double(DATA(x)))
+    storage.mode(DATA(x)) = "double"
+
   numbefore = get_numbefore(x)
   
   centers = km.init(x, k, numbefore)
