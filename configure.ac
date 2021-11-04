@@ -1,6 +1,6 @@
 ## autoconf configure.ac && autoreconf -if
 AC_PREREQ([2.69])
-AC_INIT([pbdBASE], [0.3-0])
+AC_INIT([pbdBASE],[0.3-0])
 AC_CONFIG_SRCDIR([src/crossprod.c])
 
 # Determine R_HOME.
@@ -29,8 +29,8 @@ echo "************************************************************************"
 echo " "
 
 
-# Substitute templates
 AC_SUBST(SPMD_CPPFLAGS)
 AC_SUBST(SPMD_LDFLAGS)
 
-AC_OUTPUT(src/Makevars)
+AC_CONFIG_FILES([src/Makevars])
+AC_OUTPUT
