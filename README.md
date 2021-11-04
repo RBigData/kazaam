@@ -2,8 +2,7 @@
 
 * **Version:** 0.2-0
 * **URL**: https://github.com/RBigData/kazaam
-* **Status:** [![Build Status](https://travis-ci.org/RBigData/kazaam.png)](https://travis-ci.org/RBigData/kazaam)
-* **License:** [BSD 2-Clause](http://opensource.org/licenses/BSD-2-Clause)
+* **License:** [BSD 2-Clause](https://opensource.org/licenses/BSD-2-Clause)
 * **Author:** Drew Schmidt, Wei-Chen Chen, Mike Matheson, and George Ostrouchov.
 
 Basic matrix and statistics operations for very tall, narrow distributed matrices.  For a more general distributed matrix framework, see [pbdDMAT](https://cran.r-project.org/package=pbdDMAT).
@@ -18,7 +17,7 @@ You can install the stable version from CRAN using the usual `install.packages()
 install.packages("kazaam")
 ```
 
-The development version is maintained on GitHub, and can easily be installed by any of the packages that offer installations from GitHub:
+The development version is maintained on GitHub:
 
 ```r
 remotes::install_github("RBigData/kazaam")
