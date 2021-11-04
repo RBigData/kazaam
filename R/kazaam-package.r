@@ -16,9 +16,6 @@
 #' @importFrom stats prcomp optim runif
 #' @importFrom float float32 is.float
 #' 
-#' @useDynLib kazaam R_mpicrossprod R_float_mpicrossprod R_add1 R_memcpy
-#'   R_km_assign R_km_update R_trinv R_matmult_dgemm
-#' 
 #' @name kazaam-package
 #' @docType package
 #' @references Programming with Big Data in R Website: \url{https://pbdr.org/}
